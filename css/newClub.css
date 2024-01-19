@@ -1,0 +1,38 @@
+h1 {
+  text-align: center;
+}
+input {
+  padding: 10px;
+  margin: 10px;
+  width: 400px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background-color: #f1f3f5;
+}
+
+
+.submit-btn {
+  width: 100px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+}
+.submit-btn:hover {
+  background-color: #ff6347;
+  color: #FFF;
+}
+.new-club {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

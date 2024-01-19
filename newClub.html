@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script defer src="./js/newClub.js"></script>
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/newClub.css">
+  <title>New Club</title>
+  <!-- 카테고리 설정, 모임이름, 모임 설명 -->
+</head>
+
+<body>
+  <header>
+    <div class="inner">
+      <a href="/" class="logo">
+        <img src="/image/hobby_hop_logo.png" alt="LOGO">
+      </a>
+      <div class="main-menu">
+        <ul class="menu">
+          <li>
+            <a href="./postWrite.html">새 글 쓰기</a>
+          </li>
+          <li>
+            <a href="./clubList.html">클럽 리스트</a>
+          </li>
+          <li>
+            <a href="./login.html">로그인</a>
+          </li>
+          <li>
+            <a href="./signup.html">회원가입</a>
+          </li>
+          <li>
+            <a href="./postList.html">게시글 페이지</a>
+          </li>
+          <li>
+            <a href="./postRead.html">게시글 조회</a>
+          </li>
+          <li><a href="./newClub.html">클럽 만들기</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="content-section">
+    <div class="inner">
+      <div class="new-club">
+        <h1>모임 개설</h1>
+        <input type="text" id="title" placeholder="모임 이름">
+        <input type="text" id="description" placeholder="모임 설명">
+        <input type="text" id="category" placeholder="카테고리">
+        <a class="submit-btn">submit</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
