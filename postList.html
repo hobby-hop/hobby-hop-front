@@ -1,53 +1,99 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/postList.css">
-    <title>Post List</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+  <script defer src="./js/postList.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="./css/postList.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <title>Post List</title>
 </head>
+
 <body>
-<div class="card">
-  <div class="card-header">
-    <h1>게시판</h1>
+  <header>
+    <div class="inner">
+      <div>
+        <a href="/" class="logo">
+          <img src="/image/hobby_hop_logo.png" alt="LOGO">
+        </a>
+        <div class="main-menu">
+          <ul class="menu">
+            <li>
+              <a href="./postWrite.html">새 글 쓰기</a>
+            </li>
+            <li>
+              <a href="./clubList.html">클럽 리스트</a>
+            </li>
+            <li>
+              <a href="./login.html">로그인</a>
+            </li>
+            <li>
+              <a href="./signup.html">회원가입</a>
+            </li>
+            <li>
+              <a href="./postList.html">게시글 페이지</a>
+            </li>
+            <li>
+              <a href="./postRead.html">게시글 조회</a>
+            </li>
+            <li>
+              <a href="./newClub.html">클럽 만들기</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="content-section">
+    <div class="inner">
+      <div class="card">
+        <div class="card-header">
+          <h1>게시판</h1>
+        </div>
+        <div class="card-body">
+          <input type="search" palceholder="검색어를 입력하세요.">
+          <a class="search" href="#">검색</a>
+          <div class="content-box">
+            <div class="check"><input type="checkbox" name=""></div>
+            <div class="title"><a href=".html">하비합의 게시판입니다.</a></div>
+            <div class="delete"><button>X</button></div>
+          </div>
+          <div class="content-list">
+            <div class="check"><input type="checkbox" name =""></div>
+            <div class="title"><a href=".html"></a>하비합 게시판에 제목을 입력합니다.</div>
+            <div class="delete"><button>X</button></div>
+          </div>
+          <div class="content-box">
+            <div class="check"><input type="checkbox" name=""></div>
+            <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+            <div class="delete"><button>X</button></div>
+          </div>
+          <div class="content-box">
+            <div class="check"><input type="checkbox" name=""></div>
+            <div class="title"><a href=".html"></a></div>
+            <div class="delete"><button>X</button></div>
+          </div>
+          <ul class="number">
+            <li><a href="#">&lt;</a></li>
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">&gt;</a></li>
+          </ul>
+        </div>
+        <div class="btn">
+          <a href="write.html">글쓰기</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <input type="search" palceholder="검색어를 입력하세요.">
-    <a class="search" href="#">검색</a>
-    <div class="content-box">
-      <div class="check"><input type="checkbox" name=""></div>
-      <div class="title"><a href=".html">하비합의 게시판입니다.</a></div>
-      <div class="delete"><button>X</button></div>
-    </div>
-    <div class="content-list">
-      <div class="check"><input type="checkbox" name =""></div>
-      <div class="title"><a href=".html"></a>하비합 게시판에 제목을 입력합니다.</div>
-      <div class="delete"><button>X</button></div>
-    </div>
-    <div class="content-box">
-      <div class="check"><input type="checkbox" name=""></div>
-      <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
-      <div class="delete"><button>X</button></div>
-    </div>
-    <div class="content-box">
-      <div class="check"><input type="checkbox" name=""></div>
-      <div class="title"><a href=".html"></a></div>
-      <div class="delete"><button>X</button></div>
-    </div>
-    <ul class="number">
-      <li><a href="#">&lt;</a></li>
-      <li><a href="#" class="active">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">&gt;</a></li>
-    </ul>
-  </div>
-  <div class="btn">
-    <a href="write.html">글쓰기</a>
-  </div>
-</div>
+  
 </body>
+
 </html>
--->
