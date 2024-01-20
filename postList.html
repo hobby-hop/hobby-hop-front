@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script defer src="./js/postList.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="./css/postList.css">
@@ -59,24 +61,76 @@
           <input type="search" palceholder="검색어를 입력하세요.">
           <a class="search" href="#">검색</a>
           <div class="content-box">
-            <div class="check"><input type="checkbox" name=""></div>
-            <div class="title"><a href=".html">하비합의 게시판입니다.</a></div>
-            <div class="delete"><button>X</button></div>
-          </div>
-          <div class="content-list">
-            <div class="check"><input type="checkbox" name =""></div>
-            <div class="title"><a href=".html"></a>하비합 게시판에 제목을 입력합니다.</div>
-            <div class="delete"><button>X</button></div>
-          </div>
-          <div class="content-box">
-            <div class="check"><input type="checkbox" name=""></div>
-            <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
-            <div class="delete"><button>X</button></div>
-          </div>
-          <div class="content-box">
-            <div class="check"><input type="checkbox" name=""></div>
-            <div class="title"><a href=".html"></a></div>
-            <div class="delete"><button>X</button></div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">1</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">2</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">3</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">4</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">5</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">6</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">7</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">8</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">9</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
+            <div class="content">
+              <div class="post-id">
+                <a href="">10</a>
+              </div>
+              <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+              <div class="created-date">2014.10.25</div>
+            </div>
           </div>
           <ul class="number">
             <li><a href="#">&lt;</a></li>
@@ -86,14 +140,23 @@
             <li><a href="#">4</a></li>
             <li><a href="#">&gt;</a></li>
           </ul>
-        </div>
-        <div class="btn">
-          <a href="write.html">글쓰기</a>
+          <div class="write-btn">
+            <a href="write.html">글쓰기</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+  <script type="my-template" id="post-list">
+    <div class="content">
+      <div class="post-id">
+        <a href="">{{ id }}</a>
+      </div>
+      <div class="title"><a href=".html">{{ title }}</a></div>
+      <div class="created-date">{{ createdAt }}</div>
+    </div>
+  </script>
+
 </body>
 
 </html>

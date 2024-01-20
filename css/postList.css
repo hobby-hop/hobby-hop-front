@@ -1,28 +1,13 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-li{
-    list-style: none;
-}
-
 a{
     color: inherit;
     text-decoration: none;
 }
-head {
-    display: none;
-}
-body {
-    display: block;
-}
 .card {
-    width: 600px;
-    height: 600px;
-    margin: 100px auto;
+    width: 800px;
+    /* height: 1000px; */
+    margin: 0 auto;
     box-shadow: 3px 3px 50px #e6e6e6;
-    border-radius: 20px;
+    border-radius: 6px;
     position: relative;
 }
 .card-header {
@@ -30,8 +15,9 @@ body {
     text-align: center;
 }
 .card-header h1 {
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 25px;
+    /* background-color: #f1f3f5; */
+    /* font-weight: 700; */
 }
 .card-body {
     padding: 20px;
@@ -46,32 +32,25 @@ body {
     font-size: 16px;
 }
 .card-body a.search {
-    padding: 10px 15px 10px 15px;
-    margin-left: 10px;
-    border-radius: 10px;
+    display: inline-block;
+    margin-left: 20px;
+    width: 40px;
+    padding: 4px;
+    border-radius: 4px;
     background-color: tomato;
     color: #fff;
 }
-.card-body div {
+.card-body .content {
     margin-top: 10px;
     border-bottom: 1px solid #e6e6e6;
 }
-.card-body div div {
-    display: inline-block;
-    padding: 15px 10px 15px 10px;
-    margin: 0;
-    border: none;
-}
+
 .card-body .check ,.delete {
     width: 5%;
 }
 .card-body .title {
     width: 70%;
     text-align: left;
-}
-.card-body .delete button {
-    background-color: #fff;
-    border: none;
 }
 .number {
     padding: 10px;
@@ -91,9 +70,39 @@ body {
 .number li a.active {
     background-color: rgb(252, 212, 205);
 }
-.btn a {
-    padding: 10px;
+
+.content-box {
+    
+}
+.content {
+    display: flex;
+    flex-basis: 1;
+    flex-grow: 1;
+    height: 40px;
+    margin: 10px;
+}
+.content .title {
+    flex-grow: 2;
+}
+.content .post-id {
+    flex-grow: 2;
+}
+.content .created-date {
+    font-size: 12px;
+}
+
+.write-btn {
+    display: inline-block;
+    position: absolute;
+    right: 70px;
+    /* bottom: 160px; */
+    bottom : 33px;
     background-color: tomato;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 4px;
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 15px;
+
 }

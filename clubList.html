@@ -8,6 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/clubList.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="./js/clubList.js"></script>
     <title>clublist</title>
 </head>
 
@@ -108,6 +111,19 @@
           </div>
         </div>
     </div>
+    <script type="my-template" id="club-list">
+      <div class="content" data-club-id={{id}}>
+        <div class="club-title-section">
+          <span id="club-name"><strong>{{title}}</strong></span><br>
+        </div>
+        <div class="club-des-section">
+          <span id="club-description">{{content}}</span><br>
+        </div>
+        <div class="club-category-section">
+          <span id="category-name">{{categoryName}}</span>
+        </div>
+      </div>
+    </script>
 </body>
 
 </html>

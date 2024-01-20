@@ -5,78 +5,66 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+  <script defer src="./js/postList.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="./css/postList.css">
   <link rel="stylesheet" href="./css/common.css">
-  <title>board3</title>
+  <title>Post List</title>
 </head>
 
 <body>
   <header>
     <div class="inner">
-      <a href="/" class="logo">
-        <img src="/image/hobby_hop_logo.png" alt="LOGO">
-      </a>
-      <div class="main-menu">
-        <ul class="menu">
-          <li>
-            <a href="./postWrite.html">새 글 쓰기</a>
-          </li>
-          <li>
-            <a href="./clubList.html">클럽 리스트</a>
-          </li>
-          <li>
-            <a href="./login.html">로그인</a>
-          </li>
-          <li>
-            <a href="./signup.html">회원가입</a>
-          </li>
-          <li>
-            <a href="./postList.html">게시글 페이지</a>
-          </li>
-          <li>
-            <a href="./postRead.html">게시글 조회</a>
-          </li>
-          <li>
-            <a href="./newClub.html">클럽 만들기</a>
-          </li>
-        </ul>
+      <div>
+        <a href="/" class="logo">
+          <img src="/image/hobby_hop_logo.png" alt="LOGO">
+        </a>
+        <div class="main-menu">
+          <ul class="menu">
+            <li>
+              <a href="./postWrite.html">새 글 쓰기</a>
+            </li>
+            <li>
+              <a href="./clubList.html">클럽 리스트</a>
+            </li>
+            <li>
+              <a href="./login.html">로그인</a>
+            </li>
+            <li>
+              <a href="./signup.html">회원가입</a>
+            </li>
+            <li>
+              <a href="./postList.html">게시글 페이지</a>
+            </li>
+            <li>
+              <a href="./postRead.html">게시글 조회</a>
+            </li>
+            <li>
+              <a href="./newClub.html">클럽 만들기</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
   <div class="content-section">
     <div class="inner">
       <div class="card">
-        <div class="card-header3">
-          <h1><a href="">게시판</a></h1>
+        <div class="card-header">
+          <h1>게시글 제목</h1>
         </div>
-
-        <div class="card-view">
-          <div class="card-view">
-            <div class="title">
-              <h3>안녕하세요 하비합 게시판 제목입니다.</h3>
-            </div>
-            <div class="myinfo">
-              <dl>
-                <dt>작성자</dt>
-                <dt>펩시송</dt>
-              </dl>
-              <dl>
-                <dt>조회</dt>
-                <dt>10회</dt>
-              </dl>
-            </div>
-            <div class="cont">
-              여기가 작성된 게시글을 볼 수 있어요<br>
-              잠을 자고 싶어용 <br>
-            </div>
-          </div>
-          <div class="btn-view">
-            <a href="">수정</a>
-          </div>
-        </div>
-
+        <div class="card-body">
+          
+          
       </div>
     </div>
+  </div>
+  <script type="my-template" id="post-list">
+    <div class="content-box">
+      <div class="title"><a href=".html">제목을 입력해주세요~~</a></div>
+    </div>
+  </script>
 </body>
-
 </html>

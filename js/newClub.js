@@ -1,25 +1,18 @@
 document.querySelector(".submit-btn").addEventListener("click", function () {
-  console.log("clicked");
-});
+  const title = document.getElementById("title");
+  const content = document.getElementById("content");
+  const category = document.getElementById("category");
+  let url = "http://localhost:8080/api/clubs";
 
-const title = document.getElementById("title");
-const description = document.getElementById("description");
-const category = document.getElementById("category");
-let url = "http://localhost:8080/api/clubs";
-
-document.querySelector(".submit-btn").addEventListener("click", function () {
   let data = {
     title: title.value,
-    description: description.value,
+    content: content.value,
     categoryId: category.value
   }
-  let response = makeClub(data);
-  if (response.status == 200) {
-    console.log("성공!!")
-  }
+  sendMakeClub(data);
 });
 
-async function makeClub(data) {
+async function sendMakeClub(data) {
   const response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -31,3 +24,17 @@ async function makeClub(data) {
   });
   return response;
 }
+
+function validator(title, content, categoryId) {
+
+  if(title.value === "") {
+    alert("모임 명을 입력해주세요");
+  }
+  if(content.value === "") {
+    alert("모임 소개를 입력해주세요")
+  }  
+  if(categoryId.value === "") {
+    alert("카테고리를 선택해주세요");
+  }
+}
+

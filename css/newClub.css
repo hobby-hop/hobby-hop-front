@@ -1,5 +1,6 @@
 h1 {
   text-align: center;
+  font-size: 18px;
 }
 input {
   padding: 10px;
@@ -11,11 +12,10 @@ input {
   background-color: #f1f3f5;
 }
 
-
 .submit-btn {
   width: 100px;
   padding: 10px;
-  border: 2px solid #333;
+  border: 2px solid #ddd;
   border-radius: 4px;
   color: #333;
   font-size: 12px;

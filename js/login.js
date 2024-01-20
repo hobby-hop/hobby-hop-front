@@ -1,4 +1,5 @@
-document.querySelector("#login-id-submit").addEventListener("click", function () {
+document.querySelector("#submit-btn").addEventListener("click", function (e) {
+    e.preventDefault()
     let email = document.querySelector("#email");
     let password = document.querySelector("#password");
     let loginUrl = "http://localhost:8080/api/users/login";
@@ -8,8 +9,8 @@ document.querySelector("#login-id-submit").addEventListener("click", function ()
         console.log(response);
 
         if(response.status == 200) {
-            console.log(response.headers["authorization"]);
             localStorage.setItem("authorization", response.headers["authorization"]);
+            window.location.href = "/index.html";
         }
     
     }).catch(function () {

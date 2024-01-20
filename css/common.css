@@ -78,6 +78,7 @@ header .main-menu ul.menu li a {
 }
 
 header .main-menu ul.menu li a:hover {
+  text-decoration: underline;
   color: #000;
 }
 header .main-menu .search {
@@ -96,11 +97,6 @@ header .main-menu .search input {
   background-color: #fff;
   color: #777;
   transition: width .4s;
-}
-
-header .main-menu .search input:focus {
-  width: 198px;
-  border-color: #669900;
 }
 
 header .main-menu .search .material-icons {
