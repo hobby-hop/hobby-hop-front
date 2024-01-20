@@ -1,16 +1,6 @@
 h1 {
   text-align: center;
 }
-input {
-  padding: 10px;
-  margin: 10px;
-  width: 400px;
-  height: 30px;
-  border-radius: 6px;
-  border: none;
-  background-color: #f1f3f5;
-}
-
 .submit-btn {
   width: 100px;
   padding: 10px;
@@ -42,12 +32,10 @@ h1 {
 .content-section {
   display: flex;
 }
-
 .nav-element {
   border : 1px solid black;
   height: 50px;
 }
-
 .title-section {
   background-color: #333;
   height: 200px;
@@ -62,8 +50,6 @@ h1 {
   text-align: center;
 }
 .content-section .inner {
-  margin-top: 120px;
-  height: 1200px;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -72,37 +58,28 @@ h1 {
   box-sizing: border-box;
   display: flex;
   flex-grow: 1;
-  flex-basis: 0;
+  flex-basis: 1;
   align-items: center;
   margin:10px;
   border-radius: 6px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
 }
-.content-section .inner .content-each .text {
-  position: relative;
+
+.content-section .inner .content-box {
+  box-sizing: border-box;
+  height : 600px;
+  display: flex;
+  justify-content: center;
+  border : 1px solid black;
 }
-.content-section .inner .content-each .text::after {
-  content: "";
-  width: 1px;
-  height: 25px;
-  background-color: #555;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto 8px;
+
+.content {
+  
 }
-.content-section .inner .content-each .board-number{
-  font-size: 25px;
-  width: 100px;
-  margin: 20px;
-}
-.content-section .inner .content-each .board-title {
-  font-size: 25px;
-  flex-grow: 2;
-}
-.content-section .inner .content-each .nickname {
-  margin-right: 20px;
-}
-.content-section .inner .content-each .created-date{
-  margin-right: 20px;
+.club-category-section span{
+  border-radius: 10px;
+  padding: 5px;
+
+  background-color: #ddd;
+  font-size: 10px;
 }

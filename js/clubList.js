@@ -20,16 +20,6 @@ async function getClubs() {
   return response;
 }
 
-Handlebars.registerHelper("likes", function (like) {
-  if (like > 4) {
-      return "<span>축하해요 좋아요가 " + like + "개 이상입니다!</span>";
-  } else if (like < 1) {
-      return "아직 아무도 좋아하지 않아요..";
-  } else {
-      return like + "개의 좋아요가 있네요";
-  }
-});
-
 function makeTemplate(data, targetHtml) {
   console.log(data, targetHtml);
   let template = document.getElementById("club-list").innerText;
@@ -40,5 +30,11 @@ function makeTemplate(data, targetHtml) {
   }, "");
   console.log(targetHtml);
   targetHtml.innerHTML = innerHtml;
-
 }
+document.querySelector(".content-box").addEventListener("click", function(evt) {
+  console.log(evt.target.closest(".content").dataset.clubId);
+  let clubId = evt.target.closest(".content").dataset.clubId
+  let url = `/clubRead.html?id=${clubId}`;
+  console.log(url);
+  window.location.href = url;
+});
