@@ -1,106 +1,134 @@
-a{
-  color: inherit;
-  text-decoration: none;
+.border-section {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border : 1px solid black;
 }
-.card {
-  width: 900px;
-  height: 600px;
-  margin: 0 auto;
-  box-shadow: 3px 3px 50px #e6e6e6;
-  border-radius: 6px;
-  position: relative;
-}
-.card-header {
-  padding: 20px;
-  text-align: center;
-}
-.card-header h1 {
-  font-size: 25px;
+.border-section .border-section-title {
+  font-size: 14px;
   /* font-weight: 700; */
 }
-.card-body {
-  padding: 20px;
-  text-align: center;
-}
-.card-body input[type="search"] {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #999;
-  border-radius: 10px;
-  width: 300px;
-  font-size: 16px;
-}
-.card-body a.search {
-  display: inline-block;
-  /* box-sizing: border-box; */
-  margin-left: 20px;
-  /* height: 30px; */
-  width: 40px;
-  padding: 4px;
-  border-radius: 4px;
-  background-color: tomato;
-  color: #fff;
-}
-.card-body div {
-  margin-top: 10px;
-  border-bottom: 1px solid #e6e6e6;
-}
 
-.card-body .check ,.delete {
-  width: 5%;
-}
-.card-body .title {
-  width: 70%;
-  text-align: left;
-}
-.number {
-  padding: 10px;
-}
-.number li {
-  display: inline-block;
-}
-.number li a {
-  display: block;
-  width: 40px;
-  line-height: 40px;
-  border-radius: 10px;
-  margin: 3px;
-  margin-top: 20px;
-  box-shadow: 0 5px 10px #f1f1f1;
-}
-.number li a.active {
-  background-color: rgb(252, 212, 205);
-}
-
-.content-box {
-  
-}
-.content {
+.content-section .inner {
+  /* margin-top: 120px; */
+  background-color: #fff;
+  box-sizing: border-box;
   display: flex;
-  flex-basis: 1;
-  height: 40px;
-  margin: 10px;
-}
-.content .title {
-  flex-grow: 2;
-}
-.content .post-id {
-  flex-grow: 1;
-}
-.content .created-date {
+  justify-content: center;
 }
 
-.write-btn {
-  display: inline-block;
-  position: absolute;
-  right: 70px;
-  bottom: 160px;
-  background-color: tomato;
-  color: #fff;
+.content-section .inner .post-box {
+  width : 800px;
+  position: relative;
+  margin-top: 30px;
+}
+
+.content-section .inner .post-box .post-title,
+.content-section .inner .post-box .post-content {
+  box-sizing: border-box;
   border-radius: 4px;
-  height: 40px;
+  font-size: 15px;
+  display: block;
+  border-radius: 4px;
+}
+.content-section .inner .post-box .post-title {
+  border : 1px solid black;
+  height: 35px;
+  margin-bottom: 20px;
+}
+.content-section .inner .post-box .post-content {
+  border : 1px solid black;
+  height: 300px;
+}
+.content-section .inner .post-box .btn{
+  margin-top: 10px;
+  position: absolute;
+  bottom: -36px;
+  right: 34px;
+}
+.comment-section .inner {
   padding: 10px;
   box-sizing: border-box;
-  font-size: 15px;
+  /* box-shadow : 4px 4px 10px rgba(0, 0, 0, .15) */
+}
+.comment-section .inner .comment-box {
+  padding: 10px;
+  position: relative;
+  border: 1px solid #e5e5e5;;
+  margin: 10px;
+}
+.comment-section .inner .comment-box .comment-title{
+  font-weight: 700;
+  font-size: 20px;
+}
+.comment-section .inner .comment-box .comment-content{
+  margin: 10px 0;
+}
 
+.comment-section .inner .comment-box .input-title,
+.comment-section .inner .comment-box .input-content {
+  box-sizing: border-box;
+  font-size: 23px;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+}
+.comment-section .inner .comment-box .input-title {
+  height: 30px;
+  margin-bottom: 20px;
+}
+.comment-section .inner .comment-box .input-content {
+  width: 100%;
+  font-size: 16px;
+  height: 100px;
+  resize: none;
+}
+.comment-section .inner .comment-box .btn{
+  position: absolute;
+  bottom: -40px;
+  right: 34px;
+}
+svg {
+  width: 40px;
+  height: 40px;
+}
+.comment-box svg {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  transition: .1s;
+  top: 33px;
+  left: 370px;
+  transition: .1s;
+  fill: #ddd;
+  cursor: pointer;
+}
+.comment-box svg.active {
+  fill: royalblue;
+}
+.badges {
+  position: fixed;
+  top: 150px;
+  right: 150px;
+}
+.badges .badge {
+  width: 26px;
+  height: 25px;
+  border-radius: 10px;
+  /* overflow: hidden; */
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
+  padding: 10px;
+}
+.badges .badge span{
+  display: block;
+}
+#heart {
+  transition: .1s;
+  cursor: pointer;
+  fill: #ddd;
+}
+#heart.active {
+  fill:red;
 }

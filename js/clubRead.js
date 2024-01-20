@@ -13,7 +13,6 @@ async function sendRequest() {
   }).then(response => {
     if(response.status == 200) {
       document.getElementById("club-title").innerText = response.data.data.title;
-      document.getElementById("club-content").innerText = response.data.data.content;
       document.getElementById("created-date").innerText = response.data.data.createdAt;
       document.getElementById("category-name").innerText = response.data.data.categoryName;
       console.log(response.data.data.categoryName);
@@ -26,3 +25,11 @@ function parseUrl() {
   let id = params.get('id');
   return id;
 }
+
+
+document.querySelector(".post-list").addEventListener("click", function() {
+  let id = parseUrl();
+  let url = `/postList.html?id=${id}`;
+  window.location.href = url;
+
+});

@@ -5,6 +5,7 @@ body {
   font-weight: 400;
   line-height: 1.4;
   color: #333;
+   background-color: #f1f3f5;
   
 }
 a {
@@ -114,7 +115,7 @@ header .main-menu .search.focused .material-icons {
 }
 
 .content-section {
-  margin-top: 150px;
+  margin-top: 120px;
 
 }
 .content-section .inner {
