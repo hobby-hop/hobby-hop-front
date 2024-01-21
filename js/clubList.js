@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const response = getClubs();
+  getClubs();
 });
 
 async function getClubs() {

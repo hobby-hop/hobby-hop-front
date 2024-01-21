@@ -20,7 +20,7 @@
 textarea {
     padding: 10px;
     border: 1px solid #999;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: 3px 3px 10px #e6e6e6;
 }
 
@@ -34,10 +34,11 @@ textarea {
     box-sizing: border-box;
     width: 100%;
     height: 300px;
-    box-shadow: inset 3px 3px 10px #e6e6e6;
+    box-shadow: inset 1px 1px 1px #e6e6e6;
 }
 
 .card-write input[type="file"] {
+    background-color: #fff;
     border: none; 
     padding: 10px;
 }

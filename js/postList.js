@@ -2,8 +2,11 @@ let accessToken = localStorage.getItem("Authorization");
 let container = document.querySelector(".container");
 let title = document.querySelector(".title");
 let categoryId = document.querySelector(".category-id");
+
 document.addEventListener("DOMContentLoaded", function() {
+  checkLogin();
   getPosts();
+  
 });
 
 
@@ -15,6 +18,7 @@ async function getPosts() {
     "authorization" : localStorage.getItem("authorization")
   }
 }).then(response => {
+  console.log(response);
   let data = response.data.data.data;
   let targetHtml = document.querySelector(".content-box");
   makeTemplate(data, targetHtml);
@@ -24,7 +28,7 @@ async function getPosts() {
 function parseUrl() {
   let params = new URLSearchParams(window.location.search);
   let id = params.get('id');
-  console.log(id);
+  
   return id;
 }
 

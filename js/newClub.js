@@ -1,3 +1,5 @@
+checkLogin();
+
 document.querySelector(".submit-btn").addEventListener("click", function () {
   const title = document.getElementById("title");
   const content = document.getElementById("content");
