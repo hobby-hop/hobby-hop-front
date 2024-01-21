@@ -39,22 +39,34 @@
       </div>
     </div>
   </header>
+  <div class="overlay" id="overlay"></div>
   <div class="content-section">
     <div class="inner">
       <h1 id="club-title"></h1>
-            <div class="content-box">
-              <a href="javascript:void(0)" class="post-list">게시판 이동</a>
-              <div class="content">
-                <div class="club-category-section">
-                  <span id="category-name"></span>
-                </div>
-              </div>
-              <div id="created-date"></div>
-            </div>
-          </div>
+      <div class="badge">
+        <span class="badge-text">가입 신청</span>
+      </div>
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <p>모임에 가입신청을 하시겠습니까??</p>
         </div>
+        <button class="join-btn">예</button>
+        <button class="close-btn">아니요</button>
+      </div>
+      <div class="club-category-section">
+        <span id="category-name"></span>
+      </div>
+      <div class="content-box">
+        <a href="javascript:void(0)" class="post-list">게시판</a><br>
+        <div class="content">
+          <div class="description"></div>
+        </div>
+        <div id="created-date"></div>
       </div>
     </div>
+  </div>
+  </div>
+  </div>
   </div>
   </div>
 </body>

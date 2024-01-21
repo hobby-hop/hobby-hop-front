@@ -6,7 +6,6 @@ let categoryId = document.querySelector(".category-id");
 document.addEventListener("DOMContentLoaded", function() {
   checkLogin();
   getPosts();
-  
 });
 
 
@@ -20,6 +19,7 @@ async function getPosts() {
 }).then(response => {
   console.log(response);
   let data = response.data.data.data;
+  console.log(data[0].clubId);
   let targetHtml = document.querySelector(".content-box");
   makeTemplate(data, targetHtml);
 });
@@ -31,6 +31,7 @@ function parseUrl() {
   
   return id;
 }
+
 
 function makeTemplate(data, targetHtml) {
   let template = document.getElementById("post-list").innerText;

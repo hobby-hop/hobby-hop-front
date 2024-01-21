@@ -52,20 +52,13 @@
           <input type="email" placeholder="이메일을 입력하세요." id="email">
           <input type="password" placeholder="비밀번호를 입력하세요" id="password">
           <input type="submit" value="로그인" id="submit-btn">
-          <!-- <a href="">
-            <img src="./image/kakao_login_medium_wide.png" alt="">
-          </a> -->
           <p>* 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
             정기적으로 비밀번호를 변경하세요!</p>
         </form>
         <div class="actions">
           <a href="./signup.html">회원가입</a>
-          <a href="https://kauth.kakao.com/oauth/authorize?client_id=6666e4d3e7955e33eac0eb2e6609e3e5&redirect_uri=http://localhost:8080/api/users/login/kakao/callback&response_type=code'">카카오 로그인</a>
+          <a class="kakao-login" href="javascript:void(0)">카카오 로그인</a>
         </div>
-        <!-- <button id="login-kakao-btn"
-          onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=6666e4d3e7955e33eac0eb2e6609e3e5&redirect_uri=http://localhost:8080/api/users/login/kakao/callback&response_type=code'">
-          카카오로 로그인하기
-        </button> -->
       </div>
     </div>
   </div>

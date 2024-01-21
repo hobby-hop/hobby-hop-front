@@ -3,7 +3,6 @@ getPost();
 
 let heartEl = document.getElementById("heart");
 heartEl.addEventListener("click", function () {
-  console.log("!!!")
   // let likeUrl = `http://localhost:8080/api/clubs/{posts/${postId}/likes`;
   if (heartEl.classList.contains("active")) {
     // axios.delete(likeUrl);
@@ -15,8 +14,9 @@ heartEl.addEventListener("click", function () {
 
 
 async function getPost() {
-  let postId = parseUrl();
-  let url = `http://localhost:8080/api/clubs/1/posts/${postId}`;
+  let clubId = parseUrl("clubId");
+  let postId = parseUrl("postId");
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
   let response = await axios.get(url, {
     headers: {
       "authorization" : localStorage.getItem("authorization")
@@ -35,9 +35,9 @@ function checkLogin () {
   }
 }
 
-function parseUrl() {
+function parseUrl(param) {
   let params = new URLSearchParams(window.location.search);
-  let id = params.get('postId');
+  let id = params.get(param);
   console.log(id);
   return id;
 }

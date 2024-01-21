@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   sendRequest();
 });
 
-
 async function sendRequest() {
   let id = parseUrl();
   let url = `http://localhost:8080/api/clubs/${id}`;
@@ -11,13 +10,21 @@ async function sendRequest() {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    if(response.status == 200) {
+    if (response.status == 200) {
       document.getElementById("club-title").innerText = response.data.data.title;
-      document.getElementById("created-date").innerText = response.data.data.createdAt;
+      document.querySelector(".description").innerText = response.data.data.content;
+      const formattedDate = parseDate(response.data.data.createdAt);
+      document.getElementById("created-date").innerText = formattedDate;
       document.getElementById("category-name").innerText = response.data.data.categoryName;
-      console.log(response.data.data.categoryName);
     }
   });
+}
+
+document.querySelector(".post-list").addEventListener("click", moveToPostList);
+
+function moveToPostList() {
+  let id = parseUrl();
+  window.location.href = `/postList.html?id=${id}`;
 }
 
 function parseUrl() {
@@ -26,10 +33,36 @@ function parseUrl() {
   return id;
 }
 
+document.querySelector(".badge").addEventListener("click", onClickModal);
 
-document.querySelector(".post-list").addEventListener("click", function() {
-  let id = parseUrl();
-  let url = `/postList.html?id=${id}`;
-  window.location.href = url;
+function onClickModal() {
+  document.getElementById('modal').style.display = 'block';
+  document.getElementById("overlay").style.display = 'block';
+}
 
+document.querySelector(".close-btn").addEventListener("click", function () {
+  document.getElementById('modal').style.display = 'none';
+  document.getElementById("overlay").style.display = 'none';
 });
+
+document.querySelector(".join-btn").addEventListener("click", function () {
+  sendJoinReqeust();
+});
+
+async function sendJoinReqeust() {
+  let url = "http://localhost:8080/api/clubs/1/requests";
+  axios.post("", {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+    // 유저 정보와 타겟 클럽 아이디 저장하고 보내기
+    // 신청이 완료되면
+
+  }).then(response => {
+    if (response.status == 200) {
+      window.location.href = "/index.html";
+    }
+  });
+}
+
+

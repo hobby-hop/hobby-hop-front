@@ -18,9 +18,9 @@
 }
 
 .content-section .inner .post-box {
-  width : 800px;
+  width : 600px;
   position: relative;
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .content-section .inner .post-box .post-title,
@@ -51,12 +51,12 @@
   justify-content: center; */
 }
 .comment-section .inner {
-  width: 800px;
+  width: 600px;
 }
 
 .comment-section .inner .comment-box {
   /* justify-content: center; */
-  width: 800px;
+  width: 600px;
   /* padding: 30px; */
   background-color: #fff;
   position: relative;
@@ -115,7 +115,7 @@ svg {
 .badges {
   position: fixed;
   top: 150px;
-  right: 130px;
+  right: 100px;
 }
 .badges .badge {
   width: 26px;
