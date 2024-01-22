@@ -66,5 +66,8 @@ document.querySelector(".my-info").addEventListener("click", function() {
 
 
 
-
+document.querySelector(".my-profile").addEventListener("click", function() {
+  let clubId = parseUrl("clubId");
+  window.location.href = `/profile.html?clubId=${clubId}`;
+});
 

@@ -21,3 +21,13 @@ function parseUrl(param) {
   let id = params.get(param);
   return id;
 }
+
+function makeTemplate(data, template, targetHtml) {
+  let bindTemplate = Handlebars.compile(template);
+
+  let resultHtml = data.reduce(function (prve, next) {
+      return prve + bindTemplate(next);
+  }, "");
+  
+  targetHtml.innerHTML = resultHtml;
+}

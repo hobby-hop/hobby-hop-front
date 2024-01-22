@@ -32,3 +32,9 @@ function makeTemplate(data, targetHtml) {
   }, "");
   targetHtml.innerHTML = innerHtml;
 }
+
+document.querySelector(".write-btn-a").addEventListener("click", function() {
+  let clubId = parseUrl("clubId");
+  let url = `/postWrite.html?clubId=${clubId}`;
+  window.location.href = url;
+});

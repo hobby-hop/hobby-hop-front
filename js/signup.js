@@ -12,7 +12,6 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
     password: password.value,
     confirmPassword: confirmPassword.value
   }
-  console.log(data);
 
   const response = signup(data);
 
