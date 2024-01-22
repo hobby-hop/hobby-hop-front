@@ -15,3 +15,9 @@ function parseDate(timeStamp) {
   const formattedDate = `${year}-${month}-${day}`;
   return formattedDate;
 }
+
+function parseUrl(param) {
+  let params = new URLSearchParams(window.location.search);
+  let id = params.get(param);
+  return id;
+}

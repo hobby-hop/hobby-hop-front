@@ -2,9 +2,9 @@ document.querySelector("#submit-btn").addEventListener("click", function (e) {
     e.preventDefault()
     let email = document.querySelector("#email");
     let password = document.querySelector("#password");
-    let loginUrl = "http://localhost:8080/api/users/login";
+    let loginUrl = "http://13.124.255.30/api/users/login";
     let data = { email: email.value, password: password.value };
-
+    
     axios.post(loginUrl, data, null).then(response => {
         if(response.status == 200) {
             localStorage.setItem("authorization", response.headers["authorization"]);

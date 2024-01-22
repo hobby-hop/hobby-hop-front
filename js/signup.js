@@ -28,11 +28,10 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
 */
 
 async function signup(data) {
-  let url = "http://localhost:8080/api/users/signup";
+  let url = "http://13.124.255.30/api/users/signup";
   const response = await axios.post(url, data).then(response => {
       if(response.status == 200) {
-        console.log(response);
-        // window.location.href = "/index.html";
+        window.location.href = "/iogin.html";
       }
   })
   return response;

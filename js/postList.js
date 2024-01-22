@@ -10,26 +10,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 async function getPosts() {
-  let id = parseUrl();
-  let url = `http://localhost:8080/api/clubs/${id}/posts`;
+  let clubId = parseUrl("clubId");
+  let url = `http://13.124.255.30/api/clubs/${clubId}/posts`;
   let response = await axios.get(url, {
   headers: {
     "authorization" : localStorage.getItem("authorization")
   }
 }).then(response => {
-  console.log(response);
   let data = response.data.data.data;
-  console.log(data[0].clubId);
   let targetHtml = document.querySelector(".content-box");
   makeTemplate(data, targetHtml);
 });
-}
-
-function parseUrl() {
-  let params = new URLSearchParams(window.location.search);
-  let id = params.get('id');
-  
-  return id;
 }
 
 

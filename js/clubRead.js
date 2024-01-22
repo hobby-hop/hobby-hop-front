@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function sendRequest() {
-  let id = parseUrl();
-  let url = `http://localhost:8080/api/clubs/${id}`;
+  let clubId = parseUrl("clubId");
+  let url = `http://13.124.255.30/api/clubs/${clubId}`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -23,15 +23,10 @@ async function sendRequest() {
 document.querySelector(".post-list").addEventListener("click", moveToPostList);
 
 function moveToPostList() {
-  let id = parseUrl();
-  window.location.href = `/postList.html?id=${id}`;
+  let clubId = parseUrl("clubId");
+  window.location.href = `/postList.html?clubId=${clubId}`;
 }
 
-function parseUrl() {
-  let params = new URLSearchParams(window.location.search);
-  let id = params.get('id');
-  return id;
-}
 
 document.querySelector(".badge").addEventListener("click", onClickModal);
 
@@ -50,17 +45,26 @@ document.querySelector(".join-btn").addEventListener("click", function () {
 });
 
 async function sendJoinReqeust() {
-  let clubId = parseUrl();
-  let url = `http://localhost:8080/api/clubs/${clubId}/requests`;
-  axios.post(url, {
+  let clubId = parseUrl("clubId");
+  let url = `http://13.124.255.30/api/clubs/${clubId}/requests`;
+  axios.post(url, null, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
     if (response.status == 200) {
+      alert("가입신청이 완료되었습니다!");
       window.location.href = "/index.html";
     }
   });
 }
+
+document.querySelector(".my-info").addEventListener("click", function() {
+  const accordion = document.querySelector(".accordion");
+  accordion.classList.toggle("close");
+})
+
+
+
 
 

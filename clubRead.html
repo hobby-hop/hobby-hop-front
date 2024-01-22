@@ -34,7 +34,18 @@
           <li>
             <a href="./signup.html">회원가입</a>
           </li>
-          <li><a href="./newClub.html">클럽 만들기</a></li>
+          <li>
+            <a href="./newClub.html">클럽 만들기</a>
+          </li>
+          <li>
+            <a class="my-info" href="javascript:void(0)">내 정보</a>
+            <ul class="accordion close">
+              <li><a href="./profile.html">프로필</a></li>
+              <li><a href="#">설정</a></li>
+              <li><a href="#">로그아웃</a></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
     </div>
@@ -50,8 +61,10 @@
         <div class="modal-content">
           <p>모임에 가입신청을 하시겠습니까??</p>
         </div>
-        <button class="join-btn">예</button>
-        <button class="close-btn">아니요</button>
+        <div class="btn-group">
+          <button class="join-btn">예</button>
+          <button class="close-btn">아니요</button>
+        </div>
       </div>
       <div class="club-category-section">
         <span id="category-name"></span>

@@ -24,7 +24,7 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
 });
 
 async function sendMakeClub(data) {
-  const url = "http://localhost:8080/api/clubs";
+  const url = "http://13.124.255.30/api/clubs";
   const response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -48,5 +48,6 @@ function validator(title, content, category) {
   if (category === "") {
     return false;
   }
+  return true;
 }
 
