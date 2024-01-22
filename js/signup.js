@@ -1,5 +1,6 @@
 
-document.querySelector(".submit-btn").addEventListener("click", function () {
+document.getElementById("submit-btn").addEventListener("click", function (e) {
+  e.preventDefault();
   let email = document.getElementById("email");
   let username = document.getElementById("username");
   let password = document.getElementById("password");
@@ -11,6 +12,7 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
     password: password.value,
     confirmPassword: confirmPassword.value
   }
+  console.log(data);
 
   const response = signup(data);
 
@@ -30,6 +32,7 @@ async function signup(data) {
   const response = await axios.post(url, data).then(response => {
       if(response.status == 200) {
         console.log(response);
+        // window.location.href = "/index.html";
       }
   })
   return response;

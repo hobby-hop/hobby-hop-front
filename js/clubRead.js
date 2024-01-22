@@ -50,14 +50,12 @@ document.querySelector(".join-btn").addEventListener("click", function () {
 });
 
 async function sendJoinReqeust() {
-  let url = "http://localhost:8080/api/clubs/1/requests";
-  axios.post("", {
+  let clubId = parseUrl();
+  let url = `http://localhost:8080/api/clubs/${clubId}/requests`;
+  axios.post(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
-    // 유저 정보와 타겟 클럽 아이디 저장하고 보내기
-    // 신청이 완료되면
-
   }).then(response => {
     if (response.status == 200) {
       window.location.href = "/index.html";

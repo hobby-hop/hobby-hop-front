@@ -21,6 +21,58 @@ img {
   margin: 0 auto;
   position: relative;
 }
+
+.btn {
+  width: 130px;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+}
+.btn:hover {
+  background-color: tomato;
+  color: #FFF;
+}
+.btn.btn--reverse {
+  background-color: #333;
+  color: #FFF;
+}
+.btn.btn--reverse:hover {
+  background-color: transparent;
+  color: #333;
+}
+.btn.btn--brown {
+  color: #592B18;
+  border-color: #592B18;
+}
+.btn.btn--brown:hover {
+  color: #FFF;
+  background-color: #592B18;
+}
+.btn.btn--gold {
+  color: #D9AA8A;
+  border-color: #D9AA8A;
+}
+.btn.btn--gold:hover {
+  color: #FFF;
+  background-color: #D9AA8A;
+}
+.btn.btn--white {
+  color: #FFF;
+  border-color: #FFF;
+}
+.btn.btn--white:hover {
+  color: #333;
+  background-color: #FFF;
+}
+
 /* HEADER */
 header {
   width: 100%;
@@ -116,6 +168,9 @@ header .main-menu .search.focused .material-icons {
 
 .content-section {
   margin-top: 120px;
+  height: auto;
+  min-height: 800px;
+  /* background-color: tomato; */
 
 }
 .content-section .inner {
@@ -124,8 +179,10 @@ header .main-menu .search.focused .material-icons {
 }
 
 footer {
-  margin-top: 120px;
+  border-top: 1px solid #333;
   background-color:#272727;
+  /* position : relative;
+  transform : translateY(-100%); */
 }
 footer .inner{
   padding: 40px 0 60px 0;
@@ -138,6 +195,13 @@ footer .menu {
 
 footer .menu li {
   position: relative;
+}
+footer .menu li a{
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700px;
+  padding: 15px;
+  display: block;
 }
 footer .menu li::before {
   content: "";
@@ -153,13 +217,38 @@ footer .menu li::before {
 footer .menu li:last-child::before {
   display: none;
 }
-footer .menu li a{
-  color: #ccc;
-  font-size: 12px;
-  font-weight: 700px;
-  padding: 15px;
-  display: block;
-}
 footer .menu li a.tomato{
   color: #ff6347;
+}
+
+footer .btn-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+footer .btn-group .btn {
+  font-size: 12px;
+  margin-right: 10px;
+}
+footer .btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+footer .info {
+  margin-top: 30px;
+  text-align: center;
+}
+footer .info span {
+  margin-right: 20px;
+  color: #999;
+  font-size: 12px;
+}
+footer .info span:last-child {
+  margin-right: 0;
+}
+footer .copyright {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
 }
