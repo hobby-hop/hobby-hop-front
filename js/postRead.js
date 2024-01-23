@@ -20,7 +20,7 @@ async function getPost() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
 
-  let url = `http://13.124.255.30/api/clubs/${clubId}/posts/${postId}`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -34,7 +34,7 @@ async function getPost() {
 async function getComment() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `http://13.124.255.30/api/clubs/${clubId}/posts/${postId}/comments`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments`;
 
   await axios.get(url, {
     headers: {
@@ -50,7 +50,7 @@ async function getComment() {
 async function sendComment(data) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `http://13.124.255.30/api/clubs/${clubId}/posts/${postId}/comments`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments`;
   let response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")

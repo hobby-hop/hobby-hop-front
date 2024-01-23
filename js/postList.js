@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function getPosts() {
   let clubId = parseUrl("clubId");
-  let url = `http://13.124.255.30/api/clubs/${clubId}/posts`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts`;
   let response = await axios.get(url, {
   headers: {
     "authorization" : localStorage.getItem("authorization")

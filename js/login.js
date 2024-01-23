@@ -2,7 +2,7 @@ document.querySelector("#submit-btn").addEventListener("click", function (e) {
     e.preventDefault()
     let email = document.querySelector("#email");
     let password = document.querySelector("#password");
-    let loginUrl = "http://13.124.255.30/api/users/login";
+    let loginUrl = "https://hobbyback.store/api/users/login";
     let data = { email: email.value, password: password.value };
     
     axios.post(loginUrl, data, null).then(response => {

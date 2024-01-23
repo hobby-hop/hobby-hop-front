@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function sendRequest() {
   let clubId = parseUrl("clubId");
-  let url = `http://13.124.255.30/api/clubs/${clubId}`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -46,7 +46,7 @@ document.querySelector(".join-btn").addEventListener("click", function () {
 
 async function sendJoinReqeust() {
   let clubId = parseUrl("clubId");
-  let url = `http://13.124.255.30/api/clubs/${clubId}/requests`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/requests`;
   axios.post(url, null, {
     headers: {
       "authorization": localStorage.getItem("authorization")

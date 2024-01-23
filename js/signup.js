@@ -27,7 +27,7 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
 */
 
 async function signup(data) {
-  let url = "http://13.124.255.30/api/users/signup";
+  let url = "https://hobbyback.store/api/users/signup";
   const response = await axios.post(url, data).then(response => {
       if(response.status == 200) {
         window.location.href = "/iogin.html";

@@ -12,7 +12,7 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
 
 async function sendPost(data) {
   let clubId = parseUrl("clubId");
-  let url = `http://13.124.255.30/api/clubs/${clubId}/posts`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts`;
   let response = axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")

@@ -24,7 +24,7 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
 });
 
 async function sendMakeClub(data) {
-  const url = "http://13.124.255.30/api/clubs";
+  const url = "https://hobbyback.store/api/clubs";
   const response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
