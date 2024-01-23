@@ -126,7 +126,7 @@ svg {
   height: 13px;
   position: absolute;
   transition: .1s;
-  left: 150px;
+  left: 270px;
   transition: .1s;
   fill: #ddd;
   cursor: pointer;
@@ -187,7 +187,3 @@ svg {
   transition: .4s;
   background-color: tomato;
 }
-/* .comment-btn:hover {
-  background-color: tomato;
-  color: #FFF;
-} */

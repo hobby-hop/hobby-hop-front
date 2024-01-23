@@ -31,8 +31,8 @@ async function getPost() {
   })
 }
 
+
 async function getComment() {
-  //sorted/1?page=2&size=5
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
   let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments?page=1&size=10&sort=id&sortStandard=1&desc=true`;
@@ -60,6 +60,7 @@ async function sendComment(data) {
     }
   }).then(response => {
     if(response.status == 200) {
+      alert("댓글이 작성되었습니다");
       window.location.href = `/postRead.html?clubId=${clubId}&postId=${postId}`;
     }
   }).catch(e => {
