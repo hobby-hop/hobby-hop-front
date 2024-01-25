@@ -19,7 +19,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/postRead.css">
+  <link rel="stylesheet" href="./css/postEdit.css">
 
   <script defer src="./js/common.js"></script>
   <script defer src="./js/postRead.js"></script>
@@ -54,19 +54,24 @@
   </header>
 
   <div class="title-section">
-    <h1 class="title">게시글</h1>
+    <h1 class="title">게시글 수정/삭제</h1>
   </div>
+  <div>
+    <label for="field1">Field 1:</label>
+    <input type="text" id="field1" placeholder="Enter value for Field 1">
+</div>
+<div>
+    <label for="field2">Field 2:</label>
+    <input type="text" id="field2" placeholder="Enter value for Field 2">
+</div>
 
   <div class="content-section">
     <div class="inner">
       <div class="write-box">
+          <input type="text" class="title-input">
         <div class="board-content">
-          <img id="post-image" src="" alt="">
-          <div class="content"></div>
+          <textarea name="" class="content-input" cols="30" rows="10"></textarea>
         </div>
-      </div>
-      <div class="border-section">
-        <span class="border-section-title">Comments</span>
       </div>
       <div class="badges">
         <div class="badge">
@@ -80,23 +85,7 @@
         </div>
       </div>
     </div>
-    <div class="comment-section">
-      <div class="inner">
-
-        <span>Comment</span>
-        <div class="comment-each-container">
-          
-        </div>
-
-        <div class="comment-box">
-          <span class="input-title"></span>
-          <textarea class="input-content" placeholder="내용"></textarea>
-          <a href="javascript:void(0)" class="comment-btn">작성하기</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
+    
   <footer>
     <div class="inner">
       <ul class="menu">

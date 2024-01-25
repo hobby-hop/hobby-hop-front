@@ -15,16 +15,22 @@ input {
 .submit-btn {
   width: 100px;
   padding: 10px;
-  background-color: tomato;
+  border: 1px solid #333;
   border-radius: 4px;
-  color: #fff;
+  color: #333;
   font-size: 12px;
   font-weight: 700;
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
   display: block;
-  transition: .4s;
+  transition: .2s;
+}
+
+.submit-btn:hover {
+  background-color: #ff6347;
+  color: #fff;
+  border : 1px solid #ddd;
 }
 
 .new-club {
@@ -35,6 +41,5 @@ input {
 }
 #category-select {
   width: 190px;
-  outline: none;
-  margin : 10px;
+  margin : 30px;
 }

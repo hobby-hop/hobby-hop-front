@@ -109,7 +109,7 @@ header .main-menu ul.menu {
 header .main-menu ul.menu li {
   position: relative;
 }
-header .main-menu ul.menu li::before {
+header .main-menu ul.menu > li::before {
   content: "";
   width: 1px;
   height: 12px;
@@ -134,44 +134,11 @@ header .main-menu ul.menu li a:hover {
   text-decoration: underline;
   color: #000;
 }
-header .main-menu .search {
-  height: 34px;
-  position: relative;
-}
-
-header .main-menu .search input {
-  width: 36px;
-  height: 34px;
-  padding: 4px 10px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  border-radius: 5px;
-  outline: none;
-  background-color: #fff;
-  color: #777;
-  transition: width .4s;
-}
-
-header .main-menu .search .material-icons {
-  height: 24px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 5px;
-  margin: auto 0;
-  transition: .4s;
-}
-
-header .main-menu .search.focused .material-icons {
-  opacity: 0;
-}
 
 .content-section {
   margin-top: 120px;
   height: auto;
   min-height: 800px;
-  /* background-color: tomato; */
-
 }
 .content-section .inner {
   justify-content: center;
@@ -181,8 +148,7 @@ header .main-menu .search.focused .material-icons {
 footer {
   border-top: 1px solid #333;
   background-color:#272727;
-  /* position : relative;
-  transform : translateY(-100%); */
+  margin-top: 50px;
 }
 footer .inner{
   padding: 40px 0 60px 0;

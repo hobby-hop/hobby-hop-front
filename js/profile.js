@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+  checkLogin();
   getMyInfo();
 });
 
@@ -15,6 +16,8 @@ async function getMyInfo() {
     
     let targetHtml = document.querySelector(".container");
     makeTemplate(data, targetHtml);
+  }).catch(() => {
+    window.history.go(-1);
   });
 }
 
@@ -41,11 +44,11 @@ document.querySelector(".container").addEventListener("click", function(evt) {
       status : requestStatus.value
     }
 
-    sendRequst(requestId, data);
+    processRequst(requestId, data);
   }
 });
 
-async function sendRequst(requestId, data) {
+async function processRequst(requestId, data) {
   let clubId = parseUrl("clubId");
   let url = `https://hobbyback.store/api/clubs/${clubId}/requests/${requestId}`;
 

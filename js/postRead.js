@@ -26,8 +26,9 @@ async function getPost() {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    document.querySelector(".board-title").innerText = response.data.data.postTitle;
-    document.querySelector(".board-content").innerText = response.data.data.postContent;
+    document.getElementById("post-image").src = response.data.data.savedImageUrl;
+    document.querySelector(".title").innerText = response.data.data.postTitle;
+    document.querySelector(".content").innerText = response.data.data.postContent;
   })
 }
 
@@ -35,7 +36,7 @@ async function getPost() {
 async function getComment() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments?page=1&size=10&sort=id&sortStandard=1&desc=true`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments?page=1&size=10`;
 
   await axios.get(url, {
     headers: {
@@ -64,7 +65,6 @@ async function sendComment(data) {
       window.location.href = `/postRead.html?clubId=${clubId}&postId=${postId}`;
     }
   }).catch(e => {
-    console.log(response);
     alert("요청을 처리하는데 문제가 있습니다.");
     window.location.href = `/clubRead.html?clubId=${clubId}`;
   });
