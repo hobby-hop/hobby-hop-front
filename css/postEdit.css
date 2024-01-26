@@ -215,7 +215,7 @@ svg {
   transition: .4s;
   position: absolute;
   right: 360px;
-  bottom: 400px;
+  /* bottom: 400px; */
 }
 .delete-btn {
   width: 100px;
@@ -233,6 +233,6 @@ svg {
   transition: .4s;
   position: absolute;
   right: 240px;
-  bottom: 400px;
+  
 }
 
