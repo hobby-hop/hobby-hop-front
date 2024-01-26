@@ -205,9 +205,9 @@ svg {
   display: block;
   background-color: #ff6347;
   transition: .4s;
-  position: absolute;
-  right: 360px;
-  bottom: 400px;
+  position: fixed;
+  right: 300px;
+  top : 220px;
 }
 
 #post-image {
