@@ -45,8 +45,13 @@
           <li>
             <a href="./newClub.html">클럽 만들기</a>
           </li>
-          <li>
-            <a href="javascript:void(0)">내 정보</a>
+          <li class="my-info-element">
+            <a class="my-info" href="javascript:void(0)">내 정보</a>
+            <ul class="accordion close">
+              <li><a class="my-profile" href="javascript:void(0)">가입신청 조회</a></li>
+              <li><a href="./userInfo.html">설정</a></li>
+              <li><a class="logout" href="javascript:void(0)">로그아웃</a></li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -58,10 +63,13 @@
   </div>
 
   <div class="content-section">
+    <a href="javascript:void(0)" class="modify-btn">Modify</a>
     <div class="inner">
       <div class="write-box">
         <div class="board-content">
-          <img id="post-image" src="" alt="">
+          <div class="img-container">
+            
+          </div>
           <div class="content"></div>
         </div>
       </div>

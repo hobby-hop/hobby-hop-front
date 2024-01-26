@@ -1,13 +1,13 @@
 document.querySelector(".submit-btn").addEventListener("click", function () {
   let title = document.querySelector(".title");
   let content = document.querySelector(".content");
-  let clubId = parseUrl("clubId");
-  
+
   let data = {
     postTitle: title.value,
     postContent: content.value
   }
   const files = document.getElementById("file-upload").files;
+
   const formData = new FormData();
   formData.append("file", files[0]);
 
@@ -15,16 +15,20 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
     sendPost(data).then(response => {
       if (response.status == 200) {
         const postId = response.data.data.postId;
-        sendFile(formData, postId).then(response => {
-          if(response.statsu == 200) {
-            alert("게시글 작성이 완료되었습니다.");
-            window.location.href = `/postList.html?${clubId}`;
-          }
-        })
+        alert("게시글 작성이 완료되었습니다.");
+        if (files.length !== 0) {
+          sendFile(formData, postId).then(response => {
+            if (response.status == 200) {
+              alert("게시글 작성이 완료되었습니다.");
+            }
+          })
+        }
+        // window.location.href = `/postList.html?clubId=${clubId}`;
       }
+    }).catch(() => {
+      alert("오류가 생겼습니다.")
     });
   }
-
 });
 
 async function sendPost(data) {

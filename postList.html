@@ -40,6 +40,14 @@
             <li>
               <a href="./newClub.html">클럽 만들기</a>
             </li>
+            <li class="my-info-element">
+              <a class="my-info" href="javascript:void(0)">내 정보</a>
+              <ul class="accordion close">
+                <li><a class="my-profile" href="javascript:void(0)">가입신청 조회</a></li>
+                <li><a href="./userInfo.html">설정</a></li>
+                <li><a class="logout" href="javascript:void(0)">로그아웃</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -74,7 +82,7 @@
   </div>
   <script type="my-template" id="post-list">
     <div class="content">
-      <div class="post-id" data-post-id = {{ postId }}>
+      <div class="post-id" data-post-id ={{ postId }}>
         <a class="post-read" href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postId }}</a>
       </div>
       <div class="title"><a href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postTitle }}</a></div>

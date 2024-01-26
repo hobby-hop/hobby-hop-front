@@ -32,3 +32,5 @@ function makeTemplate(data, template, targetHtml) {
   targetHtml.innerHTML = resultHtml;
 }
 
+
+

@@ -26,6 +26,7 @@
 .content-section .inner {
   width: 700px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .content-section .inner .write-box {
@@ -76,6 +77,7 @@
   margin: 10px;
   border-radius: 4px;
   font-size: 12px;
+  min-height: 70px;
 }
 
 .comment-section .inner .comment-box .comment-title {
@@ -102,7 +104,7 @@
 }
 
 .comment-section .inner .comment-box .input-content {
-  border : 1px solid #ddd;
+  border: 1px solid #ddd;
   width: 100%;
   height: 150px;
   resize: none;
@@ -170,6 +172,7 @@ svg {
 .created-date {
   font-size: 12px;
 }
+
 .comment-btn {
   margin-top: 30px;
   position: absolute;
@@ -187,3 +190,29 @@ svg {
   transition: .4s;
   background-color: tomato;
 }
+
+.modify-btn {
+  width: 100px;
+  padding: 10px;
+  /* border: 2px solid #000; */
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  /* font-weight: 700; */
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  background-color: #ff6347;
+  transition: .4s;
+  position: absolute;
+  right: 360px;
+  bottom: 400px;
+}
+
+#post-image {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+

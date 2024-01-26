@@ -5,13 +5,13 @@ let categoryId = document.querySelector(".category-id");
 
 document.addEventListener("DOMContentLoaded", function () {
   checkLogin();
-  getPosts(1);
+  getPosts(1,"");
 });
 
 
-async function getPosts(page) {
+async function getPosts(page, keyword) {
   let clubId = parseUrl("clubId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts?page=${page}&size=10`;
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts?page=${page}&size=10&keyword=${keyword}&desc=true`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -52,4 +52,9 @@ function printPages(data) {
 
 document.querySelector(".number").addEventListener("click", function(evt) {
   getPosts(evt.target.dataset.page);
+});
+
+document.querySelector(".search").addEventListener("click", function() {
+  let keyword = document.querySelector('input[type="search"]').value;
+  getPosts(1, keyword);
 });

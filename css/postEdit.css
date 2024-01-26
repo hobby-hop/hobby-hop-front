@@ -198,3 +198,41 @@ svg {
   resize: none;
   border: none;
 }
+
+.modify-btn {
+  width: 100px;
+  padding: 10px;
+  /* border: 2px solid #000; */
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  /* font-weight: 700; */
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  background-color: #ff6347;
+  transition: .4s;
+  position: absolute;
+  right: 360px;
+  bottom: 400px;
+}
+.delete-btn {
+  width: 100px;
+  padding: 10px;
+  /* border: 2px solid #000; */
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  /* font-weight: 700; */
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  background-color: #ff0000;
+  transition: .4s;
+  position: absolute;
+  right: 240px;
+  bottom: 400px;
+}
+

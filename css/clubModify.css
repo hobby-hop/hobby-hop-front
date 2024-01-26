@@ -1,0 +1,170 @@
+h1 {
+  text-align: center;
+  height: 50px;
+}
+a {
+  display: block;
+}
+.submit-btn {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+}
+.submit-btn:hover {
+  background-color: #ff6347;
+  color: #fff;
+  border : 1px solid #ddd;
+}
+.club {
+  display: flex;
+  background-color: tomato;
+  justify-content: center;
+  height: 600px;
+}
+.content-section {
+  display: flex;
+}
+.nav-element {
+  border : 1px solid black;
+  height: 50px;
+}
+.title-section {
+  background-color: #333;
+  height: 150px;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title-section .title {
+  color: #fff;
+  font-size: 32px;
+  text-align: center; 
+}
+.content-section .inner {
+  width: 600px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+.content-section .inner .content-each {
+  height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 1;
+  align-items: center;
+  margin:10px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
+}
+
+.content-section .inner .content-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border : 1px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.content-section .inner .content-box .post-list{
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 40px;
+  line-height: 40px;
+  padding: 4px;
+  border-radius: 3px;
+  font-size: 14px;
+  background-color: tomato;
+  color: #fff;
+}
+
+.content {
+  
+}
+.club-category-section{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.club-category-section span{
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #ddd;
+  font-size: 14px;
+  text-align: center;
+}
+.badge {
+  position: fixed;
+  /* width : 110px; */
+  height: 50px;
+  top: 250px;
+  right: 240px;
+  padding: 4px;
+  border-radius: 4px;
+  background-color: tomato;
+  color : #fff;
+  display: flex;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+.my-info-element {
+  position: relative;
+}
+
+.accordion {
+  width: 110px;
+  background-color: #fff;
+  position: absolute;
+  border : 2px solid #ddd
+}
+
+.close {
+  display: none;
+}
+.description {
+  resize: none;
+  width: 360px;
+  height: 240px;
+}
+
+.modify-btn {
+}
+.modify-btn a{
+  display: block;
+  margin: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.delete-btn {
+  position: absolute;
+  display: block;
+  margin: 10px;
+  cursor: pointer;
+  color : #fff;
+  width: 70px;
+  background-color: red;
+  height: 40px;
+  right: 0;
+  border-radius: 4px;
+  line-height: 40px;
+  text-align: center;
+}

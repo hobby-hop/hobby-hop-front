@@ -56,7 +56,12 @@ async function sendJoinReqeust() {
       alert("가입신청이 완료되었습니다!");
       window.location.href = "/index.html";
     }
-  });
+  }).catch(e => {
+    let errorMessages = e.response.data.errorMessages;
+    alert(errorMessages);
+    document.getElementById("modal").style.display = 'none';
+    document.getElementById("overlay").style.display = 'none';
+  })
 }
 
 document.querySelector(".my-info").addEventListener("click", function() {
@@ -93,3 +98,8 @@ async function logout() {
 
   return response;
 }
+
+document.querySelector(".modify-club").addEventListener("click", function() {
+  let clubId = parseUrl("clubId");
+  window.location.href = `/clubModify.html?clubId=${clubId}`;
+});

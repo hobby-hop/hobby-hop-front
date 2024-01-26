@@ -2,79 +2,85 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/clubList.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="./js/clubList.js"></script>
-    <script defer src="./js/common.js"></script>
-    <title>Hobby Hop</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/clubList.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
+    integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="./js/clubList.js"></script>
+  <script defer src="./js/common.js"></script>
+  <title>Club list</title>
 </head>
 
 <body>
-    <header>
-        <div class="inner">
-          <a href="/" class="logo">
-            <img src="/image/hobby_hop_logo.png" alt="LOGO">
-          </a>
-          <div class="main-menu">
-            <ul class="menu">
-              <li>
-                <a href="./clubList.html">클럽 리스트</a>
-              </li>
-              <li>
-                <a href="./login.html">로그인</a>
-              </li>
-              <li>
-                <a href="./signup.html">회원가입</a>
-              </li>
-              <li>
-                <a href="./newClub.html">클럽 만들기</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </header>
-    <div class="content-section">
-        <div class="inner">
-          <div class="container">
-            <div class="content-box">
-              
-          </div>
-        </div>
-    </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="inner">
+  <header>
+    <div class="inner">
+      <a href="/" class="logo">
+        <img src="/image/hobby_hop_logo.png" alt="LOGO">
+      </a>
+      <div class="main-menu">
         <ul class="menu">
-          <li><a href="javascript:void(0)">개인정보처리방침</a></li>
-          <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
-          <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
+          <li>
+            <a href="./clubList.html">클럽 리스트</a>
+          </li>
+          <li>
+            <a href="./login.html">로그인</a>
+          </li>
+          <li>
+            <a href="./signup.html">회원가입</a>
+          </li>
+          <li>
+            <a href="./newClub.html">클럽 만들기</a>
+          </li>
+          <li class="my-info-element">
+            <a class="my-info" href="javascript:void(0)">내 정보</a>
+            <ul class="accordion close">
+              <li><a href="./userInfo.html">설정</a></li>
+              <li><a class="logout" href="javascript:void(0)">로그아웃</a></li>
+            </ul>
+          </li>
         </ul>
-        <div class="btn-group">
-          <a href="javascript:void(0)" class="btn">찾아오시는 길</a>
-          <a href="javascript:void(0)" class="btn">사이트 맵</a>
-        </div>
-
-        <div class="info">
-          <span>사업자등록번호 111-11-11111</span>
-          <span>(주) 하비합 대표이사 권준혁</span>
-          <span>TEL : 02) 3000 - 1000</span>
-        </div>
-
-        <p class="copyright">
-          &copy; <span class="this-year"></span> Hobby Hop Company. All Rights Reserved.
-        </p>
       </div>
-    </footer>
+    </div>
+  </header>
+  <div class="content-section">
+    <div class="inner">
+      <div class="container">
+        <div class="content-box">
 
-    <script type="my-template" id="club-list">
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="inner">
+      <ul class="menu">
+        <li><a href="javascript:void(0)">개인정보처리방침</a></li>
+        <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
+        <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
+      </ul>
+      <div class="btn-group">
+        <a href="javascript:void(0)" class="btn">찾아오시는 길</a>
+        <a href="javascript:void(0)" class="btn">사이트 맵</a>
+      </div>
+
+      <div class="info">
+        <span>사업자등록번호 111-11-11111</span>
+        <span>(주) 하비합 대표이사 정유진</span>
+        <span>TEL : 02) 3000 - 1000</span>
+      </div>
+
+      <p class="copyright">
+        &copy; <span class="this-year"></span> Hobby Hop Company. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+  <script type="my-template" id="club-list">
       <div class="content" data-club-id={{id}}>
         <div class="club-title-section">
           <span id="club-name"><strong>{{title}}</strong></span><br>

@@ -51,3 +51,37 @@ function validator(title, content, category) {
   return true;
 }
 
+document.querySelector(".my-info").addEventListener("click", function() {
+  const accordion = document.querySelector(".accordion");
+  accordion.classList.toggle("close");
+})
+
+
+document.querySelector(".my-profile").addEventListener("click", function() {
+  let clubId = parseUrl("clubId");
+  window.location.href = `/profile.html?clubId=${clubId}`;
+});
+
+
+document.querySelector(".logout").addEventListener("click", function() {
+  logout().then(response => {
+    if(response.status == 200) {
+      alert("정상적으로 로그아웃 되었습니다.");
+      localStorage.removeItem("authorization");
+      window.location.href = "/index.html";
+    }
+  }).catch(e => {
+    
+  });
+});
+
+async function logout() {
+  let url = `https://hobbyback.store/api/users/logout`;
+  let response = await axios.post(url, null, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+
+  return response;
+}
