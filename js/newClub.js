@@ -33,7 +33,7 @@ async function sendMakeClub(data) {
     }
   }).then(response => {
     if (response.status == 200) {
-      window.location.href = '/clubList.html';
+      window.location.href = '/index.html';
     }
   }).catch(e => {
     validateToken(e);
