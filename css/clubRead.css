@@ -65,6 +65,7 @@ h1 {
 }
 
 .content-section .inner .content-box {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -103,11 +104,12 @@ h1 {
   text-align: center;
 }
 .badge {
-  position: fixed;
+  position: absolute;
   width : 70px;
   height: 50px;
-  top: 250px;
-  right: 240px;
+  right: -130px;
+  top: -80px;
+
   padding: 4px;
   border-radius: 4px;
   background-color: tomato;

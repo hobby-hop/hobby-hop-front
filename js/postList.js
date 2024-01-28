@@ -19,19 +19,17 @@ async function getPosts(page, keyword) {
   }).then(response => {
     let data = response.data.data.dtoList;
     let targetHtml = document.querySelector(".content-box");
-    makeTemplate(data, targetHtml);
+    let template = document.getElementById("post-list").innerText;
+    makeTemplate(data, template, targetHtml);
     printPages(response.data.data);
+  }).catch(e => {
+    validateToken(e.response.data.errorMessages[0]);
   });
 }
-
-
-function makeTemplate(data, targetHtml) {
-  let template = document.getElementById("post-list").innerText;
-  let bindTemplate = Handlebars.compile(template);
-  let innerHtml = data.reduce(function (prve, next) {
-    return prve + bindTemplate(next);
-  }, "");
-  targetHtml.innerHTML = innerHtml;
+function validateToken(errorMessage) {
+  if (errorMessage === "유효한 토큰이 아닙니다. 혹은 url을 다시 확인하세요.") {
+    localStorage.removeItem("authorization");
+  }
 }
 
 document.querySelector(".write-btn-a").addEventListener("click", function () {

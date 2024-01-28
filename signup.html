@@ -13,7 +13,7 @@
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <link rel="stylesheet" href="./css/signin.css">
+  <link rel="stylesheet" href="./css/signup.css">
   <link rel="stylesheet" href="./css/common.css">
   <meta charset="UTF-8">
   <title>Signup</title>
@@ -27,9 +27,6 @@
       </a>
       <div class="main-menu">
         <ul class="menu">
-          <li>
-            <a href="./clubList.html">클럽 리스트</a>
-          </li>
           <li>
             <a href="./login.html">로그인</a>
           </li>
@@ -47,19 +44,14 @@
         </h2>
         <form>
           <input type="email" id="email" placeholder="이메일을 입력하세요.">
-          <input type="text" id="username" placeholder="아이디를 입력하세요.">
+          <input type="text" id="username" placeholder="아이디는 최소 4자, 최대 10자까지입니다.">
           <input type="password" id="password" placeholder="비밀번호는 8자리 이상, 15자리 이하로 입력해야 합니다.">
           <input type="password" id="confirm-password" placeholder="비밀번호는 8자리 이상, 15자리 이하로 입력해야 합니다.">
           <input type="submit" id="submit-btn" placeholder="회원가입">
+          <div class="validation-msg"></div>
         </form>
         <div class="actions">
-          <a href="javascript:void(0)">아이디 찾기</a>
-          <a href="javascript:void(0)">비밀번호 찾기</a>
         </div>
-        <!-- <button id="login-kakao-btn"
-          onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=6666e4d3e7955e33eac0eb2e6609e3e5&redirect_uri=http://localhost:8080/api/users/login/kakao/callback&response_type=code'">
-          카카오로 로그인하기
-        </button> -->
       </div>
     </div>
   </div>

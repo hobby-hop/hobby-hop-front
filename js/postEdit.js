@@ -19,7 +19,9 @@ async function getPost() {
     const content = document.querySelector(".content-input").value = response.data.data.postContent;
     changes.postTitle = title;
     changes.postContent = content;
-  })
+  }).catch(e => {
+    validateToken(e);
+  });
 }
 
 function validator(data) {
@@ -45,15 +47,16 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
     alert("변경된 내용이 없습니다");
   } else {
     modifyRequest(data).then(response => {
-      if(response == 200) {
+      if(response.status == 200) {
         alert("수정이 완료되었습니다!");
-        window.location.href = "/index.html";
+        window.history.back();
       }
     }).catch(e => {
+      validateToken(e);
       alert("요청을 처리하지 못했습니다.");
     })
   }
-  window.location.href = "/index.html";
+  // window.location.href = "/index.html";
 });
 
 async function modifyRequest(data) {
@@ -78,6 +81,7 @@ document.querySelector(".delete-btn").addEventListener("click", function() {
         window.location.href = "/index.html";
       }
     }).catch(e => {
+      validateToken(e);
       alert("권한이 없습니다.")
       window.location.href = "/index.html";
     });

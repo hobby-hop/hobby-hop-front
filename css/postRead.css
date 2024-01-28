@@ -51,7 +51,7 @@
 }
 
 .content-section .inner .write-box .board-content {
-  height: 300px;
+  min-height: 300px;
 }
 
 .content-section .inner .write-box .btn {
@@ -194,18 +194,16 @@ svg {
 .modify-btn {
   width: 100px;
   padding: 10px;
-  /* border: 2px solid #000; */
   border-radius: 4px;
   color: #fff;
   font-size: 12px;
-  /* font-weight: 700; */
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
   display: block;
   background-color: #ff6347;
   transition: .4s;
-  position: fixed;
+  position: absolute;
   right: 300px;
   top : 220px;
 }

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   checkLogin();
   getMyInfo();
 });
@@ -13,11 +13,16 @@ async function getMyInfo() {
     }
   }).then(response => {
     let data = response.data.data;
-    
+
     let targetHtml = document.querySelector(".container");
     makeTemplate(data, targetHtml);
-  }).catch(() => {
-    window.history.go(-1);
+  }).catch((e) => {
+    if (e.response.status === 403) {
+      alert("모임장만 접근 가능한 페이지입니다.")
+    } else if (e.response.status === 404) {
+      alert("모임의 멤버가 아닙니다.");
+    }
+    window.history.back();
   });
 }
 
@@ -32,16 +37,16 @@ function makeTemplate(data, targetHtml) {
   targetHtml.innerHTML = innerHtml;
 }
 
-document.querySelector(".container").addEventListener("click", function(evt) {
-  if(evt.target.tagName === "INPUT") {
+document.querySelector(".container").addEventListener("click", function (evt) {
+  if (evt.target.tagName === "INPUT") {
     let requestId = evt.target.closest(".content").dataset.id;
     let content = evt.target.closest(".content");
-    
+
     let requestStatus = content.querySelector(".request-status");
     validator(requestStatus.value);
 
     let data = {
-      status : requestStatus.value
+      status: requestStatus.value
     }
 
     processRequst(requestId, data);
@@ -57,14 +62,14 @@ async function processRequst(requestId, data) {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    if(response.status == 200) {
+    if (response.status == 200) {
       alert("처리가 완료되었습니다!");
     }
   });
 }
 
 function validator(status) {
-  if(status === "") {
+  if (status === "") {
     return false;
   }
   return true;

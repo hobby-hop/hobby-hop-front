@@ -17,7 +17,9 @@ async function sendRequest() {
       document.getElementById("created-date").innerText = formattedDate;
       document.getElementById("category-name").innerText = response.data.data.categoryName;
     }
-  });
+  }).catch(e => {
+    validateToken(e);
+  })
 }
 
 document.querySelector(".post-list").addEventListener("click", moveToPostList);
@@ -54,18 +56,18 @@ async function sendJoinReqeust() {
   }).then(response => {
     if (response.status == 200) {
       alert("가입신청이 완료되었습니다!");
-      window.location.href = "/index.html";
+      window.history.back();
     }
   }).catch(e => {
     let errorMessages = e.response.data.errorMessages;
-    alert(errorMessages);
+    alert(errorMessages[0]);
     document.getElementById("modal").style.display = 'none';
     document.getElementById("overlay").style.display = 'none';
   })
 }
 
 document.querySelector(".my-info").addEventListener("click", function() {
-  const accordion = document.querySelector(".accordion");
+  const accordion = document.querySelector(".my-info-element .accordion");
   accordion.classList.toggle("close");
 })
 
@@ -79,7 +81,6 @@ document.querySelector(".my-profile").addEventListener("click", function() {
 document.querySelector(".logout").addEventListener("click", function() {
   logout().then(response => {
     if(response.status == 200) {
-      alert("정상적으로 로그아웃 되었습니다.");
       localStorage.removeItem("authorization");
       window.location.href = "/index.html";
     }
@@ -102,4 +103,13 @@ async function logout() {
 document.querySelector(".modify-club").addEventListener("click", function() {
   let clubId = parseUrl("clubId");
   window.location.href = `/clubModify.html?clubId=${clubId}`;
+});
+
+document.getElementById("overlay").addEventListener("click", function() {
+  document.getElementById("modal").style.display = 'none';
+  document.getElementById("overlay").style.display = 'none';
+});
+
+document.querySelector(".manage-club").addEventListener("click", function() {
+  document.querySelector(".club-manage > .accordion").classList.toggle("close");
 });

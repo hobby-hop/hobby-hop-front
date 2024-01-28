@@ -20,7 +20,9 @@ async function getClub() {
       changes.content = content;
       changes.categoryId = categoryId;
     }
-  });
+  }).catch(e => {
+    validateToken(e);
+  })
 }
 
 document.querySelector(".my-info").addEventListener("click", function () {
@@ -29,10 +31,10 @@ document.querySelector(".my-info").addEventListener("click", function () {
 })
 
 
-document.querySelector(".my-profile").addEventListener("click", function () {
-  let clubId = parseUrl("clubId");
-  window.location.href = `/profile.html?clubId=${clubId}`;
-});
+// document.querySelector(".my-profile").addEventListener("click", function () {
+//   let clubId = parseUrl("clubId");
+//   window.location.href = `/profile.html?clubId=${clubId}`;
+// });
 
 
 document.querySelector(".logout").addEventListener("click", function () {
@@ -43,7 +45,7 @@ document.querySelector(".logout").addEventListener("click", function () {
       window.location.href = "/index.html";
     }
   }).catch(e => {
-
+    validateToken(e);
   });
 });
 
@@ -82,8 +84,9 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
         window.location.href = "/index.html";
       }
     }).catch(e => {
+      if (e.response.data.errorMessages);
       alert("수정할 권한이 없습니다.");
-      window.location.href = "/index.html";
+      // window.history.back();
     });
   }
 
@@ -107,12 +110,15 @@ document.querySelector(".delete-btn").addEventListener("click", function () {
   if (userResponse) {
     deleteRequest().then(response => {
       if (response == 200) {
-        alert("삭제되었습니다!");
+        alert("모임이 삭제되었습니다.");
         window.location.href = "/index.html";
       }
-    }).catch(() => {
-      alert("삭제할 권한이 없습니다")
-      window.location.href = "/index.html";
+    }).catch(e => {
+      validateToken(e);
+      if (e.response.status === 403) {
+        alert("삭제할 권한이 없습니다");
+      }
+      window.history.back();
     });
   } else {
 

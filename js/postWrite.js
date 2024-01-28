@@ -16,12 +16,12 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
       if (response.status == 200) {
         const postId = response.data.data.postId;
         alert("게시글 작성이 완료되었습니다.");
-        window.location.href = "/index.html";
+        window.history.back();
         if (files.length !== 0) {
           sendFile(formData, postId).then(response => {
             if (response.status == 200) {
               alert("게시글 작성이 완료되었습니다.");
-              window.location.href = "index.html";
+              window.history.back();
             }
           })
         }

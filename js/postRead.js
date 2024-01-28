@@ -4,18 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   getComment();
 });
 
-
-let heartEl = document.getElementById("heart");
-heartEl.addEventListener("click", function () {
-  // let likeUrl = `http://localhost:8080/api/posts/${postId}/likes`;
-  // if(heartEl.classList.contains("active")) {
-  //     axios.delete(likeUrl);
-  // } else {
-  //     axios.post(likeUrl);
-  // }
-  heartEl.classList.toggle("active");
-});
-
 async function getPost() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
@@ -32,7 +20,9 @@ async function getPost() {
       let imgTag = `<img id="post-image" src="${response.data.data.originImageUrl}" alt="">`;
       document.querySelector(".img-container").innerHTML = imgTag;
     }
-  })
+  }).catch(e => {
+    validateToken(e);
+  });
 }
 
 
@@ -51,6 +41,8 @@ async function getComment() {
       let targetHtml = document.querySelector(".comment-each-container");
       makeTemplate(response.data.data.dtoList, template, targetHtml);
     }
+  }).catch(e => {
+    validateToken(e);
   });
 }
 
@@ -68,6 +60,7 @@ async function sendComment(data) {
       window.location.href = `/postRead.html?clubId=${clubId}&postId=${postId}`;
     }
   }).catch(e => {
+    validateToken(e);
     alert("요청을 처리하는데 문제가 있습니다.");
     window.location.href = `/clubRead.html?clubId=${clubId}`;
   });

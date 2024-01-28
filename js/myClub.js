@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function getClubs() {
-  let url = "https://hobbyback.store/api/clubs";
+  let url = "https://hobbyback.store/api/clubs/my";
   const response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
     if (response.status == 200) {
-      let data = response.data.data.dtoList;
+      let data = response.data.data;
       let targetHtml = document.querySelector(".content-box");
       let template = document.getElementById("club-list").innerText;
       makeTemplate(data, template, targetHtml);
@@ -44,7 +44,6 @@ document.querySelector(".my-info").addEventListener("click", function(evt) {
 document.querySelector(".logout").addEventListener("click", function() {
   logout().then(response => {
     if(response.status == 200) {
-      alert("정상적으로 로그아웃 되었습니다.");
       localStorage.removeItem("authorization");
       window.location.href = "/index.html";
     }
@@ -62,4 +61,3 @@ async function logout() {
   });
   return response;
 }
-

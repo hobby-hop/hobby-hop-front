@@ -6,7 +6,6 @@
 .content-box {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   align-items: start;
 }
 
@@ -31,13 +30,13 @@
 }
 
 .content .club-title-section {
-  height: 40px;
+  height: 55px;
 }
 .content .club-title-section .club-name{
 }
 .content .club-title-section strong{
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   
 }
 .content .club-des-section{

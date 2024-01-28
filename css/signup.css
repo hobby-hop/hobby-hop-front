@@ -14,7 +14,6 @@
   margin-top: 30px;
   border-radius: 6px;
   background-color: #fff;
-  /* background-color: #F6F5F0; */
   box-shadow: 2px 2px 20px rgba(0,0,0,.3);
   color: #555;
 }
@@ -49,6 +48,18 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+.signin__card form .validation-msg {
+  display: none;
+  text-align: center;
+  width: 100%;
+  color : #ff0000;
+}
+.signin__card form .validation-msg .msg{
+  font-weight: 700;
+  font-size: 16px;
+}
+
 .signin__card form p {
   font-size: 12px;
   color: #006633;
