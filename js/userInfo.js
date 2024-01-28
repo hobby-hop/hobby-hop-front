@@ -1,5 +1,3 @@
-console.log("!!");
-
 document.addEventListener("DOMContentLoaded", function() {
   getMyInfo();
 });
@@ -14,7 +12,6 @@ async function getMyInfo() {
   }
   ).then(response => {
     if(response.status == 200) {
-      console.log(response);
       document.querySelector(".content-box").innerText = response.data.data.username;
       document.querySelector(".container").innerText = response.data.data.email;
     }
