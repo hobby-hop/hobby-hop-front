@@ -1,3 +1,91 @@
 h1 {
   text-align: center;
+  margin: 30px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.content-section .inner {
+}
+
+.content-section .inner .content-box{ 
+  border: 1px solid black;
+  width: 600px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.content-section .inner .content-box .profile{
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  border: 1px solid #333;
+  width: 300px;
+  height: 300px;
+}
+
+.info-section {
+  margin: 0 auto;
+  width: 300px;
+  background-color: #fff;
+}
+
+.info-section .username{
+  height: 40px;
+  font-weight: 700;
+}
+.info-section .email{
+  margin-bottom: 10px;
+}
+.info-section .content{
+  height: 30px;
+}
+.modify-btn {
+  margin: 30px auto;
+  width: 130px;
+  padding: 10px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #ff6347;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+}
+.modify-btn:hover {
+  background-color:	#FF4500;
+}
+
+.save-btn {
+  display: none;
+  margin: 30px auto;
+  width: 130px;
+  padding: 10px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #ff6347;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: .4s;
+}
+
+.modify-password {
+  display: none;
+}
+
+.modify-password input[type="password"]{
+  box-sizing: border-box;
+  width: 300px;
+  height: 30px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #333;
 }

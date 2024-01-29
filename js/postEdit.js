@@ -82,12 +82,12 @@ document.querySelector(".delete-btn").addEventListener("click", function() {
     response.then(response => {
       if(response.status == 200) {
         alert("삭제가 완료되었습니다.")
-        window.history.back();
+        window.history.go(-2);
       }
     }).catch(e => {
       validateToken(e.response.data.errorMessages[0]);
       alert("권한이 없습니다.")
-      window.history.back();
+      window.history.go(-2);
     });
     
   }

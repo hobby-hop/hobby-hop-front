@@ -2,17 +2,19 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/clubList.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="./js/userInfo.js"></script>
-    <script defer src="./js/common.js"></script>
-    <title>Hobby Hop</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/userInfo.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
+    integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="./js/userInfo.js"></script>
+  <script defer src="./js/common.js"></script>
+  <title>Hobby Hop</title>
 </head>
 
 <body>
@@ -41,39 +43,53 @@
       </div>
     </div>
   </header>
-    <div class="content-section">
-        <div class="inner">
-          <div class="container">
-            <div class="content-box">
-              
+  <div class="content-section">
+    <div class="inner">
+      <div class="content-box">
+        <h1>유저 정보 조회</h1>
+        <div class="profile">
+          
+        </div>
+        <div class="info-section">
+          <div class="username"></div>
+          <div class="email">이메일</div>
+          <div class="content" contentEditable="false">소개</div>
+          <div class="modify-password">
+            <input type="password" class="current-password" placeholder="현재 비밀번호"></input><br>
+            <input type="password" class="new-password" placeholder="새로운 비밀번호(8~15자)"></input><br>
+            <input type="password" class="confirm-password" placeholder="새로운 비밀번호 재입력"></input>
           </div>
         </div>
-    </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="inner">
-        <ul class="menu">
-          <li><a href="javascript:void(0)">개인정보처리방침</a></li>
-          <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
-          <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
-        </ul>
-        <div class="btn-group">
-          <a href="javascript:void(0)" class="btn">찾아오시는 길</a>
-          <a href="javascript:void(0)" class="btn">사이트 맵</a>
-        </div>
-
-        <div class="info">
-          <span>사업자등록번호 111-11-11111</span>
-          <span>(주) 하비합 대표이사 권준혁</span>
-          <span>TEL : 02) 3000 - 1000</span>
-        </div>
-
-        <p class="copyright">
-          &copy; <span class="this-year"></span> Hobby Hop Company. All Rights Reserved.
-        </p>
+        <a href="javascript:void(0)" class="modify-btn">수정하기</a>
+        <a href="javascript:void(0)" class="save-btn">저장하기</a>
       </div>
-    </footer>
+    </div>
+  </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="inner">
+      <ul class="menu">
+        <li><a href="javascript:void(0)">개인정보처리방침</a></li>
+        <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
+        <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
+      </ul>
+      <div class="btn-group">
+        <a href="javascript:void(0)" class="btn">찾아오시는 길</a>
+        <a href="javascript:void(0)" class="btn">사이트 맵</a>
+      </div>
+
+      <div class="info">
+        <span>사업자등록번호 111-11-11111</span>
+        <span>(주) 하비합 대표이사 권준혁</span>
+        <span>TEL : 02) 3000 - 1000</span>
+      </div>
+
+      <p class="copyright">
+        &copy; <span class="this-year"></span> Hobby Hop Company. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
 
 </html>

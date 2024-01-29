@@ -13,11 +13,11 @@ input {
 }
 
 .submit-btn {
+  background-color: #ff6347;
+  color: #fff;
   width: 100px;
   padding: 10px;
-  border: 1px solid #333;
   border-radius: 4px;
-  color: #333;
   font-size: 12px;
   font-weight: 700;
   text-align: center;
@@ -28,9 +28,8 @@ input {
 }
 
 .submit-btn:hover {
-  background-color: #ff6347;
-  color: #fff;
-  border : 1px solid #ddd;
+  background-color: 	#FF4500;
+  
 }
 
 .new-club {

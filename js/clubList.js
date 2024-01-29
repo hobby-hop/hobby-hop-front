@@ -82,7 +82,6 @@ document.querySelector(".more-btn").addEventListener("click", function () {
 });
 
 document.querySelector(".search").addEventListener("click", function () {
-  let keyword = document.querySelector(".keyword").value;
   document.querySelector(".content-box").innerHTML = "";
   clickCount = 0;
   search();

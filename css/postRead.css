@@ -214,3 +214,14 @@ svg {
   height: 200px;
 }
 
+.comment-box .comment-modify,
+.comment-delete {
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0 3px;
+}
+/* .comment-delete {
+  margin: 0 5px;
+  cursor: pointer;
+  text-decoration: underline;
+} */
