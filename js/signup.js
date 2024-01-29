@@ -8,7 +8,13 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
 
   let isValid = signupValidator(email, username, password, confirmPassword);
   if (isValid) {
-    // const response = signup(data);
+    let data  = {
+      email : email.value,
+      username : username.value,
+      password : password.value,
+      confirmPassword : confirmPassword.value
+    }
+    signup(data);
   }
 });
 
@@ -19,8 +25,7 @@ async function signup(data) {
       window.location.href = "/login.html";
     }
   }).catch(e => {
-    //여기서 오류 메세지 받아와서 출력하기
-    alert("오류가 발생했습니다");
+    alert(e.response.data.errorMessages);
     // window.location.href = "/login.html";
   });
   return response;
