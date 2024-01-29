@@ -72,7 +72,7 @@ document.querySelector(".comment-btn").addEventListener("click", function () {
     content: content.value
   }
   if (validateComment(content)) {
-    sendComment(content);
+    sendComment(data);
   }
 });
 
