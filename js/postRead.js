@@ -88,3 +88,8 @@ document.querySelector(".modify-btn").addEventListener("click", function() {
  let postId = parseUrl("postId");
  window.location.href = `/postEdit.html?clubId=${clubId}&postId=${postId}`;
 });
+
+document.querySelector(".my-info").addEventListener("click", function (evt) {
+  const accordion = document.querySelector(".accordion");
+  accordion.classList.toggle("close");
+})
