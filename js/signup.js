@@ -30,7 +30,7 @@ function signupValidator(email, username, password, confirmPassword) {
   let validationMsg = document.querySelector(".validation-msg");
   const BASE_MSG = "유효하지 않습니다.";
   const EMAIL_REGEX = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  const USERNAME_REGEX = /^[a-z0-9]{5,20}$/;
+  const USERNAME_REGEX = /^[a-z0-9]{1,12}$/;
   const PASSWORD_REGEX = /^[a-z0-9]{8,15}$/;
 
   if (!EMAIL_REGEX.test(email.value)) {
@@ -46,7 +46,7 @@ function signupValidator(email, username, password, confirmPassword) {
   if (!USERNAME_REGEX.test(username.value)) {
     username.style.border = "2px solid red";
     username.focus();
-    validationMsg.innerHTML = `<span class="msg">아이디는 최소 5자 최대 20자입니다.</span>`;
+    validationMsg.innerHTML = `<span class="msg">닉네임은 최소 1자 최대 12자입니다.</span>`;
     validationMsg.style.display = "block";
     return false;
   } else {
