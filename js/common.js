@@ -5,10 +5,7 @@ function checkLogin() {
   }
 }
 
-
-
-
-function parseDate(timeStamp) {
+function customDateFormat(timeStamp) {
   const date = new Date(timeStamp);
 
   const year = date.getFullYear();
@@ -20,7 +17,8 @@ function parseDate(timeStamp) {
 }
 function validateToken(errorMessage) {
   if (errorMessage === "유효한 토큰이 아닙니다. 혹은 url을 다시 확인하세요.") {
-    localStorage.removeItem("authorization");
+    // localStorage.removeItem("authorization");
+    // window.location.href = "/index.html";
   }
 }
 
@@ -28,15 +26,6 @@ function parseUrl(param) {
   let params = new URLSearchParams(window.location.search);
   let id = params.get(param);
   return id;
-}
-
-function makeTemplate(data, template, targetHtml) {
-  let bindTemplate = Handlebars.compile(template);
-
-  let resultHtml = data.reduce(function (prve, next) {
-    return prve + bindTemplate(next);
-  }, "");
-  targetHtml.innerHTML = resultHtml;
 }
 
 

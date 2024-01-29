@@ -14,7 +14,10 @@ async function getClubs() {
       let data = response.data.data;
       let targetHtml = document.querySelector(".content-box");
       let template = document.getElementById("club-list").innerText;
-      makeTemplate(data, template, targetHtml);
+      let resultHtml = makeTemplate(data, template);
+      console.log(resultHtml);
+      targetHtml.innerHTML = resultHtml;
+
     }
   }).catch(e => {
     validateToken(e);

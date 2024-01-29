@@ -21,10 +21,9 @@ async function getPost() {
       document.querySelector(".img-container").innerHTML = imgTag;
     }
   }).catch(e => {
-    validateToken(e);
+    validateToken(e.response.data.errorMessages[0]);
   });
 }
-
 
 async function getComment() {
   let clubId = parseUrl("clubId");
@@ -57,12 +56,13 @@ async function sendComment(data) {
   }).then(response => {
     if(response.status == 200) {
       alert("댓글이 작성되었습니다");
-      window.location.href = `/postRead.html?clubId=${clubId}&postId=${postId}`;
+      getComment();
     }
   }).catch(e => {
-    validateToken(e);
-    alert("요청을 처리하는데 문제가 있습니다.");
-    window.location.href = `/clubRead.html?clubId=${clubId}`;
+    console.log(e);
+    if(e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
+      alert("자신이 가입된 모임에만 댓글을 남길 수 있습니다.");
+    }
   });
 }
 
@@ -71,19 +71,17 @@ document.querySelector(".comment-btn").addEventListener("click", function () {
   let data = {
     content: content.value
   }
-  if (validator) {
-    sendComment(data);
+  if (validateComment(content)) {
+    sendComment(content);
   }
 });
 
-
-function validator(data) {
-  if (data.content === "") {
+function validateComment(content) {
+  if (content === "") {
     return false;
   }
   return true;
 }
-
 
 document.querySelector(".modify-btn").addEventListener("click", function() {
  let clubId = parseUrl("clubId");

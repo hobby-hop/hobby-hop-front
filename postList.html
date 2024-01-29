@@ -12,6 +12,7 @@
     integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script defer src="./js/common.js"></script>
+  <script defer src="./js/handlebar.js"></script>
   <script defer src="./js/postList.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="./css/postList.css">
@@ -56,6 +57,14 @@
         <div class="card-body">
           <input type="search" palceholder="검색어를 입력하세요.">
           <a class="search" href="#">검색</a>
+          <div class="content-header">
+            <div class="post-id">
+              <a class="post-read" href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">No</a>
+            </div>
+            <div class="title"><a href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">제목</a></div>
+            <div class="username">작성자</div>
+            <div class="created-date">작성일</div>
+          </div>
           <div class="content-box">
 
           </div>
@@ -80,8 +89,8 @@
         <a class="post-read" href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postId }}</a>
       </div>
       <div class="title"><a href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postTitle }}</a></div>
-      <div>{{ username }}</div>
-      <div class="created-date">{{ createdAt }}</div>
+      <div class="username">{{ username }}</div>
+      <div class="created-date">{{ formatDate createdAt }}</div>
     </div>
   </script>
 </body>

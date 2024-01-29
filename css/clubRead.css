@@ -30,6 +30,9 @@ h1 {
 .content-section {
   display: flex;
 }
+#description {
+  margin-bottom: 20px;
+}
 .nav-element {
   border : 1px solid black;
   height: 50px;
@@ -70,22 +73,28 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border : 1px solid #ddd;
   background-color: #fff;
   padding: 20px;
   box-sizing: border-box;
 }
 .content-section .inner .content-box .post-list{
-  display: block;
+  height: 50px;
+  width: 80px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  color: #fff;
+  color : black;
+  cursor: pointer;
+  transition: .3s;
   text-align: center;
-  width: 60px;
-  height: 40px;
-  line-height: 40px;
-  padding: 4px;
-  border-radius: 3px;
-  font-size: 14px;
+  line-height: 50px;
+}
+.content-section .inner .content-box .post-list:hover{
   background-color: tomato;
   color: #fff;
+  border : 1px solid #ddd;
 }
 
 .content {
@@ -109,22 +118,24 @@ h1 {
   height: 50px;
   right: -130px;
   top: -80px;
-
   padding: 4px;
   border-radius: 4px;
-  background-color: tomato;
-  color : #fff;
   display: flex;
+  border: 1px solid #333;
   justify-content: center;
   align-items: center;
+  transition: .4s;
   cursor: pointer;
 }
 .badge:hover {
-  
+  background-color: tomato;
+  border: 1px solid #ddd;
+  color: #fff;
 }
 .badge .badge-text {
   font-size: 14px;
-  color: #fff;
+  color : #333;
+  
 }
 .modal {
   display: none;
@@ -138,7 +149,7 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   z-index: 10;
-  transition : .3s
+  transition : .4s
 }
 
 .overlay {

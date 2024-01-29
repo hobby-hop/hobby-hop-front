@@ -12,13 +12,14 @@ async function sendRequest() {
   }).then(response => {
     if (response.status == 200) {
       document.getElementById("club-title").innerText = response.data.data.title;
-      document.querySelector(".description").innerText = response.data.data.content;
-      const formattedDate = parseDate(response.data.data.createdAt);
-      document.getElementById("created-date").innerText = formattedDate;
+      document.getElementById("description").innerText = response.data.data.content;
+      const formattedDate = customDateFormat(response.data.data.createdAt);
+      document.getElementById("created-date").innerText = `만들어진 날짜 : ${formattedDate}`;
       document.getElementById("category-name").innerText = response.data.data.categoryName;
     }
   }).catch(e => {
-    validateToken(e);
+    // validateToken(e.response.data.errorMessages[0]);
+    console.log(e);
   })
 }
 
@@ -59,8 +60,7 @@ async function sendJoinReqeust() {
       window.history.back();
     }
   }).catch(e => {
-    let errorMessages = e.response.data.errorMessages;
-    alert(errorMessages[0]);
+    alert(e.response.data.errorMessages[0]);
     document.getElementById("modal").style.display = 'none';
     document.getElementById("overlay").style.display = 'none';
   })
@@ -85,7 +85,7 @@ document.querySelector(".logout").addEventListener("click", function() {
       window.location.href = "/index.html";
     }
   }).catch(e => {
-    
+      validateToken(e.response.data.errorMessages[0]);
   });
 });
 

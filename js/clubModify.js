@@ -86,7 +86,7 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
     }).catch(e => {
       if (e.response.data.errorMessages);
       alert("수정할 권한이 없습니다.");
-      // window.history.back();
+      window.history.back();
     });
   }
 
@@ -109,19 +109,19 @@ document.querySelector(".delete-btn").addEventListener("click", function () {
   let userResponse = confirm("정말 모임을 삭제하시겠습니까?");
   if (userResponse) {
     deleteRequest().then(response => {
-      if (response == 200) {
-        alert("모임이 삭제되었습니다.");
+      if (response.status == 200) {
+        alert("모임이 삭제되었습니다.")
         window.location.href = "/index.html";
       }
     }).catch(e => {
       validateToken(e);
       if (e.response.status === 403) {
-        alert("삭제할 권한이 없습니다");
+        alert("삭제할 권한이 없습니다.");
+        window.history.back();
       }
-      window.history.back();
     });
   } else {
-
+    return;
   }
 });
 

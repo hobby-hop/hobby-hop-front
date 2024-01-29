@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
 async function getPosts(page, keyword) {
   let clubId = parseUrl("clubId");
   let url = `https://hobbyback.store/api/clubs/${clubId}/posts?page=${page}&size=10&keyword=${keyword}&desc=true`;
@@ -20,7 +22,8 @@ async function getPosts(page, keyword) {
     let data = response.data.data.dtoList;
     let targetHtml = document.querySelector(".content-box");
     let template = document.getElementById("post-list").innerText;
-    makeTemplate(data, template, targetHtml);
+    let resultHtml = makeTemplate(data, template);
+    targetHtml.innerHTML = resultHtml;
     printPages(response.data.data);
   }).catch(e => {
     validateToken(e.response.data.errorMessages[0]);

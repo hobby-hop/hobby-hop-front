@@ -8,6 +8,44 @@
   flex-wrap: wrap;
   align-items: start;
 }
+.search-bar {
+  /* background-color: tomato; */
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-bar input[type="text"]{
+  margin: 10px;
+  width: 200px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding-left: 10px;
+}
+.search-bar select{ 
+  width: 100px;
+  border-radius: 4px;
+  margin: 10px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+.search-bar input[type="submit"]{
+  height: 30px;
+  width: 80px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  color: #fff;
+  color : black;
+  cursor: pointer;
+  transition: .3s;
+}
+.search-bar input[type="submit"]:hover{
+  background-color: tomato;
+  color: #fff;
+  border: none;
+}
 
 .content {
   box-sizing: border-box;
@@ -30,7 +68,7 @@
 }
 
 .content .club-title-section {
-  height: 55px;
+  height: 50px;
 }
 .content .club-title-section .club-name{
 }
@@ -56,4 +94,24 @@
 
   background-color: #ddd;
   font-size: 10px;
+}
+.btn-wrap {
+  margin-top: 80px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.btn-wrap .more-btn {
+  background-color: tomato;
+  width: 130px;
+  padding: 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: none;
+  transition: .4s;
 }

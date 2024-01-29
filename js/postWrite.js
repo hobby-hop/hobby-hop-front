@@ -2,6 +2,10 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
   let title = document.querySelector(".title");
   let content = document.querySelector(".content");
 
+  if (!validatePost(title, content)) {
+    return;
+  }
+
   let data = {
     postTitle: title.value,
     postContent: content.value
@@ -11,24 +15,26 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
   const formData = new FormData();
   formData.append("file", files[0]);
 
-  if (validator(data)) {
-    sendPost(data).then(response => {
-      if (response.status == 200) {
-        const postId = response.data.data.postId;
-        alert("게시글 작성이 완료되었습니다.");
-        window.history.back();
-        if (files.length !== 0) {
-          sendFile(formData, postId).then(response => {
-            if (response.status == 200) {
-              alert("게시글 작성이 완료되었습니다.");
-              window.history.back();
-            }
-          })
-        }
+  sendPost(data).then(response => {
+    if (response.status == 200) {
+      const postId = response.data.data.postId;
+      alert("게시글 작성이 완료되었습니다.");
+      if (files.length !== 0) {
+        sendFile(formData, postId).then(response => {
+          if (response.status == 200) {
+            alert("게시글 작성이 완료되었습니다.");
+            
+          }
+        })
       }
-    }).catch(() => {
-    });
-  }
+      window.history.back();
+    }
+  }).catch(e => {
+    if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
+      alert("자신이 가입된 모임에만 게시글을 작성할 수 있습니다.");
+      window.history.back();
+    }
+  });
 });
 
 async function sendPost(data) {
@@ -56,13 +62,12 @@ async function sendFile(formData, postId) {
 
 }
 
+function validatePost(title, content) {
 
-function validator(data) {
-
-  if (data.title === "") {
+  if (title === "") {
     return false;
   }
-  if (data.content === "") {
+  if (content === "") {
     return false;
   }
 

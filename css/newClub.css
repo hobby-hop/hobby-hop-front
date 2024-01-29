@@ -42,4 +42,5 @@ input {
 #category-select {
   width: 190px;
   margin : 30px;
+  cursor: pointer;
 }
