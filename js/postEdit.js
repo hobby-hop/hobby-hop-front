@@ -56,7 +56,7 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
       alert("요청을 처리하지 못했습니다.");
     })
   }
-  // window.location.href = "/index.html";
+  window.history.back();
 });
 
 async function modifyRequest(data) {
@@ -82,12 +82,12 @@ document.querySelector(".delete-btn").addEventListener("click", function() {
     response.then(response => {
       if(response.status == 200) {
         alert("삭제가 완료되었습니다.")
-        window.location.href = "/index.html";
+        window.history.back();
       }
     }).catch(e => {
       validateToken(e);
       alert("권한이 없습니다.")
-      window.location.href = "/index.html";
+      window.history.back();
     });
     
   }
