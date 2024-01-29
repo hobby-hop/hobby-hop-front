@@ -35,16 +35,14 @@
   height: 30px;
   width: 80px;
   border-radius: 4px;
-  border: 1px solid #333;
+  border: none;
+  background-color: #ff6347;
   color: #fff;
-  color : black;
   cursor: pointer;
   transition: .3s;
 }
 .search-bar input[type="submit"]:hover{
-  background-color: tomato;
-  color: #fff;
-  border: none;
+  background-color: 	#FF4500;
 }
 
 .content {

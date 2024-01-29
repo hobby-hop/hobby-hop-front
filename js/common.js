@@ -17,8 +17,8 @@ function customDateFormat(timeStamp) {
 }
 function validateToken(errorMessage) {
   if (errorMessage === "유효한 토큰이 아닙니다. 혹은 url을 다시 확인하세요.") {
-    // localStorage.removeItem("authorization");
-    // window.location.href = "/index.html";
+    localStorage.removeItem("authorization");
+    window.location.href = "/index.html";
   }
 }
 

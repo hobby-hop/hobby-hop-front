@@ -70,6 +70,10 @@ async function modifyRequest(data) {
   })
   return response;
 }
+document.querySelector(".my-info").addEventListener("click", function (evt) {
+  const accordion = document.querySelector(".accordion");
+  accordion.classList.toggle("close");
+});
 
 document.querySelector(".delete-btn").addEventListener("click", function() {
   let userResponse = confirm("게시글을 삭제하시겠습니까?");

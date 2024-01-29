@@ -54,7 +54,7 @@ document.querySelector(".content-box").addEventListener("click", function (evt) 
 document.querySelector(".my-info").addEventListener("click", function (evt) {
   const accordion = document.querySelector(".accordion");
   accordion.classList.toggle("close");
-})
+});
 
 document.querySelector(".logout").addEventListener("click", function () {
   logout().then(response => {

@@ -82,19 +82,17 @@ h1 {
 .content-section .inner .content-box .post-list{
   height: 50px;
   width: 80px;
-  border-radius: 4px;
-  border: 1px solid #333;
+  background-color: #ff6347;
   color: #fff;
-  color : black;
+  border-radius: 4px;
   cursor: pointer;
   transition: .3s;
   text-align: center;
   line-height: 50px;
 }
 .content-section .inner .content-box .post-list:hover{
-  background-color: tomato;
+  background-color: 	#FF4500;
   color: #fff;
-  border : 1px solid #ddd;
 }
 
 .content {
@@ -121,16 +119,15 @@ h1 {
   padding: 4px;
   border-radius: 4px;
   display: flex;
-  border: 1px solid #333;
+  background-color: #ff6347;
+  color: #fff;
   justify-content: center;
   align-items: center;
   transition: .4s;
   cursor: pointer;
 }
 .badge:hover {
-  background-color: tomato;
-  border: 1px solid #ddd;
-  color: #fff;
+  background-color: 	#FF4500;
 }
 .badge .badge-text {
   font-size: 14px;

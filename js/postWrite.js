@@ -73,3 +73,7 @@ function validatePost(title, content) {
 
   return true;
 }
+document.querySelector(".my-info").addEventListener("click", function (evt) {
+  const accordion = document.querySelector(".accordion");
+  accordion.classList.toggle("close");
+});

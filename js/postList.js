@@ -59,3 +59,7 @@ document.querySelector(".search").addEventListener("click", function() {
   let keyword = document.querySelector('input[type="search"]').value;
   getPosts(1, keyword);
 });
+document.querySelector(".my-info").addEventListener("click", function (evt) {
+  const accordion = document.querySelector(".accordion");
+  accordion.classList.toggle("close");
+})

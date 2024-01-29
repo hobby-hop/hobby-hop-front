@@ -15,7 +15,7 @@ async function getClubs() {
       let targetHtml = document.querySelector(".content-box");
       let template = document.getElementById("club-list").innerText;
       let resultHtml = makeTemplate(data, template);
-      console.log(resultHtml);
+      
       targetHtml.innerHTML = resultHtml;
 
     }

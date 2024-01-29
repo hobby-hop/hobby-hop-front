@@ -155,13 +155,13 @@ a {
     flex-grow: 1;
 }
 
-
 .write-btn {
     display: inline-block;
     position: absolute;
     right: 70px;
     bottom: 33px;
-    border: 1px solid #333;
+    background-color: #ff6347;
+    color: #fff;
     border-radius: 4px;
     height: 40px;
     padding: 10px;
@@ -171,6 +171,6 @@ a {
     transition: .4s;
 }
 .write-btn:hover {
-    background-color: tomato;
+    background-color: 	#FF4500;
     color: #fff;
 }
