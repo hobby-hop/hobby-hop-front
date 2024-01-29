@@ -30,7 +30,7 @@ function signupValidator(email, username, password, confirmPassword) {
   let validationMsg = document.querySelector(".validation-msg");
   const BASE_MSG = "유효하지 않습니다.";
   const EMAIL_REGEX = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  const USERNAME_REGEX = /^[a-z0-9]{1,12}$/;
+  const USERNAME_REGEX = /^[a-zA-Z0-9가-힣]{1,12}$/;
   const PASSWORD_REGEX = /^[a-z0-9]{8,15}$/;
 
   if (!EMAIL_REGEX.test(email.value)) {
@@ -63,7 +63,7 @@ function signupValidator(email, username, password, confirmPassword) {
     password.style.border = "1px solid #ddd";
   }
 
-  if (password !== confirmPassword) {
+  if (password.value !== confirmPassword.value) {
     confirmPassword.style.border = "2px solid red";
     confirmPassword.focus();
     validationMsg.innerHTML = `<span class="msg">비밀번호가 일치하지 않습니다</span>`;
