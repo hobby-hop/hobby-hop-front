@@ -22,6 +22,10 @@ async function getPost() {
     }
   }).catch(e => {
     validateToken(e.response.data.errorMessages[0]);
+    if(e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
+      alert("모임의 멤버만 읽을 수 있습니다.");
+      window.history.back();
+    }
   });
 }
 
@@ -60,10 +64,10 @@ async function sendComment(data) {
       getComment();
     }
   }).catch(e => {
-    console.log(e);
     if(e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
       alert("자신이 가입된 모임에만 댓글을 남길 수 있습니다.");
     }
+    window.history.back();
   });
 }
 
