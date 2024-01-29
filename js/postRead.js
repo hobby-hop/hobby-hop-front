@@ -38,7 +38,8 @@ async function getComment() {
     if(response.status == 200) {
       let template = document.getElementById("comment-template").innerText;
       let targetHtml = document.querySelector(".comment-each-container");
-      makeTemplate(response.data.data.dtoList, template, targetHtml);
+      let resultHtml = makeTemplate(response.data.data.dtoList, template);
+      targetHtml.innerHTML = resultHtml;
     }
   }).catch(e => {
     validateToken(e);
