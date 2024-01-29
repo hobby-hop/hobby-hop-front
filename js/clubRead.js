@@ -18,8 +18,7 @@ async function sendRequest() {
       document.getElementById("category-name").innerText = response.data.data.categoryName;
     }
   }).catch(e => {
-    // validateToken(e.response.data.errorMessages[0]);
-    console.log(e);
+    validateToken(e.response.data.errorMessages[0]);
   })
 }
 

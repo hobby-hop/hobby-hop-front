@@ -31,8 +31,8 @@ async function getClubs(page, keyword) {
       }
     }
   }).catch(e => {
-    // validateToken(e.response.data.errorMessages[0]);
-    console.log(e);
+    console.log(e.response.data.errorMessages[0]);
+    validateToken(e.response.data.errorMessages[0]);
   })
 
   return response;
