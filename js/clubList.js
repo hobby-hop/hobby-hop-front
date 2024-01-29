@@ -85,7 +85,7 @@ document.querySelector(".search").addEventListener("click", function () {
   let keyword = document.querySelector(".keyword").value;
   document.querySelector(".content-box").innerHTML = "";
   clickCount = 0;
-  getClubs(++clickCount, keyword);
+  search();
 });
 
 function search() {
