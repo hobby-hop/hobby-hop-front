@@ -81,7 +81,7 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
     response.then(res => {
       if (res.status == 200) {
         alert("수정이 완료되었습니다.");
-        window.location.href = "/index.html";
+        window.history.back();
       }
     }).catch(e => {
       alert(e.response.data.errorMessages[0]);
