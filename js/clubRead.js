@@ -84,7 +84,7 @@ document.querySelector(".logout").addEventListener("click", function() {
       window.location.href = "/index.html";
     }
   }).catch(e => {
-      validateToken(e.response.data.errorMessages[0]);
+      
   });
 });
 
