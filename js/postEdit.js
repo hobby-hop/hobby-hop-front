@@ -124,3 +124,25 @@ async function logout() {
 
   return response;
 }
+
+document.querySelector(".logout").addEventListener("click", function () {
+  logout().then(response => {
+    if (response.status == 200) {
+      localStorage.removeItem("authorization");
+      window.location.href = "/index.html";
+    }
+  }).catch(e => {
+
+  });
+});
+
+async function logout() {
+  let url = `https://hobbyback.store/api/users/logout`;
+  let response = await axios.post(url, null, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+
+  return response;
+}
