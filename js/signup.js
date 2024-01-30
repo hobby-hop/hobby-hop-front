@@ -81,7 +81,7 @@ function signupValidator(email, username, password, confirmPassword, info) {
     confirmPassword.style.border = "1px solid #ddd";
   }
 
-  if(info.value.length >= 3 && info.value.length <= 50) {
+  if(!(info.value.length >= 3 && info.value.length <= 50)) {
     info.style.border = "2px solid red";
     info.focus();
     validationMsg.innerHTML = `<span class="msg">자기소개를 3~50자로 입력해주세요</span>`;
