@@ -70,7 +70,7 @@ function saveUserInfo() {
       getMyInfo();
     }
   }).catch(e => {
-    validateToken(e.response.data.errorMessages[0]);
+    // validateToken(e.response.data.errorMessages[0]);
     alert(e.response.data.errorMessages[0]);
   })
 }

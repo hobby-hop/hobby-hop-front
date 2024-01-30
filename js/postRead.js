@@ -21,7 +21,7 @@ async function getPost() {
       document.querySelector(".img-container").innerHTML = imgTag;
     }
   }).catch(e => {
-    validateToken(e.response.data.errorMessages[0]);
+    // validateToken(e.response.data.errorMessages[0]);
     if(e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
       alert("모임의 멤버만 읽을 수 있습니다.");
       window.history.back();
@@ -46,7 +46,7 @@ async function getComment() {
       targetHtml.innerHTML = resultHtml;
     }
   }).catch(e => {
-    validateToken(e);
+    // validateToken(e);
   });
 }
 

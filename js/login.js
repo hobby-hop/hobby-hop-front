@@ -11,7 +11,8 @@ document.querySelector("#submit-btn").addEventListener("click", function (e) {
             window.location.href = "/index.html";
         }).catch(e => {
             alert("아이디 또는 비밀번호를 잘못 입력했습니다.");
-            document.querySelector(".form").reset();
+            alert(e);
+            document.getElementById("password").value = "";
         });
     } 
 }, false);

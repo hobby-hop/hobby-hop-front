@@ -36,7 +36,7 @@ async function sendMakeClub(data) {
       window.location.href = '/index.html';
     }
   }).catch(e => {
-    validateToken(e);
+    // validateToken(e);
   });
   return response;
 }

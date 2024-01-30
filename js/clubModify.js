@@ -84,8 +84,7 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
         window.location.href = "/index.html";
       }
     }).catch(e => {
-      if (e.response.data.errorMessages);
-      alert("수정할 권한이 없습니다.");
+      alert(e.response.data.errorMessages[0]);
       window.history.back();
     });
   }

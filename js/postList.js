@@ -35,7 +35,7 @@ async function getPosts(page, size, keyword) {
     printPages(response.data.data);
   }).catch(e => {
     console.log(e);
-    validateToken(e.response.data.errorMessages[0]);
+    // validateToken(e.response.data.errorMessages[0]);
   });
 }
 

@@ -51,7 +51,7 @@ document.querySelector(".logout").addEventListener("click", function() {
       window.location.href = "/index.html";
     }
   }).catch(e => {
-    validateToken(e);
+    // validateToken(e);
   });
 });
 

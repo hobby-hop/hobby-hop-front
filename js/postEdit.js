@@ -84,7 +84,7 @@ document.querySelector(".delete-btn").addEventListener("click", function() {
         window.history.go(-2);
       }
     }).catch(e => {
-      validateToken(e.response.data.errorMessages[0]);
+      // validateToken(e.response.data.errorMessages[0]);
       alert("권한이 없습니다.")
       window.history.go(-2);
     });
