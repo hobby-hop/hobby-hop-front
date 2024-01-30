@@ -13,6 +13,7 @@ async function getMyInfo() {
   }
   ).then(response => {
     if (response.status == 200) {
+      console.log(response);
       document.querySelector(".username").innerText = response.data.data.username;
       document.querySelector(".email").innerText = response.data.data.email;
       document.querySelector(".content").innerText = response.data.data.info;

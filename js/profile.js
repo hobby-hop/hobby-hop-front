@@ -63,7 +63,7 @@ async function processRequst(requestId, data) {
     }
   }).then(response => {
     if (response.status == 200) {
-      alert("처리가 완료되었습니다!");
+      alert("처리가 완료되었습니다.");
       window.history.back();
     }
   }).catch(e => {
