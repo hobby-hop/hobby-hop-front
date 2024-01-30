@@ -84,7 +84,6 @@ document.querySelector(".delete-btn").addEventListener("click", function() {
         window.history.go(-2);
       }
     }).catch(e => {
-      // validateToken(e.response.data.errorMessages[0]);
       alert("권한이 없습니다.")
       window.history.go(-2);
     });
@@ -101,5 +100,27 @@ async function deleteRequests() {
       "authorization": localStorage.getItem("authorization")
     }
   });
+  return response;
+}
+
+document.querySelector(".logout").addEventListener("click", function () {
+  logout().then(response => {
+    if (response.status == 200) {
+      localStorage.removeItem("authorization");
+      window.location.href = "/index.html";
+    }
+  }).catch(e => {
+
+  });
+});
+
+async function logout() {
+  let url = `https://hobbyback.store/api/users/logout`;
+  let response = await axios.post(url, null, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+
   return response;
 }
