@@ -31,7 +31,6 @@ function validator(data) {
   return true;
 }
 
-
 document.querySelector(".modify-btn").addEventListener("click", function () {
   let currentTitle = document.querySelector(".title-input").value;
   let currentContent = document.querySelector(".content-input").value;

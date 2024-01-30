@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   getMyInfo();
 });
 
@@ -12,16 +12,16 @@ async function getMyInfo() {
     }
   }
   ).then(response => {
-    if(response.status == 200) {
+    if (response.status == 200) {
       document.querySelector(".username").innerText = response.data.data.username;
       document.querySelector(".email").innerText = response.data.data.email;
-      document.querySelector("content");
+      document.querySelector(".content").innerText = response.data.data.info;
       changes.username = response.data.data.username;
       changes.email = response.data.data.email;
-      changes.content = response.data.data.content;
+      changes.info = response.data.data.info;
     }
   }).catch(e => {
-    console.log(e);
+    validateToken(e.response.data.errorMessages[0]);
   });
 
   return response;
@@ -35,7 +35,7 @@ const modifyBtn = document.querySelector(".modify-btn");
 modifyBtn.addEventListener("click", enableEditMode);
 
 const saveBtn = document.querySelector('.save-btn');
-  saveBtn.addEventListener('click', saveUserInfo);
+saveBtn.addEventListener('click', saveUserInfo);
 
 function enableEditMode() {
   const content = document.querySelector('.content');
@@ -44,7 +44,7 @@ function enableEditMode() {
   document.querySelector(".modify-password").style.display = 'block';
   document.querySelector(".modify-btn").style.display = 'none';
   document.querySelector('.save-btn').style.display = 'block';
-  
+
 }
 
 function saveUserInfo() {
@@ -52,14 +52,27 @@ function saveUserInfo() {
   document.querySelector('.save-btn').style.display = 'none';
   document.querySelector(".modify-btn").style.display = 'block';
   document.querySelector(".modify-password").style.display = "none";
-  
-  let data = {
 
-  }
+  let currentUsername = document.querySelector(".username").value;
+  let currentEmail = document.querySelector(".email").value;
+  let currentInfo = document.querySelector("content").value;
+  let currentPassword = document.querySelector(".currnet-password").value;
+  let newPassword = document.querySelector(".new-password").value;
+  let confirmPassword = document.querySelector(".confirm-password").value;
+
+  let data = validateInfo(currentInfo, currentPassword, newPassword, confirmPassword);
+
   let response = sendModifyRequest(data);
+
   response.then(response => {
-    console.log(response);
-  });
+    if(response.status == 200) {
+      alert("정보가 성공적으로 변경되었습니다.");
+      getMyInfo();
+    }
+  }).catch(e => {
+    validateToken(e.response.data.errorMessages[0]);
+    alert(e.response.data.errorMessages[0]);
+  })
 }
 
 async function sendModifyRequest(data) {
@@ -72,6 +85,38 @@ async function sendModifyRequest(data) {
   return response;
 }
 
-function validateInfo() {
-
+function validateInfo(currentInfo, currentPassword, newPassword, confirmPassword) {
+  if(data.info !== currentInfo) {
+    data.info = currentInfo;
+  }
+  if(currentPassword !== "") {
+    return false;
+  }
+  data.oldPassword = currentPassword;
+  data.newPassword = newPassword;
+  data.confirmPassword = confirmPassword;
+  return data;
 }
+
+
+async function logout() {
+  let url = `https://hobbyback.store/api/users/logout`;
+  let response = await axios.post(url, null, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+
+  return response;
+}
+
+document.querySelector(".logout").addEventListener("click", function () {
+  logout().then(response => {
+    if (response.status == 200) {
+      localStorage.removeItem("authorization");
+      window.location.href = "/index.html";
+    }
+  }).catch(e => {
+    validateToken(e.response.data.errorMessages[0]);
+  });
+});
