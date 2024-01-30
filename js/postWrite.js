@@ -26,7 +26,9 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
           }
         })
       }
-      window.history.back();
+      let clubId = parseUrl("clubId");
+      let url = `/postList.html?clubId=${clubId}`;
+      window.location.href = url;
     }
   }).catch(e => {
     if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
