@@ -81,11 +81,14 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
     response.then(res => {
       if (res.status == 200) {
         alert("수정이 완료되었습니다.");
-        window.history.back();
-      }
+        let clubId = parseUrl("clubId");
+        let redirectUrl = `/cubRead.html?clubId=${clubId}`;
+        window.location.href = redirectUrl;
     }).catch(e => {
       alert(e.response.data.errorMessages[0]);
-      window.history.back();
+      let clubId = parseUrl("clubId");
+        let redirectUrl = `/cubRead.html?clubId=${clubId}`;
+        window.location.href = redirectUrl;
     });
   }
 
@@ -117,7 +120,7 @@ document.querySelector(".delete-btn").addEventListener("click", function () {
       if (e.response.status === 403) {
         alert("삭제할 권한이 없습니다.");
         window.history.back();
-      } else if(e.response.status === 404) {
+      } else if (e.response.status === 404) {
         alert("모임에 가입되어있지 않습니다.!");
         window.history.back();
       }
