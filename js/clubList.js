@@ -56,18 +56,6 @@ document.querySelector(".my-info").addEventListener("click", function (evt) {
   accordion.classList.toggle("close");
 });
 
-// document.querySelector(".logout").addEventListener("click", function () {
-//   logout().then(response => {
-//     if (response.status == 200) {
-//       alert("정상적으로 로그아웃 되었습니다.");
-//       localStorage.removeItem("authorization");
-//       window.location.href = "/index.html";
-//     }
-//   }).catch(e => {
-//     validateToken(e.response.data.errorMessages[0]);
-//   });
-// });
-
 async function logout() {
   let url = `https://hobbyback.store/api/users/logout`;
   let response = await axios.post(url, null, {
@@ -75,8 +63,20 @@ async function logout() {
       "authorization": localStorage.getItem("authorization")
     }
   });
+
   return response;
 }
+
+document.querySelector(".logout").addEventListener("click", function () {
+  logout().then(response => {
+    if (response.status == 200) {
+      localStorage.removeItem("authorization");
+      window.location.href = "/index.html";
+    }
+  }).catch(e => {
+    console.log(e.response.data.errorMessages[0]);
+  });
+});
 document.querySelector(".more-btn").addEventListener("click", function () {
   getClubs(++clickCount);
 });
