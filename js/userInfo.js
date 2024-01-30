@@ -22,7 +22,7 @@ async function getMyInfo() {
       changes.info = response.data.data.info;
     }
   }).catch(e => {
-    validateToken(e.response.data.errorMessages[0]);
+    
   });
 
   return response;
@@ -32,11 +32,11 @@ document.querySelector(".my-info").addEventListener("click", function (evt) {
   accordion.classList.toggle("close");
 })
 
-const modifyBtn = document.querySelector(".modify-btn");
-modifyBtn.addEventListener("click", enableEditMode);
+// const modifyBtn = document.querySelector(".modify-btn");
+// modifyBtn.addEventListener("click", enableEditMode);
 
-const saveBtn = document.querySelector('.save-btn');
-saveBtn.addEventListener('click', saveUserInfo);
+// const saveBtn = document.querySelector('.save-btn');
+// saveBtn.addEventListener('click', saveUserInfo);
 
 function enableEditMode() {
   const content = document.querySelector('.content');
@@ -71,20 +71,19 @@ function saveUserInfo() {
       getMyInfo();
     }
   }).catch(e => {
-    // validateToken(e.response.data.errorMessages[0]);
     alert(e.response.data.errorMessages[0]);
   })
 }
 
-async function sendModifyRequest(data) {
-  let url = `https://hobbyback.store/api/users/update`
-  let response = await axios.patch(url, data, {
-    headers: {
-      "authorization": localStorage.getItem("authorization")
-    }
-  });
-  return response;
-}
+// async function sendModifyRequest(data) {
+//   let url = `https://hobbyback.store/api/users/update`
+//   let response = await axios.patch(url, data, {
+//     headers: {
+//       "authorization": localStorage.getItem("authorization")
+//     }
+//   });
+//   return response;
+// }
 
 function validateInfo(currentInfo, currentPassword, newPassword, confirmPassword) {
   if(data.info !== currentInfo) {
@@ -118,6 +117,6 @@ document.querySelector(".logout").addEventListener("click", function () {
       window.location.href = "/index.html";
     }
   }).catch(e => {
-    validateToken(e.response.data.errorMessages[0]);
+    console.log(e.response.data.errorMessages[0]);
   });
 });
