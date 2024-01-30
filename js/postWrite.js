@@ -29,10 +29,10 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
       window.history.back();
     }
   }).catch(e => {
-    // if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
-    //   alert("자신이 가입된 모임에만 게시글을 작성할 수 있습니다.");
-    //   window.history.back();
-    // }
+    if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
+      alert("자신이 가입된 모임에만 게시글을 작성할 수 있습니다.");
+      window.history.back();
+    }
   });
 });
 
@@ -76,3 +76,25 @@ document.querySelector(".my-info").addEventListener("click", function (evt) {
   const accordion = document.querySelector(".accordion");
   accordion.classList.toggle("close");
 });
+
+document.querySelector(".logout").addEventListener("click", function () {
+  logout().then(response => {
+    if (response.status == 200) {
+      localStorage.removeItem("authorization");
+      window.location.href = "/index.html";
+    }
+  }).catch(e => {
+
+  });
+});
+
+async function logout() {
+  let url = `https://hobbyback.store/api/users/logout`;
+  let response = await axios.post(url, null, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+
+  return response;
+}
