@@ -39,7 +39,7 @@ async function getPosts(page, size, keyword) {
   });
 }
 
-document.querySelector(".write-btn-a").addEventListener("click", function () {
+document.querySelector(".write-btn").addEventListener("click", function () {
   let clubId = parseUrl("clubId");
   let url = `/postWrite.html?clubId=${clubId}`;
   window.location.href = url;

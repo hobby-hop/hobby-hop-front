@@ -82,7 +82,8 @@ document.querySelector(".logout").addEventListener("click", function () {
   });
 });
 document.querySelector(".more-btn").addEventListener("click", function () {
-  getClubs(++clickCount);
+  let keyword = document.querySelector(".keyword").value;
+  getClubs(++clickCount, keyword);
 });
 
 document.querySelector(".search").addEventListener("click", function () {
