@@ -22,17 +22,21 @@ async function getClubs(page, keyword) {
     if (response.status == 200) {
       let total = response.data.data.total
       let data = response.data.data.dtoList;
+      let end = response.data.data.end;
       let targetHtml = document.querySelector(".content-box");
       let template = document.getElementById("club-list").innerText;
       let resultHtml = makeTemplate(data, template);
       targetHtml.insertAdjacentHTML("beforeend", resultHtml);
       if (!(size >= total)) {
         document.querySelector(".more-btn").style.display = "block";
+      } 
+      if(end == page) {
+        document.querySelector(".more-btn").style.display = "none";
       }
+      
     }
   }).catch(e => {
     console.log(e.response.data.errorMessages[0]);
-    validateToken(e.response.data.errorMessages[0]);
   })
 
   return response;
