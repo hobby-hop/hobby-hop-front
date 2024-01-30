@@ -68,6 +68,9 @@
   width: 700px;
   margin-bottom: 100px;
 }
+.comment-each-container {
+  width: 700px;
+}
 
 .comment-section .inner .comment-box {
   padding: 20px;
@@ -225,3 +228,28 @@ svg {
   cursor: pointer;
   text-decoration: underline;
 } */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
+
+.pagination .active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
