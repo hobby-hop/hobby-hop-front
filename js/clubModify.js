@@ -84,7 +84,7 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
         let clubId = parseUrl("clubId");
         let redirectUrl = `/cubRead.html?clubId=${clubId}`;
         window.location.href = redirectUrl;
-    }).catch(e => {
+    }}).catch(e => {
       alert(e.response.data.errorMessages[0]);
       let clubId = parseUrl("clubId");
         let redirectUrl = `/cubRead.html?clubId=${clubId}`;
