@@ -28,7 +28,6 @@ async function signup(data) {
     }
   }).catch(e => {
     alert(e.response.data.errorMessages);
-    // window.location.href = "/login.html";
   });
   return response;
 }
@@ -54,7 +53,7 @@ function signupValidator(email, username, password, confirmPassword, info) {
   if (!USERNAME_REGEX.test(username.value)) {
     username.style.border = "2px solid red";
     username.focus();
-    validationMsg.innerHTML = `<span class="msg">닉네임은 최소 1자 최대 12자입니다.</span>`;
+    validationMsg.innerHTML = `<span class="msg">이름(닉네임)은 최소 1자 최대 12자입니다.</span>`;
     validationMsg.style.display = "block";
     return false;
   } else {

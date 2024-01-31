@@ -7,10 +7,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: start;
+  justify-content: center;
 }
 
 .search-bar {
-  /* background-color: tomato; */
   height: 100px;
   display: flex;
   justify-content: center;

@@ -29,7 +29,6 @@ input {
 
 .submit-btn:hover {
   background-color: 	#FF4500;
-  
 }
 
 .new-club {
@@ -39,7 +38,13 @@ input {
   align-items: center;
 }
 #category-select {
-  width: 190px;
+  width: 250px;
+  height: 30px;
   margin : 30px;
   cursor: pointer;
+  font-size: 16px;
+}
+#category-select option{
+  width: 100px;
+  font-size: 50px;
 }

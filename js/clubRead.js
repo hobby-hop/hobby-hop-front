@@ -31,7 +31,6 @@ function moveToPostList() {
   window.location.href = `/postList.html?clubId=${clubId}`;
 }
 
-
 document.querySelector(".badge").addEventListener("click", onClickModal);
 
 function onClickModal() {
@@ -124,8 +123,8 @@ async function checkMember() {
     }
   }).then(response => {
     if(response.status == 200) {
-      if(response.data.data) {
-        document.querySelector(".badge").style.display = "none";
+      if(!response.data.data) {
+        document.querySelector(".badge").style.display = "block";
       }
     }
   });
@@ -140,8 +139,22 @@ async function checkAdmin() {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    if(!response.data.data) {
-      document.querySelector(".manage-club").style.display = "none";
+    console.log(response.data.data);
+    if(response.data.data) {
+      document.querySelector(".manage-club").style.display = "block";
     }
   });
 }
+
+document.addEventListener("click", function(evt) {
+  const menu = document.querySelector(".my-info");
+  const manageClub = document.querySelector(".manage-club");
+  const userAccordion = document.querySelector(".my-info-element .accordion");
+  const manageAccordion = document.querySelector(".club-manage .accordion");
+  if(evt.target !== menu) {
+    userAccordion.classList.add("close");
+  }
+  if(evt.target !== manageClub) {
+    manageAccordion.classList.add("close");
+  }
+});

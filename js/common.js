@@ -28,6 +28,12 @@ function parseUrl(param) {
   let id = params.get(param);
   return id;
 }
-
+document.addEventListener("click", function(evt) {
+  const menu = document.querySelector(".my-info");
+  const userAccordion = document.querySelector(".my-info-element .accordion");
+  if(evt.target !== menu) {
+    userAccordion.classList.add("close");
+  }
+});
 
 

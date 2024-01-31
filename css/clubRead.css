@@ -3,6 +3,10 @@ h1 {
   height: 50px;
 }
 
+header .main-menu ul.menu li .manage-club {
+  display: none;
+}
+
 .submit-btn {
   width: 100px;
   padding: 10px;
@@ -92,8 +96,7 @@ h1 {
 
 .content-section .inner .content-box .post-list {
   height: 50px;
-  width: 100px;
-  padding: 10px;
+  padding: 5px;
   background-color: #ff6347;
   color: #fff;
   border-radius: 4px;
@@ -132,11 +135,11 @@ h1 {
   top: -80px;
   padding: 4px;
   border-radius: 4px;
-  display: flex;
+  line-height: 50px;
+  text-align: center;
+  display: none;
   background-color: #ff6347;
   color: #fff;
-  justify-content: center;
-  align-items: center;
   transition: .4s;
   cursor: pointer;
 }

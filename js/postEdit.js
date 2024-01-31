@@ -45,15 +45,17 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
   if(Object.keys(data).length === 0) {
     alert("변경된 내용이 없습니다");
   } else {
+    let clubId = parseUrl("clubId");
+    let postId = parseUrl("postId");
+    let url = `/postRead.html?clubId=${clubId}&postId=${postId}`;
     modifyRequest(data).then(response => {
       if(response.status == 200) {
         alert("수정이 완료되었습니다!");
-        window.history.back();
+        // window.location.href = url;
       }
     }).catch(e => {
-      validateToken(e.response.data.errorMessages[0]);
-      alert("요청을 처리하지 못했습니다.");
-      window.history.back();
+      alert(e.response.data.errorMessages);
+      // window.location.href = url;
     })
   }
 });

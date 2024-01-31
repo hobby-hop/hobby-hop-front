@@ -193,6 +193,9 @@ svg {
   transition: .4s;
   background-color: tomato;
 }
+.comment-btn:hover {
+  background-color: #FF4500;
+}
 
 .modify-btn {
   width: 100px;

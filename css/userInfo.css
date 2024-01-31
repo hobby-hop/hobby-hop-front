@@ -45,8 +45,17 @@ h1 {
 }
 .info-section .content{
   height: 30px;
-  
 }
+.info-section .info-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.info-section .info {
+  min-height: 30px;
+  border-radius: 4px;
+}
+
+.content-box
 .modify-btn {
   margin: 30px auto;
   width: 130px;

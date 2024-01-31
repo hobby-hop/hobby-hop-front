@@ -39,8 +39,9 @@ const saveBtn = document.querySelector('.save-btn');
 saveBtn.addEventListener('click', saveUserInfo);
 
 function enableEditMode() {
-  const content = document.querySelector('.content');
+  const content = document.querySelector('.info');
   content.contentEditable = 'true';
+  content.style.border = "1px solid #333";
   content.focus();
   document.querySelector(".modify-password").style.display = 'block';
   document.querySelector(".modify-btn").style.display = 'none';
@@ -49,15 +50,14 @@ function enableEditMode() {
 }
 
 function saveUserInfo() {
-  document.querySelector('.content').contentEditable = 'false';
+  document.querySelector('.info').contentEditable = 'false';
   document.querySelector('.save-btn').style.display = 'none';
   document.querySelector(".modify-btn").style.display = 'block';
   document.querySelector(".modify-password").style.display = "none";
 
-  let currentUsername = document.querySelector(".username").value;
-  let currentEmail = document.querySelector(".email").value;
-  let currentInfo = document.querySelector("content").value;
-  let currentPassword = document.querySelector(".currnet-password").value;
+
+  let currentInfo = document.querySelector(".info").value;
+  let currentPassword = document.querySelector(".current-password").value;
   let newPassword = document.querySelector(".new-password").value;
   let confirmPassword = document.querySelector(".confirm-password").value;
 
