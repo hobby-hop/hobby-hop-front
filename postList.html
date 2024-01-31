@@ -77,17 +77,14 @@
     </div>
   </div>
   <script type="my-template" id="post-list">
-    <div class="content-box">
-      {{#each dtoList}}
     <div class="content">
-      <div class="post-id" data-post-id ={{ this.postId }}>
-        <a class="post-read" href="/postRead.html?clubId={{ this.clubId }}&postId={{ this.postId }}">{{ @index }}</a>
+      <div class="post-id" data-post-id ={{ postId }}>
+        <a class="post-read" href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postId }}</a>
       </div>
-      <div class="title"><a href="/postRead.html?clubId={{ this.clubId }}&postId={{ this.postId }}">{{ this.postTitle }}</a></div>
-      <div class="username">{{ this.username }}</div>
-      <div class="created-date">{{ formatDate this.createdAt }}</div>
+      <div class="title"><a href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postTitle }}</a></div>
+      <div class="username">{{ username }}</div>
+      <div class="created-date">{{ formatDate createdAt }}</div>
     </div>
-    {{/each}}
   </div>
   </script>
 </body>
