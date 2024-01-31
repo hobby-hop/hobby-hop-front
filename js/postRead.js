@@ -13,16 +13,17 @@ async function getPost() {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
-  }).then(response => { 
+  }).then(response => {
     document.querySelector(".title").innerText = response.data.data.postTitle;
+    document.querySelector(".writer-text").innerText = response.data.data.username;
     document.querySelector(".content").innerText = response.data.data.postContent;
-    if(response.data.data.originImageUrl != null) {
+    if (response.data.data.originImageUrl != null) {
       let imgTag = `<img id="post-image" src="${response.data.data.originImageUrl}" alt="">`;
       document.querySelector(".img-container").innerHTML = imgTag;
     }
   }).catch(e => {
     // validateToken(e.response.data.errorMessages[0]);
-    if(e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
+    if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
       alert("모임의 멤버만 읽을 수 있습니다.");
       window.history.back();
     }
@@ -39,7 +40,7 @@ async function getComment() {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    if(response.status == 200) {
+    if (response.status == 200) {
       let template = document.getElementById("comment-template").innerText;
       let targetHtml = document.querySelector(".comment-each-container");
       let resultHtml = makeTemplate(response.data.data.dtoList, template);
@@ -59,12 +60,12 @@ async function sendComment(data) {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    if(response.status == 200) {
+    if (response.status == 200) {
       alert("댓글이 작성되었습니다");
       getComment();
     }
   }).catch(e => {
-    if(e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
+    if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
       alert("자신이 가입된 모임에만 댓글을 남길 수 있습니다.");
     }
     window.history.back();
@@ -82,16 +83,21 @@ document.querySelector(".comment-btn").addEventListener("click", function () {
 });
 
 function validateComment(content) {
-  if (content === "") {
+  if (content.value === "") {
+    alert("댓글을 입력해주세요.");
+    return false;
+  }
+  if (content.value.length > 200) {
+    alert("댓글은 최대 200자까지 입력할 수 있습니다.");
     return false;
   }
   return true;
 }
 
-document.querySelector(".modify-btn").addEventListener("click", function() {
- let clubId = parseUrl("clubId");
- let postId = parseUrl("postId");
- window.location.href = `/postEdit.html?clubId=${clubId}&postId=${postId}`;
+document.querySelector(".modify-btn").addEventListener("click", function () {
+  let clubId = parseUrl("clubId");
+  let postId = parseUrl("postId");
+  window.location.href = `/postEdit.html?clubId=${clubId}&postId=${postId}`;
 });
 
 document.querySelector(".my-info").addEventListener("click", function (evt) {

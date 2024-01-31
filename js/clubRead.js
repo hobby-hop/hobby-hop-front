@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+  checkMember();
+  checkAdmin();
   sendRequest();
 });
 
@@ -112,3 +114,34 @@ document.getElementById("overlay").addEventListener("click", function() {
 document.querySelector(".manage-club").addEventListener("click", function() {
   document.querySelector(".club-manage > .accordion").classList.toggle("close");
 });
+
+async function checkMember() {
+  let clubId = parseUrl("clubId");
+  let url = `https://hobbyback.store/api/clubs/${clubId}/checkClubMember`;
+  let response = await axios.get(url, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  }).then(response => {
+    if(response.status == 200) {
+      if(response.data.data) {
+        document.querySelector(".badge").style.display = "none";
+      }
+    }
+  });
+}
+
+async function checkAdmin() {
+  let clubId = parseUrl("clubId");
+  let url = `https://hobbyback.store/api/clubs/${clubId}/checkPermission`;
+
+  let response = await axios.get(url, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  }).then(response => {
+    if(!response.data.data) {
+      document.querySelector(".manage-club").style.display = "none";
+    }
+  });
+}

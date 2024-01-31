@@ -46,6 +46,11 @@ a {
     border-radius: 4px;
     background-color: tomato;
     color: #fff;
+    transition: .4s;
+}
+
+.card-body a.search:hover {
+    background-color: #FF4500;
 }
 
 .card-body .content {
@@ -170,7 +175,7 @@ a {
     cursor: pointer;
     transition: .4s;
 }
+
 .write-btn:hover {
-    background-color: 	#FF4500;
-    color: #fff;
+    background-color: #FF4500;
 }

@@ -64,21 +64,20 @@ async function sendFile(formData, postId) {
 }
 
 function validatePost(title, content) {
-
   if (title.value === "") {
     alert("제목을 입력해주세요.");
+    return false;
+  }
+  if(title.value.length > 50 || title.value.length < 3) {
+    alert("제목을 3~50자로 입력해주세요.");
     return false;
   }
   if (content.value === "") {
     alert("내용을 입력해주세요.");
     return false;
   }
-  if(title.length > 255) {
-    alert("제목이 너무 깁니다.");
-    return false;
-  }
-  if(content.length > 255) {
-    alert("내용은 255자까지 입력이 가능합니다.");
+  if(content.value.length > 500) {
+    alert("내용은 500자까지 입력이 가능합니다.");
     return false;
   }
 

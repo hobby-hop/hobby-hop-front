@@ -2,6 +2,7 @@ h1 {
   text-align: center;
   height: 50px;
 }
+
 .submit-btn {
   width: 100px;
   padding: 10px;
@@ -16,27 +17,33 @@ h1 {
   display: block;
   transition: .4s;
 }
+
 .submit-btn:hover {
   background-color: #ff6347;
   color: #fff;
-  border : 1px solid #ddd;
+  border: 1px solid #ddd;
 }
+
 .club {
   display: flex;
   background-color: tomato;
   justify-content: center;
   height: 600px;
 }
+
 .content-section {
   display: flex;
 }
+
 #description {
   margin-bottom: 20px;
 }
+
 .nav-element {
-  border : 1px solid black;
+  border: 1px solid black;
   height: 50px;
 }
+
 .title-section {
   background-color: #333;
   height: 150px;
@@ -45,16 +52,19 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
 .title-section .title {
   color: #fff;
   font-size: 32px;
-  text-align: center; 
+  text-align: center;
 }
+
 .content-section .inner {
   width: 600px;
   padding: 10px;
   box-sizing: border-box;
 }
+
 .content-section .inner .content-each {
   height: 60px;
   box-sizing: border-box;
@@ -62,7 +72,7 @@ h1 {
   flex-grow: 1;
   flex-basis: 1;
   align-items: center;
-  margin:10px;
+  margin: 10px;
   border-radius: 6px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
 }
@@ -74,14 +84,16 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border : 1px solid #ddd;
+  border: 1px solid #ddd;
   background-color: #fff;
   padding: 20px;
   box-sizing: border-box;
 }
-.content-section .inner .content-box .post-list{
+
+.content-section .inner .content-box .post-list {
   height: 50px;
-  width: 80px;
+  width: 100px;
+  padding: 10px;
   background-color: #ff6347;
   color: #fff;
   border-radius: 4px;
@@ -90,29 +102,31 @@ h1 {
   text-align: center;
   line-height: 50px;
 }
-.content-section .inner .content-box .post-list:hover{
-  background-color: 	#FF4500;
+
+.content-section .inner .content-box .post-list:hover {
+  background-color: #FF4500;
   color: #fff;
 }
 
-.content {
-  
-}
-.club-category-section{
+.content {}
+
+.club-category-section {
   display: flex;
   justify-content: center;
   margin: 20px;
 }
-.club-category-section span{
+
+.club-category-section span {
   border-radius: 10px;
   padding: 5px;
   background-color: #ddd;
   font-size: 14px;
   text-align: center;
 }
+
 .badge {
   position: absolute;
-  width : 70px;
+  width: 70px;
   height: 50px;
   right: -130px;
   top: -80px;
@@ -126,14 +140,16 @@ h1 {
   transition: .4s;
   cursor: pointer;
 }
+
 .badge:hover {
-  background-color: 	#FF4500;
+  background-color: #FF4500;
 }
+
 .badge .badge-text {
   font-size: 14px;
-  color : #333;
-  
+  color: #333;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -146,7 +162,7 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   z-index: 10;
-  transition : .4s
+  transition: .4s
 }
 
 .overlay {
@@ -166,11 +182,13 @@ h1 {
   align-items: center;
   height: 200px;
 }
+
 .btn-group {
   display: flex;
   justify-content: center;
 }
-.modal button{
+
+.modal button {
   width: 50px;
   height: 30px;
   border: none;
@@ -180,10 +198,12 @@ h1 {
   transition: .3s;
   border-radius: 3px;
 }
-.modal button:hover{
+
+.modal button:hover {
   color: #fff;
-   background-color: tomato;
+  background-color: tomato;
 }
+
 .my-info-element {
   position: relative;
 }
@@ -192,10 +212,9 @@ h1 {
   width: 110px;
   background-color: #fff;
   position: absolute;
-  border : 2px solid #ddd
+  border: 2px solid #ddd
 }
 
 .close {
   display: none;
 }
-

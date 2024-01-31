@@ -32,11 +32,11 @@ document.querySelector(".my-info").addEventListener("click", function (evt) {
   accordion.classList.toggle("close");
 })
 
-// const modifyBtn = document.querySelector(".modify-btn");
-// modifyBtn.addEventListener("click", enableEditMode);
+const modifyBtn = document.querySelector(".modify-btn");
+modifyBtn.addEventListener("click", enableEditMode);
 
-// const saveBtn = document.querySelector('.save-btn');
-// saveBtn.addEventListener('click', saveUserInfo);
+const saveBtn = document.querySelector('.save-btn');
+saveBtn.addEventListener('click', saveUserInfo);
 
 function enableEditMode() {
   const content = document.querySelector('.content');
@@ -75,15 +75,15 @@ function saveUserInfo() {
   })
 }
 
-// async function sendModifyRequest(data) {
-//   let url = `https://hobbyback.store/api/users/update`
-//   let response = await axios.patch(url, data, {
-//     headers: {
-//       "authorization": localStorage.getItem("authorization")
-//     }
-//   });
-//   return response;
-// }
+async function sendModifyRequest(data) {
+  let url = `https://hobbyback.store/api/users/update`
+  let response = await axios.patch(url, data, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+  return response;
+}
 
 function validateInfo(currentInfo, currentPassword, newPassword, confirmPassword) {
   if(data.info !== currentInfo) {

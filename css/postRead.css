@@ -1,6 +1,6 @@
 .title-section {
   margin-top: 150px;
-  display: flex;
+
   align-items: center;
   justify-content: center;
 }
@@ -19,7 +19,7 @@
 }
 
 .title-section .title {
-  font-size: 18px;
+  font-size: 24px;
   text-align: center;
 }
 
@@ -252,4 +252,12 @@ svg {
   background-color: #4CAF50;
   color: white;
   border: 1px solid #4CAF50;
+}
+.writer {
+  text-align: center;
+  margin-top: 30px;
+  color: #333;
+}
+.writer .writer-text{
+  font-size: 20px;
 }

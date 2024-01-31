@@ -141,3 +141,19 @@ async function deleteRequest() {
 
   return response;
 }
+
+async function checkAdmin() {
+  let clubId = parseUrl("clubId");
+  let url = `https://hobbyback.store/api/clubs/${clubId}/checkPermission`;
+
+  let response = await axios.get(url, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  }).then(response => {
+    if(!response.data.data) {
+      alert("모임장만 접근 가능한 페이지입니다");
+      Window.history.back();
+    }
+  });
+}

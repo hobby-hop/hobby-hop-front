@@ -8,6 +8,7 @@
   flex-wrap: wrap;
   align-items: start;
 }
+
 .search-bar {
   /* background-color: tomato; */
   height: 100px;
@@ -15,7 +16,8 @@
   justify-content: center;
   align-items: center;
 }
-.search-bar input[type="text"]{
+
+.search-bar input[type="text"] {
   margin: 10px;
   width: 200px;
   height: 30px;
@@ -23,7 +25,8 @@
   border: 1px solid #ddd;
   padding-left: 10px;
 }
-.search-bar select{ 
+
+.search-bar select {
   width: 100px;
   border-radius: 4px;
   margin: 10px;
@@ -31,7 +34,8 @@
   cursor: pointer;
   border: 1px solid #ddd;
 }
-.search-bar input[type="submit"]{
+
+.search-bar input[type="submit"] {
   height: 30px;
   width: 80px;
   border-radius: 4px;
@@ -41,8 +45,9 @@
   cursor: pointer;
   transition: .3s;
 }
-.search-bar input[type="submit"]:hover{
-  background-color: 	#FF4500;
+
+.search-bar input[type="submit"]:hover {
+  background-color: #FF4500;
 }
 
 .content {
@@ -54,7 +59,7 @@
   height: 150px;
   margin: 20px;
   transition: .5s;
-  cursor: pointer; 
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,14 +73,16 @@
 .content .club-title-section {
   height: 50px;
 }
-.content .club-title-section .club-name{
-}
-.content .club-title-section strong{
+
+.content .club-title-section .club-name {}
+
+.content .club-title-section strong {
   font-weight: 700;
   font-size: 16px;
-  
+
 }
-.content .club-des-section{
+
+.content .club-des-section {
   box-sizing: border-box;
   height: 20px;
   overflow: hidden;
@@ -83,22 +90,24 @@
   text-overflow: ellipsis;
   margin-bottom: 10px;
 }
-.content .club-category-section{
-  
-}
-.content .club-category-section span{
+
+.content .club-category-section {}
+
+.content .club-category-section span {
   border-radius: 10px;
   padding: 5px;
 
   background-color: #ddd;
   font-size: 10px;
 }
+
 .btn-wrap {
   margin-top: 80px;
- display: flex;
- justify-content: center;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .btn-wrap .more-btn {
   background-color: tomato;
   width: 130px;
@@ -112,4 +121,8 @@
   box-sizing: border-box;
   display: none;
   transition: .4s;
+}
+
+.btn-wrap .more-btn:hover {
+  background-color: #FF4500;
 }

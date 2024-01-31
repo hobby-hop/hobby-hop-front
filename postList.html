@@ -67,12 +67,7 @@
 
           </div>
           <ul class="number">
-            <li><a href="#">&lt;</a></li>
-            <li><a href="#" class="active">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">&gt;</a></li>
+
           </ul>
           <div class="write-btn">
             <a class="write-btn-a" href="javascript:void(0)">글쓰기</a>
@@ -82,14 +77,19 @@
     </div>
   </div>
   <script type="my-template" id="post-list">
+    <div class="content-box">
+      {{#each dtoList}}
     <div class="content">
-      <div class="post-id" data-post-id ={{ postId }}>
-        <a class="post-read" href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postId }}</a>
+      <div class="post-id" data-post-id ={{ this.postId }}>
+        <a class="post-read" href="/postRead.html?clubId={{ this.clubId }}&postId={{ this.postId }}">{{ @index }}</a>
       </div>
-      <div class="title"><a href="/postRead.html?clubId={{ clubId }}&postId={{ postId }}">{{ postTitle }}</a></div>
-      <div class="username">{{ username }}</div>
-      <div class="created-date">{{ formatDate createdAt }}</div>
+      <div class="title"><a href="/postRead.html?clubId={{ this.clubId }}&postId={{ this.postId }}">{{ this.postTitle }}</a></div>
+      <div class="username">{{ this.username }}</div>
+      <div class="created-date">{{ formatDate this.createdAt }}</div>
     </div>
+    {{/each}}
+  </div>
   </script>
 </body>
+
 </html>
