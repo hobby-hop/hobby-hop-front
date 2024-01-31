@@ -91,7 +91,9 @@ a {
     background-color: rgb(252, 212, 205);
 }
 
-.content-box {}
+.content-box {
+    min-height: 50px;
+}
 
 .content {
     display: flex;
