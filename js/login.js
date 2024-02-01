@@ -10,7 +10,7 @@ document.querySelector("#submit-btn").addEventListener("click", function (e) {
             localStorage.setItem("authorization", response.headers['authorization']);
             window.location.href = "/index.html";
         }).catch(e => {
-            alert("아이디 또는 비밀번호를 잘못 입력했습니다.");
+            alert("일치하는 유저가 없습니다.");
             document.getElementById("password").value = "";
         });
     } 
