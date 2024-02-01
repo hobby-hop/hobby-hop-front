@@ -21,6 +21,11 @@ function validateToken(errorMessage) {
     localStorage.removeItem("authorization");
     window.location.href = "/login.html";
   }
+  if(errorMessage === "JWT 토큰이 잘못되었습니다") {
+    alert("로그인이 만료되어 로그인 화면으로 돌아갑니다.");
+    localStorage.removeItem("authorization");
+    window.location.href = "/login.html";
+  }
 }
 
 function parseUrl(param) {

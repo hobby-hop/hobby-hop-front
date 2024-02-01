@@ -5,16 +5,14 @@ document.getElementById("submit-btn").addEventListener("click", function (e) {
   let username = document.getElementById("username");
   let password = document.getElementById("password");
   let confirmPassword = document.getElementById("confirm-password");
-  let info = document.getElementById("info");
 
-  let isValid = signupValidator(email, username, password, confirmPassword, info);
+  let isValid = signupValidator(email, username, password, confirmPassword);
   if (isValid) {
     let data  = {
       email : email.value,
       username : username.value,
       password : password.value,
-      confirmPassword : confirmPassword.value,
-      info : info.value
+      confirmPassword : confirmPassword.value
     }
     signup(data);
   }
@@ -80,15 +78,15 @@ function signupValidator(email, username, password, confirmPassword, info) {
     confirmPassword.style.border = "1px solid #ddd";
   }
 
-  if(!(info.value.length >= 3 && info.value.length <= 50)) {
-    info.style.border = "2px solid red";
-    info.focus();
-    validationMsg.innerHTML = `<span class="msg">자기소개를 3~50자로 입력해주세요</span>`;
-    validationMsg.style.display = "block";
-    return false;
-  } else {
-    info.style.border = "1px solid #ddd";
-  }
+  // if(!(info.value.length >= 3 && info.value.length <= 50)) {
+  //   info.style.border = "2px solid red";
+  //   info.focus();
+  //   validationMsg.innerHTML = `<span class="msg">자기소개를 3~50자로 입력해주세요</span>`;
+  //   validationMsg.style.display = "block";
+  //   return false;
+  // } else {
+  //   info.style.border = "1px solid #ddd";
+  // }
 
   validationMsg.innerHTML = "";
   validationMsg.style.display = "block";

@@ -79,6 +79,7 @@ document.querySelector(".logout").addEventListener("click", function () {
     }
   }).catch(e => {
     console.log(e.response.data.errorMessages[0]);
+    validateToken(e.response.data.errorMessages[0])
   });
 });
 document.querySelector(".more-btn").addEventListener("click", function () {
