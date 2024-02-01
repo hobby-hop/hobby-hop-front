@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+  checkLogin();
   getMyInfo();
 });
 
-const changes = {};
+let changes = {};
 
 async function getMyInfo() {
   let url = `https://hobbyback.store/api/users/profile`;
@@ -13,16 +14,13 @@ async function getMyInfo() {
   }
   ).then(response => {
     if (response.status == 200) {
-      console.log(response);
       document.querySelector(".username").innerText = response.data.data.username;
       document.querySelector(".email").innerText = response.data.data.email;
-      document.querySelector(".content").innerText = response.data.data.info;
-      changes.username = response.data.data.username;
-      changes.email = response.data.data.email;
+      document.querySelector(".info").innerText = response.data.data.info;
       changes.info = response.data.data.info;
     }
   }).catch(e => {
-    
+    validateToken(e.response.data.errorMessages[0]);
   });
 
   return response;
@@ -54,24 +52,31 @@ function saveUserInfo() {
   document.querySelector('.save-btn').style.display = 'none';
   document.querySelector(".modify-btn").style.display = 'block';
   document.querySelector(".modify-password").style.display = "none";
+  document.querySelector('.info').style.border = "none";
 
 
-  let currentInfo = document.querySelector(".info").value;
+  let currentInfo = document.querySelector(".info").innerText;
   let currentPassword = document.querySelector(".current-password").value;
-  let newPassword = document.querySelector(".new-password").value;
-  let confirmPassword = document.querySelector(".confirm-password").value;
 
-  let data = validateInfo(currentInfo, currentPassword, newPassword, confirmPassword);
+  let data = validateInfo(currentInfo, currentPassword);
+
+  if (Object.keys(data).length === 0) {
+    alert("변경된 내용이 없습니다");
+    getMyInfo();
+    return;
+  }
 
   let response = sendModifyRequest(data);
 
   response.then(response => {
-    if(response.status == 200) {
+    if (response.status == 200) {
       alert("정보가 성공적으로 변경되었습니다.");
+      localStorage.setItem("authorization", response.headers['authorization']);
       getMyInfo();
     }
   }).catch(e => {
     alert(e.response.data.errorMessages[0]);
+    document.querySelector(".current-password").value = "";
   })
 }
 
@@ -85,16 +90,18 @@ async function sendModifyRequest(data) {
   return response;
 }
 
-function validateInfo(currentInfo, currentPassword, newPassword, confirmPassword) {
-  if(data.info !== currentInfo) {
+function validateInfo(currentInfo, currentPassword) {
+  let data = {};
+  if (changes.info !== currentInfo) {
     data.info = currentInfo;
   }
-  if(currentPassword !== "") {
+  if (currentPassword === "") {
+    alert("정보를 수정하시려면 현재 비밀번호를 입력해주세요.");
     return false;
+  } else {
+    data.oldPassword = currentPassword;
   }
-  data.oldPassword = currentPassword;
-  data.newPassword = newPassword;
-  data.confirmPassword = confirmPassword;
+
   return data;
 }
 
@@ -117,6 +124,136 @@ document.querySelector(".logout").addEventListener("click", function () {
       window.location.href = "/index.html";
     }
   }).catch(e => {
-    console.log(e.response.data.errorMessages[0]);
+    alert(e.response.data.errorMessages[0]);
   });
 });
+
+document.querySelector(".withdraw").addEventListener("click", onClickWithdrawModal);
+
+function onClickWithdrawModal() {
+  document.getElementById('withdraw-modal').style.display = 'block';
+  document.getElementById("overlay").style.display = 'block';
+}
+
+document.querySelector(".close-btn").addEventListener("click", function () {
+  document.getElementById('withdraw-modal').style.display = 'none';
+  document.getElementById("overlay").style.display = 'none';
+});
+document.querySelector(".withdraw-modal .close-btn").addEventListener("click", function () {
+  document.getElementById('withdraw-modal').style.display = 'none';
+  document.getElementById("overlay").style.display = 'none';
+});
+
+
+
+async function withdraw(currentPassword) {
+  let data = {password : currentPassword};
+  let url = ``;
+  let response = await axios.post(url, data, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+  return response;
+};
+
+document.querySelector(".change-password").addEventListener("click", onClickModal);
+
+function onClickModal() {
+  document.getElementById('modal').style.display = 'block';
+  document.getElementById("overlay").style.display = 'block';
+}
+
+document.querySelector(".close-btn").addEventListener("click", function () {
+  document.getElementById('modal').style.display = 'none';
+  document.getElementById("overlay").style.display = 'none';
+});
+
+
+document.getElementById("overlay").addEventListener("click", function() {
+  document.getElementById("modal").style.display = 'none';
+  document.getElementById("withdraw-modal").style.display = 'none';
+  document.getElementById("overlay").style.display = 'none';
+});
+
+document.querySelector(".agree-btn").addEventListener("click", function() {
+  let currentPassword = document.querySelector(".current-password-w");
+  if(currentPassword.value === "" ){
+    alert("패스워드를 입력해주세요");
+    currentPassword.focus();
+    return false;
+  }
+  let response = withdraw(data);
+  response.then(response => {
+    if(response.status === 200) {
+      alert("탈퇴가 성공적으로 완료되었습니다.");
+      localStorage.removeItem("authorization");
+      window.location.href = "/login.html";
+    }
+  }).catch(e => {
+    alert(e.response.data.errorMessages[0]);
+  });
+});
+
+
+document.querySelector(".change-btn").addEventListener("click", function() {
+  let currentPassword = document.querySelector(".current-password-c");
+  let newPassword = document.querySelector(".new-password");
+  let confirmPassword = document.querySelector(".confirm-password");
+
+  if(!validatePassword(currentPassword, newPassword, confirmPassword)) {
+    return false;
+  }
+  let data = {
+    oldPassword : currentPassword.value,
+    newPassword : newPassword.value,
+    confirmPassword : confirmPassword.value
+  };
+
+  let response = sendModifyRequest(data);
+  response.then(response => {
+    if (response.status == 200) {
+      alert("정보가 성공적으로 변경되었습니다.");
+      localStorage.removeItem("authorization", response.headers['authorization']);
+      window.location.href = "/login.html";
+    }
+  }).catch(e => {
+    alert(e.response.data.errorMessages[0]);
+  });
+});
+
+
+function validatePassword(currentPassword, newPassword, confirmPassword) {
+  const PASSWORD_REGEX = /^[a-z0-9]{8,15}$/;
+  if(currentPassword.value === "") {
+    alert("현재 패스워드를 입력해주세요.");
+    currentPassword.focus();
+    return false;
+  }
+  if(newPassword.value === "") {
+    alert("변경할 패스워드를 입력해주세요.");
+    newPassword.focus();
+    return false;
+  }
+  if(confirmPassword.value === "") {
+    confirmPassword.focus();
+    return false;
+  }
+  if(!PASSWORD_REGEX.test(newPassword.value)) {
+    alert("패스워드를 형식에 맞게 입력해주세요.");
+    newPassword.focus();
+    return false;
+  }
+  if(currentPassword.value === newPassword.value) {
+    alert("전과 같은 패스워드는 사용하실 수 없습니다.");
+    return false;
+  }
+  if(newPassword.value !== confirmPassword.value) {
+    alert("새로 사용할 비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+    confirmPassword.value = "";
+    return false;
+  }
+
+  return true;
+}
+

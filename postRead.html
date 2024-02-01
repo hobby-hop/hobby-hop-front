@@ -62,7 +62,7 @@
       <div class="write-box">
         <div class="board-content">
           <div class="img-container">
-            
+
           </div>
           <div class="content"></div>
         </div>
@@ -87,7 +87,7 @@
 
         <span>Comment</span>
         <div class="comment-each-container">
-          
+
         </div>
         <!-- <div class="pagination">
           <a href="#" class="active">1</a>
@@ -98,7 +98,7 @@
       </div> -->
         <div class="comment-box">
           <span class="input-title"></span>
-          <textarea class="input-content" placeholder="내용"></textarea>
+          <textarea class="input-content" placeholder="내용(최대 200자)"></textarea>
           <a href="javascript:void(0)" class="comment-btn">작성하기</a>
         </div>
 
@@ -130,14 +130,16 @@
   </footer>
 
 
-
   <script type="myTemplate" id="comment-template">
-    <div class="comment-box">
+    <div class="comment-box" data-comment-id={{ id }}>
       <span class="comment-title">{{ writer }}</span>
       <span class="created-date">{{ formatDate createdAt }}</span>
+      {{#isSameUser writer currentUser}}
+        
+      {{/isSameUser}}
       <p class="comment-content">{{ content }}</p>
     </div>
-</script>
+  </script>
 </body>
 
 </html>

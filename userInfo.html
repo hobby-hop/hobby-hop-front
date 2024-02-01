@@ -43,12 +43,35 @@
       </div>
     </div>
   </header>
+  <div class="overlay" id="overlay"></div>
   <div class="content-section">
     <div class="inner">
       <div class="content-box">
-        <h1>유저 정보 조회</h1>
+        <h1>나의 정보</h1>
         <div class="profile">
-          <img src="./image/img_default.jpeg" alt="">
+          <img src="./image/free-icon-user-profile-2143305.png" alt="">
+        </div>
+        <div class="modal" id="modal">
+          <div class="modal-content">
+            <p>비밀번호 변경</p>
+            <input type="password" class="current-password-c" placeholder="수정하시려면 현재 비밀번호를 입력해주세요"></input><br>
+            <input type="password" class="new-password" placeholder="새로운 비밀번호(영소문자,숫자로 조합된 8~15자)"></input><br>
+            <input type="password" class="confirm-password" placeholder="새로운 비밀번호 재입력"></input>
+          </div>
+          <div class="btn-group">
+            <button class="change-btn">수정</button>
+            <button class="close-btn">취소</button>
+          </div>
+        </div>
+        <div class="withdraw-modal" id="withdraw-modal">
+          <div class="modal-content">
+            <p>정말 탈퇴하시겠습니까?</p>
+            <input type="password" class="current-password-w" placeholder="탈퇴하시려면 현재 비밀번호를 입력해주세요"></input><br>
+          </div>
+          <div class="btn-group">
+            <button class="agree-btn">예</button>
+            <button class="close-btn">아니오</button>
+          </div>
         </div>
         <div class="info-section">
           <div class="username"></div>
@@ -56,13 +79,13 @@
           <p class="info-title">자기소개</p>
           <p class="info" contentEditable="false"></p>
           <div class="modify-password">
-            <input type="password" class="current-password" placeholder="현재 비밀번호"></input><br>
-            <input type="password" class="new-password" placeholder="새로운 비밀번호(8~15자)"></input><br>
-            <input type="password" class="confirm-password" placeholder="새로운 비밀번호 재입력"></input>
+            <input type="password" class="current-password" placeholder="수정하시려면 현재 비밀번호를 입력해주세요"></input><br>
           </div>
         </div>
         <a href="javascript:void(0)" class="modify-btn">수정하기</a>
         <a href="javascript:void(0)" class="save-btn">저장하기</a>
+        <a href="javascript:void(0)" class="btn btn--reverse change-password">비밀번호 변경</a>
+        <a href="javascript:void(0)" class="btn btn--reverse withdraw">회원 탈퇴</a>
       </div>
     </div>
   </div>

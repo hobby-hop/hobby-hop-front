@@ -24,8 +24,13 @@ async function getPost() {
   });
 }
 
-function validator(data) {
-  if (data.content === "") {
+function validatePost(title, content) {
+  if(title.lengh < 3 || title.length > 50) {
+    alert("제목은 3자에서 50자 사이로 작성해주세요.");
+    return false;
+  }
+  if(content.length > 500 ) {
+    alert("본문은 500자 이내로 작성해주세요.");
     return false;
   }
   return true;
@@ -45,17 +50,20 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
   if(Object.keys(data).length === 0) {
     alert("변경된 내용이 없습니다");
   } else {
+    if(!validatePost(data.postTitle, data.postContent)) {
+      return false;
+    }
     let clubId = parseUrl("clubId");
     let postId = parseUrl("postId");
     let url = `/postRead.html?clubId=${clubId}&postId=${postId}`;
     modifyRequest(data).then(response => {
       if(response.status == 200) {
         alert("수정이 완료되었습니다!");
-        // window.location.href = url;
+        window.location.href = url;
       }
     }).catch(e => {
       alert(e.response.data.errorMessages);
-      // window.location.href = url;
+      window.location.href = url;
     })
   }
 });
@@ -104,18 +112,6 @@ async function deleteRequests() {
   });
   return response;
 }
-
-document.querySelector(".logout").addEventListener("click", function () {
-  logout().then(response => {
-    if (response.status == 200) {
-      localStorage.removeItem("authorization");
-      window.location.href = "/index.html";
-    }
-  }).catch(e => {
-
-  });
-});
-
 async function logout() {
   let url = `https://hobbyback.store/api/users/logout`;
   let response = await axios.post(url, null, {
@@ -137,14 +133,3 @@ document.querySelector(".logout").addEventListener("click", function () {
 
   });
 });
-
-async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
-  let response = await axios.post(url, null, {
-    headers: {
-      "authorization": localStorage.getItem("authorization")
-    }
-  });
-
-  return response;
-}

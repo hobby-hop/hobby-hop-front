@@ -63,7 +63,6 @@
 
 .comment-section .inner {
   margin-top: 50px;
-  padding: 10px;
   box-sizing: border-box;
   width: 700px;
   margin-bottom: 100px;
@@ -73,6 +72,7 @@
 }
 
 .comment-section .inner .comment-box {
+  width: ;
   padding: 20px;
   position: relative;
   border: 1px solid #e5e5e5;
@@ -262,5 +262,5 @@ svg {
   color: #333;
 }
 .writer .writer-text{
-  font-size: 20px;
+  font-size: 18px;
 }

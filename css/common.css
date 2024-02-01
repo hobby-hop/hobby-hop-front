@@ -41,12 +41,11 @@ img {
   color: #FFF;
 }
 .btn.btn--reverse {
-  background-color: #333;
+  background-color: #FF4500;
   color: #FFF;
 }
 .btn.btn--reverse:hover {
-  background-color: transparent;
-  color: #333;
+  background-color: #ff0000
 }
 .btn.btn--brown {
   color: #592B18;

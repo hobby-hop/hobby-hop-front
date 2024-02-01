@@ -1,5 +1,11 @@
-Handlebars.registerHelper('formatDate', function(date, format) {
-  return customDateFormat(date, format);
+Handlebars.registerHelper('formatDate', function (date) {
+  return customDateFormat(date);
+});
+
+Handlebars.registerHelper("isSameUser", function (writer, currentUser) {
+  if (currentUser === writer) {
+    return `<span class="comment-modify">수정</span><span class="comment-delete">삭제</span>`;
+  }
 });
 
 function makeTemplate(data, template) {

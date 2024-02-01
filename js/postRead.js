@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   checkLogin();
   getPost();
-  getComment();
+  let response = getMyInfo();
+  response.then(response => {
+    let currentUser = response.data.data.username;
+    getComment(currentUser);
+  });
 });
 
 async function getPost() {
@@ -15,7 +19,7 @@ async function getPost() {
     }
   }).then(response => {
     document.querySelector(".title").innerText = response.data.data.postTitle;
-    document.querySelector(".writer-text").innerText = response.data.data.username;
+    document.querySelector(".writer-text").innerText = response.data.data.writer;
     document.querySelector(".content").innerText = response.data.data.postContent;
     if (response.data.data.originImageUrl != null) {
       let imgTag = `<img id="post-image" src="${response.data.data.originImageUrl}" alt="">`;
@@ -30,7 +34,7 @@ async function getPost() {
   });
 }
 
-async function getComment() {
+async function getComment(currentUser) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
   let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments?page=1&size=10&keyword=&desc=true`;
@@ -43,7 +47,7 @@ async function getComment() {
     if (response.status == 200) {
       let template = document.getElementById("comment-template").innerText;
       let targetHtml = document.querySelector(".comment-each-container");
-      let resultHtml = makeTemplate(response.data.data.dtoList, template);
+      let resultHtml = makeCommentTemplate(response.data.data.dtoList, template, currentUser);
       targetHtml.innerHTML = resultHtml;
     }
   }).catch(e => {
@@ -62,7 +66,7 @@ async function sendComment(data) {
   }).then(response => {
     if (response.status == 200) {
       alert("댓글이 작성되었습니다");
-      getComment();
+      window.location.reload();
     }
   }).catch(e => {
     if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
@@ -125,4 +129,44 @@ async function logout() {
   });
 
   return response;
+}
+async function getMyInfo() {
+  let url = `https://hobbyback.store/api/users/profile`;
+  let response = await axios.get(url, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  }
+  )
+  return response;
+};
+
+document.querySelector(".comment-each-container").addEventListener("click", function(evt) {
+  if(evt.target.classList.contains("comment-modify") || evt.target.classList.contains("comment-delete")){
+    let comment = evt.target.closest(".comment-box");
+
+    if(evt.target.classList.contains("comment-modify")) {
+      comment.querySelector(".comment-content").contentEditable = true;
+      comment.querySelector(".comment-content").focus();
+    } else {
+      
+    }
+  }
+  
+});
+
+async function modifyComment(commentId) {
+  let clubId = parseUrl("clubId");
+  let postId = parseUrl("postId");
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments/${commentId}`
+  let response = await axios.patch(url, );
+}
+function makeCommentTemplate(data, template, currentUser) {
+  let bindTemplate = Handlebars.compile(template);
+  
+  let resultHtml = data.reduce(function (prve, next) {
+    next.currentUser = currentUser;
+    return prve + bindTemplate(next);
+  }, "");
+  return resultHtml;
 }

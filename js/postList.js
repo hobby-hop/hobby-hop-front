@@ -79,7 +79,7 @@ document.querySelector(".number").addEventListener("click", function (evt) {
   getPosts(evt.target.dataset.page, 10);
 });
 
-document.querySelector(".my-info").addEventListener("click", function (evt) {
+document.querySelector(".my-info").addEventListener("click", function () {
   const accordion = document.querySelector(".accordion");
   accordion.classList.toggle("close");
 });
@@ -121,7 +121,7 @@ function disableMoveToPost(){
   checkMember().then(response => {
     if(!response.data.data) {
       document.querySelector(".content-box").addEventListener("click", function(evt) {
-        if(!evt.target.tagName == "A") {
+        if(evt.target.tagName !== "A") {
           return;
         }
         evt.preventDefault();
