@@ -148,7 +148,7 @@ document.querySelector(".withdraw-modal .close-btn").addEventListener("click", f
 
 async function withdraw(currentPassword) {
   let data = {password : currentPassword};
-  let url = ``;
+  let url = `https://hobbyback.store/api/users/withdrawal`;
   let response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -183,10 +183,14 @@ document.querySelector(".agree-btn").addEventListener("click", function() {
     currentPassword.focus();
     return false;
   }
-  let response = withdraw(data);
+  
+  
+  let response = withdraw(currentPassword.value);
   response.then(response => {
     if(response.status === 200) {
+      console.log(response);
       alert("탈퇴가 성공적으로 완료되었습니다.");
+
       localStorage.removeItem("authorization");
       window.location.href = "/login.html";
     }
