@@ -10,15 +10,21 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
     postTitle: title.value,
     postContent: content.value
   }
+  
   const files = document.getElementById("file-upload").files;
-
+  if(files.length !== 0) {
+    if(!validateFile(files[0])) {
+      document.getElementById("file-upload").value = "";
+      return false;
+    }
+  }
   const formData = new FormData();
   formData.append("file", files[0]);
 
   sendPost(data).then(response => {
     if (response.status == 200) {
       const postId = response.data.data.postId;
-      alert("게시글 작성이 완료되었습니다.");
+      // alert("게시글 작성이 완료되었습니다.");
       if (files.length !== 0) {
         sendFile(formData, postId).then(response => {
           if (response.status == 200) {
@@ -61,6 +67,15 @@ async function sendFile(formData, postId) {
 
   return response;
 
+}
+
+function validateFile(file) {
+  const MAX_SIZE = 2 * 1024 * 1024;
+  if(file.size > MAX_SIZE) {
+    alert("이미지는 최대 2MB까지 업로드가 가능합니다.");
+    return false;
+  }
+  return true;
 }
 
 function validatePost(title, content) {

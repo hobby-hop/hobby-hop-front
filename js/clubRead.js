@@ -139,7 +139,6 @@ async function checkAdmin() {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    console.log(response.data.data);
     if(response.data.data) {
       document.querySelector(".manage-club").style.display = "block";
     }

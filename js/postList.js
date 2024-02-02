@@ -22,7 +22,6 @@ async function getPosts(page, size, keyword) {
       keyword: keyword
     }
   }).then(response => {
-    console.log(response);
     let data = response.data.data.dtoList;
     let targetHtml = document.querySelector(".content-box");
     targetHtml.innerHTML = "";
@@ -34,8 +33,7 @@ async function getPosts(page, size, keyword) {
     targetHtml.innerHTML = resultHtml;
     printPages(response.data.data);
   }).catch(e => {
-    console.log(e);
-    // validateToken(e.response.data.errorMessages[0]);
+    validateToken(e.response.data.errorMessages[0]);
   });
 }
 
