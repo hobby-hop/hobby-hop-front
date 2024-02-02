@@ -22,6 +22,7 @@ async function getPosts(page, size, keyword) {
       keyword: keyword
     }
   }).then(response => {
+    console.log(response);
     let data = response.data.data.dtoList;
     let targetHtml = document.querySelector(".content-box");
     targetHtml.innerHTML = "";
