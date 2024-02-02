@@ -82,12 +82,12 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
       if (res.status == 200) {
         alert("수정이 완료되었습니다.");
         let clubId = parseUrl("clubId");
-        let redirectUrl = `/cubRead.html?clubId=${clubId}`;
+        let redirectUrl = `/clubRead.html?clubId=${clubId}`;
         window.location.href = redirectUrl;
     }}).catch(e => {
       alert(e.response.data.errorMessages[0]);
       let clubId = parseUrl("clubId");
-        let redirectUrl = `/cubRead.html?clubId=${clubId}`;
+        let redirectUrl = `/clubRead.html?clubId=${clubId}`;
         window.location.href = redirectUrl;
     });
   }
