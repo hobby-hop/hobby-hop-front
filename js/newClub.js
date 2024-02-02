@@ -12,16 +12,15 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
 
 
   if (!validateClub(title, content, category)) {
-    alert("정보를 정확히 입력해주세요!");
-  } else {
-    let data = {
-      title: title.value,
-      content: content.value,
-      categoryId: category.value
-    }
-
-    sendMakeClub(data);
+    return false;
+  } 
+  let data = {
+    title: title.value,
+    content: content.value,
+    categoryId: category.value
   }
+
+  sendMakeClub(data);
 });
 
 
@@ -43,9 +42,18 @@ async function sendMakeClub(data) {
 
 function validateClub(title, content, category) {
 
-  if (title.value === "") {
+  if (title.value === "" ) {
     title.style.border = "2px solid red";
     title.focus();
+    alert("모임명을 입력해주세요.");
+    return false;
+  } else {
+    title.style.border = "none";
+  }
+  if(title.value.length < 3 || title.value.length > 30) {
+    title.style.border = "2px solid red";
+    title.focus();
+    alert("모임명은 최소 3자에서 최대 30자 까지입니다.");
     return false;
   } else {
     title.style.border = "none";
@@ -53,16 +61,28 @@ function validateClub(title, content, category) {
   if (content.value === "") {
     content.style.border = "2px solid red";
     content.focus();
+    alert("모임 소개를 입력해주세요.")
     return false;
   } else {
     content.style.border = "none";
   }
+  if(content.value.length < 3 || content.value.length > 255) {
+    content.style.border = "2px solid red";
+    content.focus();
+    alert("모임 소개는 최소 3자에서 255자까지입니다.");
+    return false;
+  } else {
+    content.style.border = "none";
+  }
+  
   if (category.value === "") {
     category.style.border = "2px solid red";
+    alert("카테고리를 선택해주세요.");
     return false;
   } else {
     category.style.border = "none";
   }
+
   return true;
 }
 
