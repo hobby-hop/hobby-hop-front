@@ -134,7 +134,10 @@
     <div class="comment-box" data-comment-id={{ id }}>
       <span class="comment-title">{{ writer }}</span>
       <span class="created-date">{{ formatDate createdAt }}</span>
-      <p class="comment-content">{{ content }}</p>
+      {{#isSameUser writer currentUser}}
+        
+      {{/isSameUser}}
+      <p class="comment-content" contentEditable="false">{{ content }}</p>
     </div>
   </script>
 </body>

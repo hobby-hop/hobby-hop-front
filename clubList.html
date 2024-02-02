@@ -6,8 +6,11 @@
   <meta http-equiv="X-UA-compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/clubList.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" integrity="sha512-1PKqXBz2ju2JcAerHKL0ldg0PT/1vr3LghYAtc59+9xy8e19QEtaNUyt1gprouyWnpOPqNJjL4gXMRMEpHYyLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"
     integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg=="
@@ -84,15 +87,15 @@
     </div>
   </footer>
   <script type="my-template" id="club-list">
-      <div class="content" data-club-id={{id}}>
+      <div class="content" data-club-id={{ id }}>
         <div class="club-title-section">
-          <span id="club-name"><strong>{{title}}</strong></span><br>
+          <span id="club-name"><strong>{{ title }}</strong></span><br>
         </div>
         <div class="club-des-section">
-          <span id="club-description">{{content}}</span><br>
+          <span id="club-description">{{ content }}</span><br>
         </div>
         <div class="club-category-section">
-          <span id="category-name">{{categoryName}}</span>
+          <span id="category-name">{{ categoryName }}</span>
         </div>
       </div>
     </script>

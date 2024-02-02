@@ -72,7 +72,7 @@
 }
 
 .comment-section .inner .comment-box {
-  width: ;
+  width: 700px;
   padding: 20px;
   position: relative;
   border: 1px solid #e5e5e5;
@@ -206,7 +206,7 @@ svg {
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
-  display: block;
+  display: none;
   background-color: #ff6347;
   transition: .4s;
   position: absolute;
@@ -219,7 +219,12 @@ svg {
   width: 200px;
   height: 200px;
 }
-
+.comment-box .comment-modify {
+  
+}
+.comment-edit {
+  
+}
 .comment-box .comment-modify,
 .comment-delete {
   cursor: pointer;

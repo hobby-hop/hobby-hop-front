@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
 async function getPost() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
@@ -20,13 +21,21 @@ async function getPost() {
   }).then(response => {
     document.querySelector(".title").innerText = response.data.data.postTitle;
     document.querySelector(".writer-text").innerText = response.data.data.writer;
+    let writer = response.data.data.writer;
     document.querySelector(".content").innerText = response.data.data.postContent;
     if (response.data.data.originImageUrl != null) {
       let imgTag = `<img id="post-image" src="${response.data.data.originImageUrl}" alt="">`;
       document.querySelector(".img-container").innerHTML = imgTag;
     }
+    getMyInfo().then(response => {
+      let currentUser = response.data.data.username;
+      
+      if(writer == currentUser) {
+        document.querySelector(".modify-btn").style.display = "block";
+      }
+    })
   }).catch(e => {
-    // validateToken(e.response.data.errorMessages[0]);
+    validateToken(e.response.data.errorMessages[0]);
     if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
       alert("모임의 멤버만 읽을 수 있습니다.");
       window.history.back();
@@ -140,30 +149,90 @@ async function getMyInfo() {
   )
   return response;
 };
-
-document.querySelector(".comment-each-container").addEventListener("click", function(evt) {
-  if(evt.target.classList.contains("comment-modify") || evt.target.classList.contains("comment-delete")){
+let change = {};
+document.querySelector(".comment-each-container").addEventListener("click", function (evt) {
+  if (evt.target.classList.contains("comment-modify") || evt.target.classList.contains("comment-delete")) {
     let comment = evt.target.closest(".comment-box");
+    let commentId = comment.dataset.commentId;
 
-    if(evt.target.classList.contains("comment-modify")) {
-      comment.querySelector(".comment-content").contentEditable = true;
-      comment.querySelector(".comment-content").focus();
-    } else {
-      
+    if (evt.target.classList.contains("comment-modify") && !(evt.target.classList.contains("edit"))) {
+      evt.target.classList.add("edit");
+      let commentContent = comment.querySelector(".comment-content");
+      commentContent.contentEditable = true;
+      commentContent.focus();
+      currentComment = commentContent.textContent;
+      change[commentId] = currentComment;
+    } else if (evt.target.classList.contains("comment-modify") && evt.target.classList.contains("edit")) {
+      evt.target.classList.remove("edit");
+      let commentContent = comment.querySelector(".comment-content");
+      let content = commentContent.textContent;
+      commentContent.contentEditable = false;
+
+      if (content !== change[commentId]) {
+        let data = {
+          content: content
+        };
+
+        let response = modifyComment(commentId, data);
+        response.then(response => {
+          if (response.status == 200) {
+            alert("댓글이 수정되었습니다.");
+          }
+        }).catch(e => {
+          alert(e.response.data.errorMessages[0]);
+        });
+      } else {
+        alert("변경된 내용이 없습니다.");
+      }
+    }
+    if (evt.target.classList.contains("comment-delete")) {
+      let response = deleteComment(commentId);
+      response.then(response => {
+        if (response.status == 200) {
+          alert("댓글이 삭제되었습니다.");
+          let response = getMyInfo();
+          response.then(response => {
+            currentUser = response.data.data.username;
+            getComment(currentUser);
+          });
+        }
+      }).catch(e => {
+        alert(e);
+      });
     }
   }
-  
+
+
 });
 
-async function modifyComment(commentId) {
+async function modifyComment(commentId, data) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
   let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments/${commentId}`
-  let response = await axios.patch(url, );
+  let response = await axios.patch(url, data, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+  return response;
 }
+
+async function deleteComment(commentId) {
+  let clubId = parseUrl("clubId");
+  let postId = parseUrl("postId");
+  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments/${commentId}`
+  let response = await axios.delete(url, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+  return response;
+}
+
+
 function makeCommentTemplate(data, template, currentUser) {
   let bindTemplate = Handlebars.compile(template);
-  
+
   let resultHtml = data.reduce(function (prve, next) {
     next.currentUser = currentUser;
     return prve + bindTemplate(next);
