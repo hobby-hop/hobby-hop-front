@@ -38,13 +38,12 @@ input {
   align-items: center;
 }
 #category-select {
-  width: 180px;
   height: 30px;
   margin : 30px;
   cursor: pointer;
   font-size: 16px;
 }
 #category-select option{
-  width: 100px;
-  /* font-size: 50px; */
+
+  
 }

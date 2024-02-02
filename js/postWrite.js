@@ -20,28 +20,28 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
   }
   const formData = new FormData();
   formData.append("file", files[0]);
+  let clubId = parseUrl("clubId");
+  let url = `/postList.html?clubId=${clubId}`;
 
   sendPost(data).then(response => {
     if (response.status == 200) {
       const postId = response.data.data.postId;
-      // alert("게시글 작성이 완료되었습니다.");
       if (files.length !== 0) {
         sendFile(formData, postId).then(response => {
-          if (response.status == 200) {
-            alert("게시글 작성이 완료되었습니다.");
-          }
-        })
+          console.log("이미지 업로드 성공");
+        }).catch(e => {
+          alert(e);
+        });
       }
-      let clubId = parseUrl("clubId");
-      let url = `/postList.html?clubId=${clubId}`;
-      window.location.href = url;
     }
   }).catch(e => {
     if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
       alert("자신이 가입된 모임에만 게시글을 작성할 수 있습니다.");
-      window.history.back();
     }
+    alert(e);
   });
+  alert("게시글 작성이 완료되었습니다.");
+  window.location.href = url;
 });
 
 async function sendPost(data) {

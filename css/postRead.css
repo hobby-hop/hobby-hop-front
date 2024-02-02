@@ -60,7 +60,10 @@
   bottom: -36px;
   right: 34px;
 }
-
+.comment-section{
+  display: flex;
+  justify-content: center;
+}
 .comment-section .inner {
   margin-top: 50px;
   box-sizing: border-box;
@@ -72,7 +75,6 @@
 }
 
 .comment-section .inner .comment-box {
-  width: 700px;
   padding: 20px;
   position: relative;
   border: 1px solid #e5e5e5;
