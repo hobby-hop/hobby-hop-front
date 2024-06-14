@@ -8,13 +8,9 @@
   min-width: 700px;
   padding: 20px;
   box-shadow: 2px 2px 20px rgba(0,0,0,.3);
-  /* height: 500px;
-  justify-content: center;
-  align-items: center; */
-  display: flex;
-  justify-content: center;
 }
 .content {
+  margin: 0 auto;
   background-color: #fff;
   box-sizing: border-box;
   padding : 4px;
@@ -24,6 +20,7 @@
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
 }
 
 .send-user {

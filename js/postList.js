@@ -4,14 +4,13 @@ let title = document.querySelector(".title");
 let categoryId = document.querySelector(".category-id");
 
 document.addEventListener("DOMContentLoaded", function () {
-  checkLogin();
   disableMoveToPost();
   getPosts(1, 10, "");
 });
 
 async function getPosts(page, size, keyword) {
   let clubId = parseUrl("clubId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -33,7 +32,7 @@ async function getPosts(page, size, keyword) {
     targetHtml.innerHTML = resultHtml;
     printPages(response.data.data);
   }).catch(e => {
-    validateToken(e.response.data.errorMessages[0]);
+    console.log(e.response.data.errorMessages[0]);
   });
 }
 
@@ -49,7 +48,10 @@ document.querySelector(".write-btn").addEventListener("click", function () {
       }
     }
   }).catch(e => {
-
+    if(e.response.status === 400) {
+      alert("로그인이 필요합니다.");
+      window.location.href = "/login.html";
+    }
   });
 });
 
@@ -67,15 +69,27 @@ async function checkMember() {
 function printPages(data) {
   const postPaging = document.querySelector(".number");
   let pageStr = '';
+  if(data.prev) {
+    pageStr += `<li><a href="javascript:void(0)" data-page=${data.start-1}>PREV</a></li>`
+  }
 
   for (let i = data.start; i <= data.end; i++) {
-    pageStr += `<li><a href="javascript:void(0)" data-page=${i}>${i}</a></li>`
+    if(data.page  === i) {
+      pageStr += `<li><a href="javascript:void(0)" class="page-number active" data-page=${i}>${i}</a></li>`
+    } else {
+      pageStr += `<li><a href="javascript:void(0)" class="page-number" data-page=${i}>${i}</a></li>`
+    }
+  }
+
+  if(data.next) {
+    pageStr += `<li><a href="javascript:void(0)" data-page=${data.end+1}>NEXT</a></li>`
   }
   postPaging.innerHTML = pageStr;
 }
 
 document.querySelector(".number").addEventListener("click", function (evt) {
-  getPosts(evt.target.dataset.page, 10);
+  let keyword = document.querySelector(".keyword").value;
+  getPosts(evt.target.dataset.page, 10, keyword);
 });
 
 document.querySelector(".my-info").addEventListener("click", function () {

@@ -15,6 +15,7 @@ async function getPost() {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
+    console.log(response)
     const title = document.querySelector(".title-input").value = response.data.data.postTitle;
     const content = document.querySelector(".content-input").value = response.data.data.postContent;
     changes.postTitle = title;

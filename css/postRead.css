@@ -259,9 +259,9 @@ svg {
 }
 
 .pagination .active {
-  background-color: #4CAF50;
+  background-color: #ff6347;
   color: white;
-  border: 1px solid #4CAF50;
+  border: 1px solid #ff6347;
 }
 .writer {
   text-align: center;

@@ -28,6 +28,9 @@
       <div class="main-menu">
         <ul class="menu">
           <li>
+            <a href="./index.html">클럽 리스트</a>
+          </li>
+          <li>
             <a href="./login.html">로그인</a>
           </li>
           <li>
@@ -46,12 +49,15 @@
           <input type="email" placeholder="이메일을 입력하세요." id="email">
           <input type="password" placeholder="비밀번호를 입력하세요" id="password">
           <input type="submit" value="로그인" id="submit-btn">
-          <p>* 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
+          <p>* 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br/>
             정기적으로 비밀번호를 변경하세요!</p>
         </form>
         <div class="actions">
           <a href="./signup.html">회원가입</a>
-          <!-- <a class="kakao-login" href="javascript:void(0)">카카오 로그인</a> -->
+          <!-- <button id="login-kakao-btn"
+          onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=6666e4d3e7955e33eac0eb2e6609e3e5&redirect_uri=https://hobbyhop.site/api/users/login/kakao/callback&response_type=code'">
+          카카오로 로그인하기
+        </button> -->
         </div>
       </div>
     </div>

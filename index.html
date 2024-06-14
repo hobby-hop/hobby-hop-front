@@ -54,8 +54,8 @@
     <div class="inner">
       <div class="container">
         <div class="search-bar">
-          <input type="text" class="keyword" placeholder="검색어">
-          <!-- <select name="카테고리 검색" id="">
+          <input type="text" id="keyword" placeholder="검색어">
+          <select name="카테고리 검색" id="category">
             <option value="">카테고리</option>
             <option value="1">운동/스포츠</option>
             <option value="2">음악/악기</option>
@@ -63,7 +63,7 @@
             <option value="4">외국/언어</option>
             <option value="5">아웃도어/여행</option>
             <option value="6">공예/만들기</option>
-          </select> -->
+          </select>
           <input type="submit" value="검색" class="search">
         </div>
         <div class="content-box">
@@ -81,14 +81,13 @@
         <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
       </ul>
       <div class="btn-group">
-        <a href="javascript:void(0)" class="btn">찾아오시는 길</a>
-        <a href="javascript:void(0)" class="btn">사이트 맵</a>
+        <a href="https://github.com/hobby-hop/hobby-hop" target="_blank" class="btn">찾아오시는 길</a>
       </div>
 
       <div class="info">
-        <span>사업자등록번호 111-11-11111</span>
+        <span>사업자등록번호 000-00-00000</span>
         <span>(주) 하비합 대표이사 정유진</span>
-        <span>TEL : 02) 3000 - 1000</span>
+        <span>TEL : 02) 0000 - 0000</span>
       </div>
 
       <p class="copyright">
@@ -100,15 +99,15 @@
     <div class="material-icons">arrow_upward</div>
   </div>
   <script type="my-template" id="club-list">
-      <div class="content" data-club-id={{id}}>
+      <div class="content" data-club-id={{ id }}>
         <div class="club-title-section">
-          <span id="club-name"><strong>{{title}}</strong></span><br>
+          <span class="club-name"><strong>{{ title }}</strong></span><br>
         </div>
         <div class="club-des-section">
-          <span id="club-description">{{content}}</span><br>
+          <span class="club-description">{{ content }}</span><br>
         </div>
         <div class="club-category-section">
-          <span id="category-name">{{categoryName}}</span>
+          <span class="category-name">{{ categoryName }}</span>
         </div>
       </div>
     </script>

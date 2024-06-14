@@ -41,7 +41,7 @@ function signupValidator(email, username, password, confirmPassword, info) {
   if (!EMAIL_REGEX.test(email.value)) {
     email.style.border = "2px solid red";
     email.focus();
-    validationMsg.innerHTML = `<span class="msg">이메일이</span> ${BASE_MSG}`;
+    validationMsg.innerHTML = `<span class="msg">이메일</span>이 ${BASE_MSG}`;
     validationMsg.style.display = "block";
     return false;
   } else {
@@ -51,7 +51,7 @@ function signupValidator(email, username, password, confirmPassword, info) {
   if (!USERNAME_REGEX.test(username.value)) {
     username.style.border = "2px solid red";
     username.focus();
-    validationMsg.innerHTML = `<span class="msg">이름(닉네임)은 최소 1자 최대 12자입니다.</span>`;
+    validationMsg.innerHTML = `<span class="msg">이름(닉네임)은 영어,숫자, 한글로 구성된 최소 1자 최대 12자입니다.</span>`;
     validationMsg.style.display = "block";
     return false;
   } else {
@@ -61,7 +61,7 @@ function signupValidator(email, username, password, confirmPassword, info) {
   if (!PASSWORD_REGEX.test(password.value)) {
     password.style.border = "2px solid red";
     password.focus();
-    validationMsg.innerHTML = `<span class="msg">비밀번호가</span> ${BASE_MSG}`;
+    validationMsg.innerHTML = `<span class="msg">비밀번호</span>가 ${BASE_MSG}`;
     validationMsg.style.display = "block";
     return false;
   } else {

@@ -189,7 +189,7 @@ svg {
 
 .title-input {
   width: 670px;
-  height: 30px;
+  height: 40px;
   margin: 10px;
 }
 .content-input {
@@ -198,42 +198,46 @@ svg {
   resize: none;
   border: none;
 }
+.btn-box {
+  position: absolute;
+  right: -180px;
+  bottom: 400px;
+  padding: 10px;
+}
 
 .modify-btn {
+  margin: 10px;
   width: 100px;
   padding: 10px;
-  /* border: 2px solid #000; */
   border-radius: 4px;
   color: #fff;
   font-size: 12px;
-  /* font-weight: 700; */
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
   display: block;
   background-color: #ff6347;
   transition: .4s;
-  position: absolute;
-  right: -180px;
-  bottom: 400px;
 }
 .delete-btn {
+  margin: 10px;
   width: 100px;
   padding: 10px;
-  /* border: 2px solid #000; */
   border-radius: 4px;
   color: #fff;
   font-size: 12px;
-  /* font-weight: 700; */
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
   display: block;
   background-color: #ff0000;
   transition: .4s;
-  position: absolute;
-  right: -300px;
-  bottom: 400px;
-  
+}
+.image-box {
+  border: 1px solid black;
+  height: 200px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 

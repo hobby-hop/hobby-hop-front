@@ -76,6 +76,7 @@ function saveUserInfo() {
     }
   }).catch(e => {
     alert(e.response.data.errorMessages[0]);
+    document.querySelector(".info").innerText  = changes.info;
     document.querySelector(".current-password").value = "";
   })
 }

@@ -88,7 +88,8 @@ a {
 }
 
 .number li a.active {
-    background-color: rgb(252, 212, 205);
+    background-color: #ff6347;
+    color: #fff;
 }
 
 .content-box {
@@ -180,4 +181,13 @@ a {
 
 .write-btn:hover {
     background-color: #FF4500;
+}
+.page-number {
+    transition: background-color 0.3s;
+}
+.page-number:hover {
+    background-color: #ddd;
+}
+.page-number.active:hover {
+    background-color: red;
 }

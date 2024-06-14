@@ -58,6 +58,7 @@ async function getComment(currentUser) {
       let targetHtml = document.querySelector(".comment-each-container");
       let resultHtml = makeCommentTemplate(response.data.data.dtoList, template, currentUser);
       targetHtml.innerHTML = resultHtml;
+      printPages(response.data.data);
     }
   }).catch(e => {
     // validateToken(e);
@@ -238,4 +239,26 @@ function makeCommentTemplate(data, template, currentUser) {
     return prve + bindTemplate(next);
   }, "");
   return resultHtml;
+}
+
+function printPages(data) {
+  console.log(data);
+  const postPaging = document.querySelector(".pagination");
+  let pageStr = '';
+  if(data.prev) {
+    pageStr += `<li><a href="javascript:void(0)" data-page=${data.start-1}>PREV</a></li>`
+  }
+
+  for (let i = data.start; i <= data.end; i++) {
+    if(data.page  === i) {
+      pageStr += `<li><a href="javascript:void(0)" class="page-number active" data-page=${i}>${i}</a></li>`
+    } else {
+      pageStr += `<li><a href="javascript:void(0)" class="page-number" data-page=${i}>${i}</a></li>`
+    }
+  }
+
+  if(data.next) {
+    pageStr += `<li><a href="javascript:void(0)" data-page=${data.end+1}>NEXT</a></li>`
+  }
+  postPaging.innerHTML = pageStr;
 }

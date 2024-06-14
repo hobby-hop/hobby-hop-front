@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  checkLogin();
   getClubs(1);
 });
 
@@ -7,8 +6,8 @@ let clickCount = 1;
 let size = 9;
 let page = 1;
 
-async function getClubs(page, keyword) {
-  let url = "https://hobbyback.store/api/clubs";
+async function getClubs(page, keyword, categoryId) {
+  let url = "http://localhost:8080/api/clubs";
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -16,27 +15,31 @@ async function getClubs(page, keyword) {
     params: {
       page: page,
       size: size,
-      keyword: keyword
+      keyword: keyword,
+      categoryId
     }
   }).then(response => {
     if (response.status == 200) {
-      let total = response.data.data.total
+      let total = response.data.data.total;
       let data = response.data.data.dtoList;
-      let end = response.data.data.end;
       let targetHtml = document.querySelector(".content-box");
       let template = document.getElementById("club-list").innerText;
-      let resultHtml = makeTemplate(data, template);
-      targetHtml.insertAdjacentHTML("beforeend", resultHtml);
-      if (!(size >= total)) {
+      let clubElements = document.getElementsByClassName("content");
+
+      if(data) {
+        let resultHtml = makeTemplate(data, template);
+        targetHtml.insertAdjacentHTML("beforeend", resultHtml);
+      }
+
+      if(total > clubElements.length) {
         document.querySelector(".more-btn").style.display = "block";
-      } 
-      if(end == page) {
+      } else {
         document.querySelector(".more-btn").style.display = "none";
       }
       
     }
   }).catch(e => {
-    validateToken(e.response.data.errorMessages[0]);
+    console.log(e.response.data.errorMessages[0]);
   })
 
   return response;
@@ -79,12 +82,13 @@ document.querySelector(".logout").addEventListener("click", function () {
     }
   }).catch(e => {
     console.log(e.response.data.errorMessages[0]);
-    validateToken(e.response.data.errorMessages[0])
+    validateToken(e.response.data.errorMessages[0]);
   });
 });
 document.querySelector(".more-btn").addEventListener("click", function () {
-  let keyword = document.querySelector(".keyword").value;
-  getClubs(++clickCount, keyword);
+  let keyword = document.getElementById("keyword").value;
+  let categoryId = document.getElementById("category").value;
+  getClubs(++clickCount, keyword, categoryId);
 });
 
 document.querySelector(".search").addEventListener("click", function () {
@@ -94,13 +98,14 @@ document.querySelector(".search").addEventListener("click", function () {
 });
 
 function search() {
-  let keyword = document.querySelector(".keyword").value;
+  let keyword = document.getElementById("keyword").value;
+  let categoryId = document.getElementById('category').value;
   document.querySelector(".content-box").innerHTML = "";
   clickCount = 0;
-  getClubs(++clickCount, keyword);
+  getClubs(++clickCount, keyword, categoryId);
 }
 
-document.querySelector('.keyword').addEventListener('keyup', function (event) {
+document.getElementById('keyword').addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
     search();
   }
@@ -109,7 +114,7 @@ document.querySelector('.keyword').addEventListener('keyup', function (event) {
 const toTopEl = document.querySelector('#to-top')
 
 window.addEventListener('scroll', _.throttle(function () {
-  if (window.scrollY > 400) {
+  if (window.scrollY > 300) {
     gsap.to(toTopEl, .2, {
       x: 0
     })
@@ -124,7 +129,7 @@ window.addEventListener('scroll', _.throttle(function () {
 // 상단으로 스크롤 버튼을 클릭하면,
 toTopEl.addEventListener('click', function () {
   // 페이지 위치를 최상단으로 부드럽게(0.7초 동안) 이동.
-  gsap.to(window, .7, {
+  gsap.to(window, .4, {
     scrollTo: 0
   })
 })
