@@ -84,3 +84,11 @@
 .signin__card .actions a:last-child {
   border-right: none;
 }
+
+.kakao-login {
+  transition: .5s;
+}
+.kakao-login:hover {
+  background-color: #FEE500;
+  
+}

@@ -6,14 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function getMyInfo() {
   let clubId = parseUrl("clubId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/requests`;
-  let response = await axios.get(url, {
+  let url = `http://localhost:8080/api/clubs/${clubId}/requests`;
+  await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
     let data = response.data.data;
-
+    if(data.dtoList === null) {
+      // document.querySelector(".container").innerText = "가입신청한 유저가 없습니다."
+    }
     let targetHtml = document.querySelector(".container");
     makeTemplate(data, targetHtml);
   }).catch((e) => {
@@ -55,7 +57,7 @@ document.querySelector(".container").addEventListener("click", function (evt) {
 
 async function processRequst(requestId, data) {
   let clubId = parseUrl("clubId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/requests/${requestId}`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/requests/${requestId}`;
 
   let response = await axios.put(url, data, {
     headers: {

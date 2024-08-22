@@ -2,11 +2,11 @@ document.querySelector("#submit-btn").addEventListener("click", function (e) {
     e.preventDefault()
     let email = document.querySelector("#email");
     let password = document.querySelector("#password");
-    let loginUrl = "https://hobbyback.store/api/users/login";
+    let loginRequestUrl = "http://localhost:8080/api/users/login";
     let data = { email: email.value, password: password.value };
 
     if (validateLogin(email, password)) {
-        loginRequest(data).then(response => {
+        loginRequest(data, loginRequestUrl).then(response => {
             localStorage.setItem("authorization", response.headers['authorization']);
             window.location.href = "/index.html";
         }).catch(e => {
@@ -37,8 +37,7 @@ function validateLogin(email, password) {
     return true;
 }
 
-async function loginRequest(data) {
-    let url = `https://hobbyback.store/api/users/login`;
-    let response = axios.post(url, data, null);
+async function loginRequest(data, loginRequestUrl) {
+    let response = axios.post(loginRequestUrl, data, null);
     return response;
 }

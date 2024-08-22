@@ -1,52 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
   checkLogin();
-  getPost();
   let response = getMyInfo();
   response.then(response => {
     let currentUser = response.data.data.username;
-    getComment(currentUser);
+    localStorage.setItem('currentUser', currentUser);
+    getComment(currentUser, 1);
+    getPost(currentUser);
   });
 });
-
 
 async function getPost() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
 
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}`;
-  let response = await axios.get(url, {
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
+  await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
-    document.querySelector(".title").innerText = response.data.data.postTitle;
-    document.querySelector(".writer-text").innerText = response.data.data.writer;
-    let writer = response.data.data.writer;
-    document.querySelector(".content").innerText = response.data.data.postContent;
-    if (response.data.data.originImageUrl != null) {
-      let imgTag = `<img id="post-image" src="${response.data.data.originImageUrl}" alt="">`;
-      document.querySelector(".img-container").innerHTML = imgTag;
-    }
-    getMyInfo().then(response => {
-      let currentUser = response.data.data.username;
-      
-      if(writer == currentUser) {
-        document.querySelector(".modify-btn").style.display = "block";
-      }
-    })
+    templatePost(response.data.data);
+    registerEvents();
   }).catch(e => {
-    validateToken(e.response.data.errorMessages[0]);
-    if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
-      alert("모임의 멤버만 읽을 수 있습니다.");
-      window.history.back();
-    }
   });
 }
 
-async function getComment(currentUser) {
+async function getComment(currentUser, page) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments?page=1&size=10&keyword=&desc=true`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}/comments?page=${page}&size=10&desc=false`;
 
   await axios.get(url, {
     headers: {
@@ -61,14 +43,13 @@ async function getComment(currentUser) {
       printPages(response.data.data);
     }
   }).catch(e => {
-    // validateToken(e);
   });
 }
 
 async function sendComment(data) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}/comments`;
   let response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -108,11 +89,6 @@ function validateComment(content) {
   return true;
 }
 
-document.querySelector(".modify-btn").addEventListener("click", function () {
-  let clubId = parseUrl("clubId");
-  let postId = parseUrl("postId");
-  window.location.href = `/postEdit.html?clubId=${clubId}&postId=${postId}`;
-});
 
 document.querySelector(".my-info").addEventListener("click", function (evt) {
   const accordion = document.querySelector(".accordion");
@@ -130,18 +106,8 @@ document.querySelector(".logout").addEventListener("click", function () {
   });
 });
 
-async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
-  let response = await axios.post(url, null, {
-    headers: {
-      "authorization": localStorage.getItem("authorization")
-    }
-  });
-
-  return response;
-}
 async function getMyInfo() {
-  let url = `https://hobbyback.store/api/users/profile`;
+  let url = `http://localhost:8080/api/users/profiles/my`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -194,7 +160,7 @@ document.querySelector(".comment-each-container").addEventListener("click", func
           let response = getMyInfo();
           response.then(response => {
             currentUser = response.data.data.username;
-            getComment(currentUser);
+            getComment(currentUser, 1);
           });
         }
       }).catch(e => {
@@ -209,7 +175,7 @@ document.querySelector(".comment-each-container").addEventListener("click", func
 async function modifyComment(commentId, data) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments/${commentId}`
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}/comments/${commentId}`
   let response = await axios.patch(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -221,7 +187,7 @@ async function modifyComment(commentId, data) {
 async function deleteComment(commentId) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}/comments/${commentId}`
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}/comments/${commentId}`
   let response = await axios.delete(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -242,23 +208,51 @@ function makeCommentTemplate(data, template, currentUser) {
 }
 
 function printPages(data) {
-  console.log(data);
   const postPaging = document.querySelector(".pagination");
   let pageStr = '';
-  if(data.prev) {
-    pageStr += `<li><a href="javascript:void(0)" data-page=${data.start-1}>PREV</a></li>`
+  if (data.prev) {
+    pageStr += `<li><a href="javascript:void(0)" data-page=${data.start - 1}>PREV</a></li>`
   }
 
   for (let i = data.start; i <= data.end; i++) {
-    if(data.page  === i) {
-      pageStr += `<li><a href="javascript:void(0)" class="page-number active" data-page=${i}>${i}</a></li>`
+    if (data.page === i) {
+      pageStr += `<li><a href="#comment-container" class="page-number active" data-page=${i}>${i}</a></li>`
     } else {
-      pageStr += `<li><a href="javascript:void(0)" class="page-number" data-page=${i}>${i}</a></li>`
+      pageStr += `<li><a href="#comment-container" class="page-number" data-page=${i}>${i}</a></li>`
     }
   }
 
-  if(data.next) {
-    pageStr += `<li><a href="javascript:void(0)" data-page=${data.end+1}>NEXT</a></li>`
+  if (data.next) {
+    pageStr += `<li><a href="javascript:void(0)" data-page=${data.end + 1}>NEXT</a></li>`
   }
   postPaging.innerHTML = pageStr;
+}
+
+document.querySelector('.pagination').addEventListener('click', function (evt) {
+  if (evt.target.tagName == 'A') {
+    let requestPage = evt.target.dataset.page;
+    let currentUser = localStorage.getItem('currentUser');
+    getComment(currentUser, requestPage);
+  }
+});
+
+function templatePost(data) {
+  let postTemplate = document.getElementById("post-template").innerText;
+  let postContainer = document.querySelector(".post-container");
+  postContainer.innerHTML = makeTemplate(data, postTemplate);
+}
+
+function registerEvents() {
+  document.querySelector(".modify-btn").addEventListener("click", function () {
+    let clubId = parseUrl("clubId");
+    let postId = parseUrl("postId");
+    window.location.href = `/postEdit.html?clubId=${clubId}&postId=${postId}`;
+  });
+  document.querySelector('.pagination').addEventListener('click', function (evt) {
+    if (evt.target.tagName == 'A') {
+      let requestPage = evt.target.dataset.page;
+      let currentUser = localStorage.getItem('currentUser');
+      getComment(currentUser, requestPage);
+    }
+  });
 }

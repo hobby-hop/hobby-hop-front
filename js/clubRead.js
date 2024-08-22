@@ -116,7 +116,7 @@ document.querySelector(".manage-club").addEventListener("click", function() {
 
 async function checkMember() {
   let clubId = parseUrl("clubId");
-  let url = `http://localhost:8080/api/clubs/${clubId}/checkClubMember`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/clubmembers/memberstatus`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -136,7 +136,7 @@ async function checkMember() {
 
 async function checkAdmin() {
   let clubId = parseUrl("clubId");
-  let url = `http://localhost:8080/api/clubs/${clubId}/checkPermission`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/clubmembers/adminstatus`;
 
   let response = await axios.get(url, {
     headers: {

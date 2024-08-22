@@ -41,7 +41,6 @@ async function sendMakeClub(data) {
 }
 
 function validateClub(title, content, category) {
-
   if (title.value === "" ) {
     title.style.border = "2px solid red";
     title.focus();

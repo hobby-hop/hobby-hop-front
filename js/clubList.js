@@ -64,7 +64,7 @@ document.querySelector(".my-info").addEventListener("click", function (evt) {
 });
 
 async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
+  let url = `http://localhost:8080/api/users/logout`;
   let response = await axios.post(url, null, {
     headers: {
       "authorization": localStorage.getItem("authorization")

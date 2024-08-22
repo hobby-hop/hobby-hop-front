@@ -5,23 +5,23 @@ let categoryId = document.querySelector(".category-id");
 
 document.addEventListener("DOMContentLoaded", function () {
   disableMoveToPost();
-  getPosts(1, 10, "");
+  let params = {
+    page : 1,
+    size: 10,
+  }
+  getPosts(params);
 });
 
-async function getPosts(page, size, keyword) {
+async function getPosts(params) {
   let clubId = parseUrl("clubId");
   let url = `http://localhost:8080/api/clubs/${clubId}/posts`;
-  let response = await axios.get(url, {
+  await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     },
-    params: {
-      page: page,
-      size: size,
-      keyword: keyword
-    }
+    params
   }).then(response => {
-    let data = response.data.data.dtoList;
+    let data = response.data.data;
     let targetHtml = document.querySelector(".content-box");
     targetHtml.innerHTML = "";
     let template = document.getElementById("post-list").innerText;
@@ -37,7 +37,7 @@ async function getPosts(page, size, keyword) {
 }
 
 document.querySelector(".write-btn").addEventListener("click", function () {
-  let response = checkMember().then(response => {
+  checkMember().then(response => {
     if (response.status == 200) {
       if (response.data.data) {
         let clubId = parseUrl("clubId");
@@ -57,7 +57,7 @@ document.querySelector(".write-btn").addEventListener("click", function () {
 
 async function checkMember() {
   let clubId = parseUrl("clubId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/checkClubMember`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/clubmembers/memberstatus`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -88,8 +88,14 @@ function printPages(data) {
 }
 
 document.querySelector(".number").addEventListener("click", function (evt) {
+  let params = {};
   let keyword = document.querySelector(".keyword").value;
-  getPosts(evt.target.dataset.page, 10, keyword);
+  if(keyword !== "") {
+    params.keyword = keyword;
+  }
+  params.page = evt.target.dataset.page;
+  params.size = 10;
+  getPosts(params);
 });
 
 document.querySelector(".my-info").addEventListener("click", function () {
@@ -97,40 +103,32 @@ document.querySelector(".my-info").addEventListener("click", function () {
   accordion.classList.toggle("close");
 });
 document.querySelector(".search").addEventListener("click", function () {
+  let params = {}
   let keyword = document.querySelector(".keyword").value;
-  getPosts(1, 10, keyword);
+  params.page = 1;
+  params.size = 10;
+  if(keyword !== "") {
+    params.keyword = keyword;
+  }
+  getPosts(params);
 });
 document.querySelector('.keyword').addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
+    let params = {}
     let keyword = document.querySelector(".keyword").value;
-    getPosts(1, 10, keyword);
+    params.page = 1;
+    params.size = 10;
+    if(keyword !== "") {
+      params.keyword = keyword;
+    }
+    getPosts(params);
   }
 });
 
-document.querySelector(".logout").addEventListener("click", function () {
-  logout().then(response => {
-    if (response.status == 200) {
-      localStorage.removeItem("authorization");
-      window.location.href = "/index.html";
-    }
-  }).catch(e => {
-
-  });
-});
-
-async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
-  let response = await axios.post(url, null, {
-    headers: {
-      "authorization": localStorage.getItem("authorization")
-    }
-  });
-
-  return response;
-}
-
-
 function disableMoveToPost(){
+  if(accessToken == ""){ 
+    return;
+  }
   checkMember().then(response => {
     if(!response.data.data) {
       document.querySelector(".content-box").addEventListener("click", function(evt) {

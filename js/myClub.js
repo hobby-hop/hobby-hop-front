@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function getClubs() {
-  let url = "https://hobbyback.store/api/clubs/my";
+  let url = "http://localhost:8080/api/clubs/my";
   const response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -56,7 +56,7 @@ document.querySelector(".logout").addEventListener("click", function() {
 });
 
 async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
+  let url = `http://localhost:8080/api/users/logout`;
   let response = await axios.post(url, null, {
     headers: {
       "authorization": localStorage.getItem("authorization")

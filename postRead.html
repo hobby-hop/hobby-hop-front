@@ -27,7 +27,7 @@
 
 <body>
   <header>
-    <div class="inner">
+    <div class="header-inner">
       <a href="/" class="logo">
         <img src="/image/hobby_hop_logo.png" alt="LOGO">
       </a>
@@ -51,76 +51,46 @@
       </div>
     </div>
   </header>
-  <div class="title-section">
-    <h1 class="title"></h1>
-    <p class="writer">작성자 : <span class="writer-text">작성자</span></p>
+  <div class="container inner">
+    <div class="post-container">
+
+    </div>
+    <div id="comment-container">
+      <div class="comment-each-container">
+  
+      </div>
+      <div class="pagination">
+      </div>
+      <div class="comment-box">
+        <span class="input-title"></span>
+        <textarea class="input-content" placeholder="내용(최대 200자)"></textarea>
+        <a href="javascript:void(0)" class="comment-btn">작성하기</a>
+      </div>
+    </div>
   </div>
-
-  <div class="content-section">
-    <a href="javascript:void(0)" class="modify-btn">Modify</a>
-    <div class="inner">
-      <div class="write-box">
-        <div class="board-content">
-          <div class="img-container">
-
+  <!-- <div class="badges">
+          <div class="badge">
+            <svg t="1689815540548" class="icon" viewBox="0 0 1680 1680" version="1.1" xmlns="http://www.w3.org/2000/svg"
+              p-id="2271">
+              <path
+                d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                fill="#231F20" p-id="2272" id="heart"></path>
+            </svg>
+            </label>
           </div>
-          <div class="content"></div>
-        </div>
-      </div>
-      <div class="border-section">
-        <span class="border-section-title">Comments</span>
-      </div>
-      <!-- <div class="badges">
-        <div class="badge">
-          <svg t="1689815540548" class="icon" viewBox="0 0 1680 1680" version="1.1" xmlns="http://www.w3.org/2000/svg"
-            p-id="2271">
-            <path
-              d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
-              fill="#231F20" p-id="2272" id="heart"></path>
-          </svg>
-          </label>
-        </div>
-      </div> -->
-    </div>
-    <div class="comment-section">
-      <div class="inner">
-
-        <span>Comment</span>
-        <div class="comment-each-container">
-
-        </div>
-        <div class="pagination">
-          <a href="#" class="active">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-      </div>
-        <div class="comment-box">
-          <span class="input-title"></span>
-          <textarea class="input-content" placeholder="내용(최대 200자)"></textarea>
-          <a href="javascript:void(0)" class="comment-btn">작성하기</a>
-        </div>
-
-      </div>
-    </div>
+        </div> -->
   </div>
+
   <footer>
     <div class="inner">
       <ul class="menu">
-        <li><a href="javascript:void(0)">개인정보처리방침</a></li>
-        <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
-        <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
       </ul>
       <div class="btn-group">
         <a href="javascript:void(0)" class="btn">찾아오시는 길</a>
-        <a href="javascript:void(0)" class="btn">사이트 맵</a>
       </div>
 
       <div class="info">
-        <span>사업자등록번호 111-11-11111</span>
         <span>(주) 하비합 대표이사 송지헌</span>
-        <span>TEL : 02) 3000 - 1000</span>
       </div>
 
       <p class="copyright">
@@ -130,6 +100,29 @@
   </footer>
 
 
+  <script type="myTemplate" id="post-template">
+    <div class="title-section">
+      <h1 class="title"> {{ title }}</h1>
+      <p class="post-meta">
+        <span class="writer">{{ writer }}</span>
+        <span class="date">{{ formatDate createdAt }}</span>
+        <a class="text-btn modify-btn">수정</a><a class="text-btn delete-btn">삭제</a>
+      </p>
+    </div>
+
+    <div class="content-section">
+      <div class="write-box">
+        <div class="board-content">
+          <div class="img-container">
+
+          </div>
+          <div class="content">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    <div>
+  </script>
   <script type="myTemplate" id="comment-template">
     <div class="comment-box" data-comment-id={{ id }}>
       <span class="comment-title">{{ writer }}</span>
@@ -140,6 +133,7 @@
       <p class="comment-content" contentEditable="false">{{ content }}</p>
     </div>
   </script>
+
 </body>
 
 </html>

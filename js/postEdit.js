@@ -9,7 +9,7 @@ async function getPost() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
 
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -81,7 +81,7 @@ document.querySelector(".modify-btn").addEventListener("click", function () {
 async function modifyRequest(data) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
   let response = await axios.patch(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -114,7 +114,7 @@ document.querySelector(".delete-btn").addEventListener("click", function () {
 async function deleteRequests() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-  let url = `https://hobbyback.store/api/clubs/${clubId}/posts/${postId}`;
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
   let response = await axios.delete(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -123,7 +123,7 @@ async function deleteRequests() {
   return response;
 }
 async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
+  let url = `http://localhost:8080/api/users/logout`;
   let response = await axios.post(url, null, {
     headers: {
       "authorization": localStorage.getItem("authorization")

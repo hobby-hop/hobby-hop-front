@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let changes = {};
 
 async function getMyInfo() {
-  let url = `https://hobbyback.store/api/users/profile`;
+  let url = `http://localhost:8080/api/users/profiles/my`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -82,7 +82,7 @@ function saveUserInfo() {
 }
 
 async function sendModifyRequest(data) {
-  let url = `https://hobbyback.store/api/users/update`
+  let url = `http://localhost:8080/api/users/profiles`
   let response = await axios.patch(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -108,7 +108,7 @@ function validateInfo(currentInfo, currentPassword) {
 
 
 async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
+  let url = `http://localhost:8080/api/users/logout`;
   let response = await axios.post(url, null, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -149,7 +149,7 @@ document.querySelector(".withdraw-modal .close-btn").addEventListener("click", f
 
 async function withdraw(currentPassword) {
   let data = {password : currentPassword};
-  let url = `https://hobbyback.store/api/users/withdrawal`;
+  let url = `http://localhost:8080/api/users/withdrawal`;
   let response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
