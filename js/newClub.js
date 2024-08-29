@@ -25,7 +25,7 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
 
 
 async function sendMakeClub(data) {
-  const url = "https://hobbyback.store/api/clubs";
+  const url = "http://localhost:8080/api/clubs";
   const response = await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
@@ -90,24 +90,3 @@ document.querySelector(".my-info").addEventListener("click", function () {
   accordion.classList.toggle("close");
 });
 
-document.querySelector(".logout").addEventListener("click", function () {
-  logout().then(response => {
-    if (response.status == 200) {
-      localStorage.removeItem("authorization");
-      window.location.href = "/index.html";
-    }
-  }).catch(e => {
-
-  });
-});
-
-async function logout() {
-  let url = `https://hobbyback.store/api/users/logout`;
-  let response = await axios.post(url, null, {
-    headers: {
-      "authorization": localStorage.getItem("authorization")
-    }
-  });
-
-  return response;
-}

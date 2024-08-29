@@ -4,23 +4,25 @@ document.addEventListener("DOMContentLoaded", function () {
   response.then(response => {
     let currentUser = response.data.data.username;
     localStorage.setItem('currentUser', currentUser);
-    getComment(currentUser, 1);
     getPost(currentUser);
+    getComment(currentUser, 1);
   });
 });
 
+let postChange = {};
 async function getPost() {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
-
   let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
+
   await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
+    postChange.title = response.data.data.title;
+    postChange.content = response.data.data.content;
     templatePost(response.data.data);
-    registerEvents();
   }).catch(e => {
   });
 }
@@ -50,14 +52,13 @@ async function sendComment(data) {
   let clubId = parseUrl("clubId");
   let postId = parseUrl("postId");
   let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}/comments`;
-  let response = await axios.post(url, data, {
+  await axios.post(url, data, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
   }).then(response => {
     if (response.status == 200) {
-      alert("댓글이 작성되었습니다");
-      window.location.reload();
+      getComment(localStorage.getItem("currentUser"), 1);
     }
   }).catch(e => {
     if (e.response.data.errorMessages[0] === "해당 멤버를 찾을 수 없습니다.") {
@@ -95,28 +96,18 @@ document.querySelector(".my-info").addEventListener("click", function (evt) {
   accordion.classList.toggle("close");
 })
 
-document.querySelector(".logout").addEventListener("click", function () {
-  logout().then(response => {
-    if (response.status == 200) {
-      localStorage.removeItem("authorization");
-      window.location.href = "/index.html";
-    }
-  }).catch(e => {
-
-  });
-});
-
 async function getMyInfo() {
   let url = `http://localhost:8080/api/users/profiles/my`;
   let response = await axios.get(url, {
     headers: {
       "authorization": localStorage.getItem("authorization")
     }
-  }
-  )
+  });
+
   return response;
 };
-let change = {};
+let commentChange = {};
+
 document.querySelector(".comment-each-container").addEventListener("click", function (evt) {
   if (evt.target.classList.contains("comment-modify") || evt.target.classList.contains("comment-delete")) {
     let comment = evt.target.closest(".comment-box");
@@ -128,14 +119,14 @@ document.querySelector(".comment-each-container").addEventListener("click", func
       commentContent.contentEditable = true;
       commentContent.focus();
       currentComment = commentContent.textContent;
-      change[commentId] = currentComment;
+      commentChange[commentId] = currentComment;
     } else if (evt.target.classList.contains("comment-modify") && evt.target.classList.contains("edit")) {
       evt.target.classList.remove("edit");
       let commentContent = comment.querySelector(".comment-content");
       let content = commentContent.textContent;
       commentContent.contentEditable = false;
 
-      if (content !== change[commentId]) {
+      if (content !== commentChange[commentId]) {
         let data = {
           content: content
         };
@@ -164,12 +155,9 @@ document.querySelector(".comment-each-container").addEventListener("click", func
           });
         }
       }).catch(e => {
-        alert(e);
       });
     }
   }
-
-
 });
 
 async function modifyComment(commentId, data) {
@@ -239,14 +227,65 @@ document.querySelector('.pagination').addEventListener('click', function (evt) {
 function templatePost(data) {
   let postTemplate = document.getElementById("post-template").innerText;
   let postContainer = document.querySelector(".post-container");
+  if (data.liked) {
+    document.getElementById('heart').classList.add('active');
+  }
+  document.querySelector('.post-like-cnt').innerText = data.likeCnt;
   postContainer.innerHTML = makeTemplate(data, postTemplate);
+  registerEvents();
 }
 
 function registerEvents() {
   document.querySelector(".modify-btn").addEventListener("click", function () {
-    let clubId = parseUrl("clubId");
-    let postId = parseUrl("postId");
-    window.location.href = `/postEdit.html?clubId=${clubId}&postId=${postId}`;
+    let title = document.querySelector('.title');
+    let content = document.querySelector('.content');
+    let modifyBtn = document.querySelector('.modify-btn');
+
+    if (!title.classList.contains('editing')) {
+      modifyBtn.innerText = "완료";
+      title.classList.add('editing');
+      title.contentEditable = true;
+      content.contentEditable = true;
+      title.focus();
+    } else {
+      modifyBtn.innerText = "수정";
+      title.classList.remove('editing');
+      title.contentEditable = false;
+      content.contentEditable = false;
+      if(validatePost(title, content)) {
+        let data = {};
+        
+        if(postChange.title !== title.innerText) {
+          data.title = title.innerText;
+        }
+        if(postChange.content !== content.innerText) {
+          data.content = content.innerText;
+        }
+  
+        if (Object.keys(data).length === 0) {
+          return;
+        }
+      
+        modifyPost(data);
+      }
+    }
+  })
+  document.querySelector(".delete-btn").addEventListener("click", function () {
+    console.log("!!!");
+    let userResponse = confirm("게시글을 삭제하시겠습니까?");
+    if (userResponse) {
+      let response = deleteRequests();
+      response.then(response => {
+        if (response.status == 200) {
+          alert("삭제가 완료되었습니다.")
+          window.history.go(-1);
+        }
+      }).catch(e => {
+        alert("권한이 없습니다.")
+        window.history.go(-1);
+      });
+  
+    }
   });
   document.querySelector('.pagination').addEventListener('click', function (evt) {
     if (evt.target.tagName == 'A') {
@@ -255,4 +294,67 @@ function registerEvents() {
       getComment(currentUser, requestPage);
     }
   });
+}
+
+document.getElementById('heart').addEventListener('click', function () {
+  likePost().then(response => {
+    document.querySelector('.post-like-cnt').innerText = response.data.data;
+    document.getElementById('heart').classList.toggle('active');
+  })
+});
+
+
+async function likePost() {
+  let clubId = parseUrl("clubId");
+  let postId = parseUrl("postId");
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}/likes`;
+  let response = await axios.post(url, null, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  })
+  return response;
+}
+async function modifyPost(data) {
+  let clubId = parseUrl("clubId");
+  let postId = parseUrl("postId");
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
+  
+  await axios.patch(url, data, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  }).then(response => {
+    templatePost(response.data.data);
+  });
+}
+function validatePost(title, content) {
+  if (title.innerText !== undefined && typeof title.innerText === 'string') {
+    if (title.innerText.length < 3 || title.innerText.length > 50) {
+      alert("제목은 3자에서 50자 사이로 작성해주세요.");
+      title.innerText = postChange.title;
+      return false;
+    }
+  }
+  if (content.innerText !== undefined && typeof content.innerText === 'string') {
+    if (content.innerText.length > 500) {
+      alert("본문은 500자 이내로 작성해주세요.");
+      content.innerText = postChange.content;
+      return false;
+    }
+  }
+
+  return true;
+}
+
+async function deleteRequests() {
+  let clubId = parseUrl("clubId");
+  let postId = parseUrl("postId");
+  let url = `http://localhost:8080/api/clubs/${clubId}/posts/${postId}`;
+  let response = await axios.delete(url, {
+    headers: {
+      "authorization": localStorage.getItem("authorization")
+    }
+  });
+  return response;
 }

@@ -97,6 +97,12 @@ ul, li {
   resize: none;
   font-size: 12px;
 }
+.reply {
+  font-size: 12px;
+  font-weight: 700;
+  color : #333;
+  text-decoration: underline;
+}
 
 #comment-container .comment-box .btn {
   margin-top: 10px;
@@ -133,10 +139,7 @@ svg {
 
 .badges .badge {
   width: 30px;
-  height: 30px;
   border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 12px;
   background-color: #fff;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
   padding: 10px;
@@ -144,6 +147,8 @@ svg {
 
 .badges .badge span {
   display: block;
+  font-size: 13px;
+  text-align: center;
 }
 
 #heart {

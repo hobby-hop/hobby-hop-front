@@ -7,8 +7,8 @@ document.querySelector(".submit-btn").addEventListener("click", function () {
   }
 
   let data = {
-    postTitle: title.value,
-    postContent: content.value
+    title: title.value,
+    content: content.value
   }
   
   const files = document.getElementById("file-upload").files;
